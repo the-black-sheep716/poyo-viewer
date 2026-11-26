@@ -418,6 +418,22 @@
       check("Legend", prop(s, "legend")),
       check("Panel ID at top left", prop(s, "id_mark"))
     ]));
+    tab.appendChild(group(newSheet, [
+      select("Side panel", [["separate", "Saved as its own file"], ["on_sheet", "On the sheet"]], {
+        get: function () { return s().panel_export; }, set: function (v) {
+          s().panel_export = v; if (v === "separate") s().layout = "stage3"; if (app.fitOnPreset) app.fit(); } })
+    ]));
+    tab.appendChild(group(function () { return newSheet() && s().panel_export === "separate"; }, [
+      note("The export saves the drawing without the panel, and a second picture ending in _panel at the same resolution. Place both at 100 percent to combine them. The panel ID stays on the drawing unless you untick it above.")
+    ]));
+    tab.appendChild(group(newSheet, [
+      select("Panel look", [["chronogram", "Chronogram"], ["riverscape", "Riverscape boxes"]], prop(s, "design"))
+    ]));
+    tab.appendChild(group(function () { return newSheet() && s().design === "chronogram"; }, [
+      text("Small title", prop(s, "kicker"), "line above the view name"),
+      text("Note", prop(s, "note"), "optional note under the title"),
+      colour("Title tab", prop(s, "tab_colour")), colour("Hairlines", prop(s, "rule_colour"))
+    ]));
     tab.appendChild(group(function () { return !newSheet(); }, [
       select("Annotations", [["full", "Full"], ["minimal", "Minimal"]], prop(s, "annotations")),
       note("This is the sheet of an export made with the Stage 1 viewer, kept so that it reproduces exactly.")

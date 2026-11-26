@@ -3,7 +3,7 @@
 (function () {
   var started = performance.now();
   var app = {
-    state: POYO.state.defaults(), manifest: null, frame: null, scene: null, gl: null,
+    state: POYO.themes.fresh(POYO.state.defaults()), manifest: null, frame: null, scene: null, gl: null,
     folder: null, fitOnPreset: true, light: false, moving: false, busy: false,
     timings: [], rotation: null, lastExport: null, drag: null,
     // interface only, never part of a sidecar
@@ -296,11 +296,12 @@
   };
 
   app.resetStyles = function () {
-    var d = POYO.state.defaults();
+    var d = POYO.themes.fresh(POYO.state.defaults());
     app.state.layers = d.layers; app.state.terrain = d.terrain;
     app.state.fill_order = d.fill_order; app.state.line_order = d.line_order;
     app.state.look = d.look; app.state.box.cut = d.box.cut; app.state.theme_name = d.theme_name;
-    ["paper_colour", "ink", "body_ink", "muted_ink"].forEach(function (k) { app.state.sheet[k] = d.sheet[k]; });
+    ["paper_colour", "ink", "body_ink", "muted_ink", "design", "tab_colour", "rule_colour"]
+      .forEach(function (k) { app.state.sheet[k] = d.sheet[k]; });
     var m = app.manifest.entries.buildings.default_height_m;
     app.state.layers.buildings.default_height_m = m; app.state.layers.buildings.industrial_height_m = m;
     app.setDark(false);
@@ -635,7 +636,8 @@
       app.lastExport = { seconds: result.seconds, bytes: result.bytes, width: result.width, height: result.height,
                          times: result.times, samples: result.samples };
       status.textContent = result.stem + ".png, " + POYO.fmtInt(result.width) + " × " + POYO.fmtInt(result.height) +
-        ", " + POYO.fmt(result.bytes / 1048576, 1) + " MB in " + result.seconds + " s. " + where;
+        ", " + POYO.fmt(result.bytes / 1048576, 1) + " MB in " + result.seconds + " s. " +
+        (result.panel ? "Side panel " + POYO.fmtInt(result.panel.width_mm) + " × " + POYO.fmtInt(result.panel.height_mm) + " mm in its own file. " : "") + where;
     } catch (e) {
       console.error(e);
       status.textContent = "Export failed: " + e.message;

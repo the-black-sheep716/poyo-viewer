@@ -243,7 +243,7 @@
     return cut(list, hi + 1e-6);
   }
 
-  function flowPanel(split, wide, colW, gap, pad, ink) {
+  function flowPanel(split, wide, colW, gap, pad, ink, chrono) {
     var h = split.h + 2 * pad;
     return {
       w: wide, h: h,
@@ -253,6 +253,10 @@
           var left = x + pad + i * (colW + gap);
           col.items.forEach(function (it) { it.draw(c, left, y + pad + it.y - col.top, u); });
         });
+        if (chrono) {                             // an ink rule above the legend, no box
+          c.fillStyle = ink.ink; c.fillRect((x + pad) * u, y * u, (wide - 2 * pad) * u, Math.max(0.45 * u, 1));
+          return;
+        }
         c.strokeStyle = ink.muted; c.lineWidth = Math.max(0.15 * u, 0.5);
         c.strokeRect(x * u + c.lineWidth / 2, y * u + c.lineWidth / 2, wide * u - c.lineWidth, h * u - c.lineWidth);
       }
@@ -293,7 +297,8 @@
     var base = POYO.clamp(Math.min(W, H) / 841, 0.35, 1.2);
     var k = base * sheet.text_size, margin = 14 * base, blocks = [];
     var side = sheet.panel_side === "right" || sheet.panel_side === "bottom" ? sheet.panel_side
-             : W >= H ? "right" : "bottom";
+             : W >= H || sheet.panel_export === "separate" ? "right" : "bottom";   // a panel of its own is a column
+    var chrono = sheet.design === "chronogram";
     function place(thing, x, y, role) {
       var b = { x: x, y: y, w: thing.w, h: thing.h, role: role };
       b.draw = function (c, u) { thing.draw(c, b.x, b.y, u); };
@@ -347,10 +352,10 @@
         var column = make ? best.wide : panelW;
         if (title) column = Math.max(column, title.w);
         if (make && best.split.cols.length) {
-          place(flowPanel(best.split, best.wide, best.colW, best.gap, best.pad, ink),
-                W - margin - best.wide, margin, "legend");
+          place(flowPanel(best.split, best.wide, best.colW, best.gap, best.pad, ink, chrono),
+                W - margin - best.wide, margin + (chrono && title ? title.h + 4 * k : 0), "legend");
         }
-        if (title) place(title, W - margin - title.w, H - margin - title.h, "title");
+        if (title) place(title, W - margin - title.w, chrono ? margin : H - margin - title.h, "title");
         area = { x: 0, y: 0, w: Math.max(10, W - 2 * margin - column), h: H };
       } else {
         var beside = title ? title.w + 4 * k : 0;
@@ -369,7 +374,7 @@
           if (!best.fits) best = trimmed(best, under && title ? limit - title.h - 4 * k : limit, best.k, ink);
         }
         var list = make && best.split.cols.length
-          ? flowPanel(best.split, best.wide, best.colW, best.gap, best.pad, ink) : null;
+          ? flowPanel(best.split, best.wide, best.colW, best.gap, best.pad, ink, chrono) : null;
         var strip = Math.max(title ? title.h : 0, list ? list.h : 0);
         if (under && title && list) strip = title.h + 4 * k + list.h;
         if (list) place(list, margin, H - margin - (under && title ? title.h + 4 * k : 0) - list.h, "legend");
@@ -379,7 +384,7 @@
       // a hairline between the drawing and the panels
       var rule = side === "right" ? { x: area.w, y: 0, w: 0.3, h: H } : { x: 0, y: area.h, w: W, h: 0.3 };
       blocks.push({ x: rule.x, y: rule.y, w: rule.w, h: rule.h, role: "rule", draw: function (c, u) {
-        c.fillStyle = ink.muted;
+        c.fillStyle = chrono ? ink.rule : ink.muted;
         c.fillRect(rule.x * u, rule.y * u, Math.max(rule.w * u, side === "right" ? 0.6 : 1),
                    Math.max(rule.h * u, side === "right" ? 1 : 0.6));
       } });
@@ -395,8 +400,26 @@
                 { family: "Arial, sans-serif", colour: ink.ink });
       } }, margin, margin, "id");
     }
+    var panelSheet = null;
+    if (sheet.panel_export === "separate") {
+      // the drawing takes the whole sheet; title and legend are stacked for their own file
+      var parts = blocks.filter(function (b) { return b.role === "title" || b.role === "legend"; });
+      parts.sort(function (a, b) { return (a.role === "title" ? 0 : 1) - (b.role === "title" ? 0 : 1); });
+      if (!chrono) parts.reverse();
+      if (parts.length) {
+        var wide2 = parts.reduce(function (m, b) { return Math.max(m, b.w); }, 0), down = margin;
+        parts.forEach(function (b, n) {
+          if (n) down += 4 * k;
+          b.x = margin; b.y = down; down += b.h;
+        });
+        panelSheet = { w: wide2 + 2 * margin, h: down + margin, blocks: parts };
+      }
+      blocks = blocks.filter(function (b) { return b.role === "id"; });
+      area = { x: 0, y: 0, w: W, h: H };
+    }
     blocks.window = area;
     blocks.side = side;
+    blocks.panel = panelSheet;
     return blocks;
   }
 

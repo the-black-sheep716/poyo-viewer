@@ -93,6 +93,38 @@
     gl.disable(gl.SCISSOR_TEST);
   }
 
+  async function deflate(bytes) {
+    var stream = new Blob([bytes]).stream().pipeThrough(new CompressionStream("deflate"));
+    return new Uint8Array(await new Response(stream).arrayBuffer());
+  }
+
+  // The side panel as a picture of its own, at the resolution of the sheet.
+  async function panelPicture(state, panel, transparent) {
+    var u = state.sheet.ppi / 25.4, channels = transparent ? 4 : 3;
+    var W = Math.ceil(panel.w * u), H = Math.ceil(panel.h * u);
+    var canvas = document.createElement("canvas");
+    canvas.width = W; canvas.height = H;
+    var c = canvas.getContext("2d", { willReadFrequently: true });
+    if (!transparent) { c.fillStyle = state.sheet.paper_colour; c.fillRect(0, 0, W, H); }
+    panel.blocks.forEach(function (b) { c.save(); b.draw(c, u); c.restore(); });
+    var parts = header(W, H, channels, state.sheet.ppi), stride = W * channels + 1, BAND = 512;
+    var raw = new Uint8Array(stride * H);
+    for (var y0 = 0; y0 < H; y0 += BAND) {
+      var rows = Math.min(BAND, H - y0), data = c.getImageData(0, y0, W, rows).data;
+      for (var y = 0, s = 0; y < rows; y++) {
+        var d = (y0 + y) * stride + 1;
+        for (var x = 0; x < W; x++, s += 4, d += channels) {
+          raw[d] = data[s]; raw[d + 1] = data[s + 1]; raw[d + 2] = data[s + 2];
+          if (channels === 4) raw[d + 3] = data[s + 3];
+        }
+      }
+    }
+    canvas.width = canvas.height = 1;
+    parts.push(chunk("IDAT", await deflate(raw)), chunk("IEND", new Uint8Array(0)));
+    return { png: new Blob(parts, { type: "image/png" }), width: W, height: H,
+             width_mm: +panel.w.toFixed(2), height_mm: +panel.h.toFixed(2) };
+  }
+
   // options: state, manifest, frame, scene, progress(fraction, text), tile
   async function run(options) {
     var state = options.state, scene = options.scene, gl = scene.gl;
@@ -230,11 +262,18 @@
         png_file: stem + ".png", tile_px: T, antialias_samples: samples, terrain_cell_m: 10,
         water_and_flood_mask_cell_m: POYO.render.FILL_CELL
       });
+      var side = null;
+      if (blocks.panel) {
+        side = await panelPicture(state, blocks.panel, transparent);
+        sidecar.export.panel_file = stem + "_panel.png";
+        sidecar.export.panel_size_mm = [side.width_mm, side.height_mm];
+        sidecar.export.panel_size_px = [side.width, side.height];
+      }
       var seconds = (performance.now() - started) / 1000;
       Object.keys(times).forEach(function (k) { times[k] = +(times[k] / 1000).toFixed(2); });
       progress(1, "Done");
       return { png: blob, sidecar: sidecar, stem: stem, seconds: +seconds.toFixed(2), times: times,
-               width: W, height: H, bytes: blob.size, tile: T, samples: samples };
+               width: W, height: H, bytes: blob.size, tile: T, samples: samples, panel: side };
     } finally {
       gl.bindFramebuffer(gl.FRAMEBUFFER, null);
       gl.deleteFramebuffer(draw); gl.deleteFramebuffer(resolve);
@@ -244,9 +283,11 @@
 
   // Into the chosen folder when the browser allows it, otherwise as downloads.
   async function save(result, folder) {
+    if (result.panel) result.sidecar.export.panel_file = result.stem + "_panel.png";
     var files = [[result.stem + ".png", result.png],
                  [result.stem + ".json", new Blob([JSON.stringify(result.sidecar, null, 2) + "\n"],
                                                   { type: "application/json" })]];
+    if (result.panel) files.splice(1, 0, [result.stem + "_panel.png", result.panel.png]);
     if (folder) {
       for (var i = 0; i < files.length; i++) {
         var name = files[i][0], handle = null, n = 1;
@@ -274,7 +315,7 @@
       (function (url) { setTimeout(function () { URL.revokeObjectURL(url); }, 60000); })(a.href);
       await new Promise(function (r) { setTimeout(r, 300); });
     }
-    return "Sent to the browser downloads (picture and sidecar).";
+    return "Sent to the browser downloads (" + (result.panel ? "drawing, side panel" : "picture") + " and sidecar).";
   }
 
   POYO.exporter = { run: run, save: save, fileStem: fileStem, clearOutside: clearOutside };

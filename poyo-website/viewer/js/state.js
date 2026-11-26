@@ -39,7 +39,10 @@
                layout: "stage3", title_block: true, legend: true, id_mark: true,
                panel_side: "auto", margin_mm: 10, frame_name: "",
                auto_sources: true, sources: POYO.deepCopy(SOURCES3),
-               ink: ID.ink, body_ink: ID.graphite, muted_ink: ID.slate },
+               ink: ID.ink, body_ink: ID.graphite, muted_ink: ID.slate,
+               // the chronogram look of the side panel, and whether it is saved as its own file
+               design: "riverscape", kicker: "Poyo basin", note: "", tab_colour: ID.yellow, rule_colour: ID.line,
+               panel_export: "on_sheet" },
       layers: {
         terrain: { visible: true, opacity: 1 },
         rivers: { visible: true, colour: ID.water, opacity: 1,
@@ -93,7 +96,7 @@
         wire_spacing_m: 200, wire_mm: 0.1, wire_colour: ID.slate,
         outline_mm: 0.18, outline_colour: ID.ink, outline_depth_m: 2.5, outline_angle_deg: 30,
         xray_alpha: 0.3,
-        trees: "shaded", tree_crown: "#6B8638", tree_trunk: ID.slate, depth_ramp: ID.floodRamp.slice(),
+        trees: "shaded", tree_shape: "polygon", tree_crown: "#6B8638", tree_trunk: ID.slate, depth_ramp: ID.floodRamp.slice(),
         water_ramp: ID.floodRamp.slice(),
         road_colours: []
       },
@@ -169,6 +172,9 @@
     }
     var sh = s.sheet;
     word(sh, "panel_side", ["auto", "right", "bottom"]); num(sh, "margin_mm", 0, 100, 10);
+    word(sh, "design", ["riverscape", "chronogram"]); word(sh, "panel_export", ["on_sheet", "separate"]);
+    sh.kicker = String(sh.kicker).slice(0, 120); sh.note = String(sh.note).slice(0, 600);
+    ["tab_colour", "rule_colour"].forEach(function (key) { if (!/^#[0-9a-fA-F]{6}$/.test(sh[key])) sh[key] = d.sheet[key]; });
     word(s.cover, "source", ["none", "planned", "observed", "crops"]); word(s.cover, "level", ["detail", "group"]);
     s.cover.crop_water = s.cover.crop_water === true;
     strings(s.cover, "hidden"); pairs(s.cover, "colours");
@@ -200,6 +206,7 @@
     num(s.vector, "tree_crown_cap", 0, 50000, 5000);
     word(s.layers.roads, "colour_by", ["class", "single"]); num(s.layers.roads, "opacity", 0, 1, 1);
     if (STYLES.indexOf(s.look.trees) < 0) s.look.trees = "shaded";
+    if (["polygon", "sphere"].indexOf(s.look.tree_shape) < 0) s.look.tree_shape = "polygon";
     ["depth_ramp", "water_ramp"].forEach(function (key) {
       var ramp = s.look[key];
       if (!Array.isArray(ramp) || ramp.length !== 5 || !ramp.every(function (v) { return /^#[0-9a-fA-F]{6}$/.test(v); })) {

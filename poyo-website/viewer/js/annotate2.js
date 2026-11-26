@@ -51,7 +51,8 @@
   }
 
   function inks(sheet) {
-    return { ink: sheet.ink, body: sheet.body_ink, muted: sheet.muted_ink, paper: sheet.paper_colour };
+    return { ink: sheet.ink, body: sheet.body_ink, muted: sheet.muted_ink, paper: sheet.paper_colour,
+             rule: sheet.rule_colour, tab: sheet.tab_colour };
   }
 
   // A column of items stacked downwards.
@@ -230,7 +231,24 @@
     }
     function row() { rows.push(Array.prototype.slice.call(arguments)); }
 
-    row(cell(1, function (s) { s.text(POYO.camera.viewName(v), 8 * k, { weight: 700, family: TITLE }); }));
+    // the chronogram look opens with its tab, kicker, title and note
+    var chrono = sheet.design === "chronogram";
+    if (chrono) {
+      row(cell(1, function (s) {
+        s.add(4.4 * k, 20 * k, function (c, x, y, u) {
+          c.fillStyle = ink.tab; c.fillRect(x * u, (y + 0.6 * k) * u, 20 * k * u, 1.4 * k * u);
+        });
+        var kicker = String(sheet.kicker || "").trim(), words = String(sheet.note || "").trim();
+        if (kicker) s.text(kicker.toUpperCase(), 3.2 * k, { weight: 700, track: 0.1, colour: ink.body });
+        s.gap(1.2 * k);
+        s.text(POYO.camera.viewName(v), 10 * k, { weight: 700, family: TITLE, track: -0.02 });
+        if (words) {
+          s.gap(2.8 * k);
+          s.text("NOTE", label, { weight: 500, track: 0.11, colour: ink.muted });
+          s.text(words, 3.8 * k, { colour: ink.body });
+        }
+      }));
+    } else row(cell(1, function (s) { s.text(POYO.camera.viewName(v), 8 * k, { weight: 700, family: TITLE }); }));
     row(cell(0.36, function (s) {
           s.label("Scale", label); s.text("1:" + POYO.fmtInt(v.scale), big, { weight: 600 });
           if (v.elevation < 89.99) s.text("across the sheet", small, { colour: ink.body });
@@ -333,12 +351,13 @@
           var x = bx;
           r.forEach(function (cl, j) {
             cl.col.items.forEach(function (item) { item.draw(c, x + pad, y + pad * 0.85 + item.y, u); });
-            if (j) { c.fillStyle = ink.muted; c.fillRect(x * u, y * u, Math.max(0.15 * u, 0.5), heights[i] * u); }
+            if (j && !chrono) { c.fillStyle = ink.muted; c.fillRect(x * u, y * u, Math.max(0.15 * u, 0.5), heights[i] * u); }
             x += W * cl.share;
           });
-          if (i) { c.fillStyle = ink.muted; c.fillRect(bx * u, y * u, W * u, Math.max(0.15 * u, 0.5)); }
+          if (i) { c.fillStyle = chrono ? ink.rule : ink.muted; c.fillRect(bx * u, y * u, W * u, Math.max((chrono ? 0.25 : 0.15) * u, 0.5)); }
           y += heights[i];
         });
+        if (chrono) return;                       // open layout, no box around it
         var t = 0.35;
         c.strokeStyle = ink.ink; c.lineWidth = Math.max(t * u, 1);
         c.strokeRect(bx * u + c.lineWidth / 2, by * u + c.lineWidth / 2, W * u - c.lineWidth, H * u - c.lineWidth);
