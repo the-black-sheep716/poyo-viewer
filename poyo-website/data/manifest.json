@@ -1,0 +1,3146 @@
+{
+ "build_date": "2026-11-26 01:02:28",
+ "crs": "EPSG:25830",
+ "entries": {
+  "basin": {
+   "area_km2": 416.51361158518654,
+   "built": "2026-11-26 00:58:06",
+   "bytes_gz": 218465,
+   "bytes_js": 291312,
+   "bytes_raw": 286016,
+   "checks": [
+    {
+     "actual": 3,
+     "expected": 3,
+     "item": "features",
+     "ok": true,
+     "tolerance": 0
+    },
+    {
+     "actual": 21414,
+     "expected": 21414,
+     "item": "vertices",
+     "ok": true,
+     "tolerance": 0
+    },
+    {
+     "actual": 416.51,
+     "expected": 416.52,
+     "item": "area km2",
+     "ok": false,
+     "tolerance": 0.005
+    }
+   ],
+   "clip": "none (this layer defines the basin)",
+   "feature_count": 3,
+   "outline_parts": 1,
+   "outline_rings": 1,
+   "parts": 3,
+   "source_crs": "EPSG:25830",
+   "source_file": "poyo_typology_stage0.gpkg",
+   "source_layer": "S0_basin_3_subbasins",
+   "stored_crs": "EPSG:25830",
+   "sub_basins": [
+    "200323",
+    "200324",
+    "200326"
+   ],
+   "vertices": 21414,
+   "vertices_stored": 21411
+  },
+  "buildings": {
+   "built": "2026-11-26 01:00:11",
+   "by_source": {
+    "explicit": 15,
+    "floors": 48001,
+    "none": 9982
+   },
+   "bytes_gz": 2249636,
+   "bytes_js": 2999544,
+   "bytes_raw": 5190344,
+   "checks": [
+    {
+     "actual": 57998,
+     "expected": 57998,
+     "item": "buildings",
+     "ok": true,
+     "tolerance": 0
+    },
+    {
+     "actual": 15,
+     "expected": 15,
+     "item": "explicit tag",
+     "ok": true,
+     "tolerance": 0
+    },
+    {
+     "actual": 48001,
+     "expected": 48001,
+     "item": "floor count",
+     "ok": true,
+     "tolerance": 0
+    },
+    {
+     "actual": 9982,
+     "expected": 9982,
+     "item": "no height",
+     "ok": true,
+     "tolerance": 0
+    },
+    {
+     "actual": 520018,
+     "expected": 520018,
+     "item": "vertices",
+     "ok": true,
+     "tolerance": 0
+    },
+    {
+     "actual": 3.0,
+     "expected": 3.0,
+     "item": "median height m",
+     "ok": true,
+     "tolerance": 0.005
+    },
+    {
+     "actual": 23.1,
+     "expected": 23.1,
+     "item": "reference height m",
+     "ok": true,
+     "tolerance": 0.001
+    },
+    {
+     "actual": 724138.168,
+     "expected": 724138.168,
+     "item": "reference x",
+     "ok": true,
+     "tolerance": 0.01
+    },
+    {
+     "actual": 4365451.159,
+     "expected": 4365451.159,
+     "item": "reference y",
+     "ok": true,
+     "tolerance": 0.01
+    }
+   ],
+   "clip": "whole footprints that touch any of the three sub-basins",
+   "default_height_m": 3.0,
+   "feature_count": 57998,
+   "footprint_area_km2": 10.4127,
+   "footprints_skipped_degenerate": 0,
+   "industrial_without_height": 303,
+   "max_height_m": 48.0,
+   "min_height_m": 0.15,
+   "no_height_share_of_footprint_area": 0.4716,
+   "no_height_types": {
+    "(blank)": 7685,
+    "apartments": 516,
+    "barn": 26,
+    "greenhouse": 36,
+    "house": 410,
+    "industrial": 284,
+    "residential": 744,
+    "roof": 80,
+    "ruins": 19,
+    "school": 33,
+    "service": 19,
+    "warehouse": 19
+   },
+   "parts": 58027,
+   "reference_building": {
+    "height_m": 23.1,
+    "osm_id": "1337408832",
+    "source": "OSM height tag",
+    "x": 724138.167565876,
+    "y": 4365451.159051013
+   },
+   "rings_dropped": 0,
+   "source_crs": "EPSG:25830",
+   "source_file": "poyo_buildings.gpkg",
+   "source_layer": "BLD_buildings_with_height (OSM, view extent)",
+   "stored_crs": "EPSG:25830",
+   "vertices": 520018,
+   "vertices_stored": 458336
+  },
+  "channel": {
+   "built": "2026-11-26 12:12:06",
+   "bytes_gz": 989521,
+   "bytes_js": 1319390,
+   "bytes_raw": 3973544,
+   "cell": 5.0,
+   "checks": [
+    {
+     "actual": true,
+     "expected": true,
+     "item": "largest join gap under 200 m",
+     "ok": true,
+     "tolerance": 0
+    }
+   ],
+   "courses": [
+    {
+     "idcurso": "2003262",
+     "name": "Barranco de Chiva o Rambla de Pollo",
+     "part_gaps_m": [
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0
+     ]
+    },
+    {
+     "idcurso": "200326",
+     "name": "Barranc dels Cavalls",
+     "part_gaps_m": [
+      0.0
+     ]
+    },
+    {
+     "idcurso": "20032",
+     "name": "Barranc de Torrent",
+     "part_gaps_m": [
+      0.0,
+      0.0
+     ]
+    }
+   ],
+   "half_width_m": 300.0,
+   "joins": [
+    {
+     "gap_m": 0.0,
+     "onto": "200326"
+    },
+    {
+     "gap_m": 0.0,
+     "onto": "20032"
+    }
+   ],
+   "length_m": 49677.9,
+   "offset": 500.0,
+   "outlet_ground_m": 0.26,
+   "outlet_xy": [
+    731630.3,
+    4359126.6
+   ],
+   "scale": 0.05,
+   "source_crs": "EPSG:4258",
+   "source_file": "Hidrografia_MITECO.gpkg",
+   "source_ground_m": 319.99,
+   "source_layer": "hi_redsecuencia_l_es080",
+   "source_xy": [
+    694587.4,
+    4372624.1
+   ],
+   "tile": 64,
+   "tiles": 481,
+   "x0": 681627.5,
+   "ytop": 4382632.5
+  },
+  "crops": {
+   "basin_km2": 416.52,
+   "built": "2026-11-26 14:05:13",
+   "bytes_gz": 1749735,
+   "bytes_js": 2333004,
+   "bytes_raw": 40500240,
+   "campaign": 2026,
+   "cell": 5.0,
+   "checks": [
+    {
+     "actual": "25830",
+     "expected": "25830",
+     "item": "coordinate system",
+     "ok": true,
+     "tolerance": 0
+    },
+    {
+     "actual": 416.5,
+     "expected": 416.5,
+     "item": "basin area km2",
+     "ok": true,
+     "tolerance": 0.5
+    },
+    {
+     "actual": 100.0,
+     "expected": 100.0,
+     "item": "basin covered by parcels percent",
+     "ok": true,
+     "tolerance": 3.0
+    }
+   ],
+   "classes": [
+    {
+     "codes": [
+      "CI"
+     ],
+     "crop": true,
+     "index": 19,
+     "km2_grid": 67.8487,
+     "order": 1,
+     "parcels": 10685,
+     "type": "Citrus",
+     "water": "irrigated"
+    },
+    {
+     "codes": [
+      "CI"
+     ],
+     "crop": true,
+     "index": 20,
+     "km2_grid": 1.2118,
+     "order": 2,
+     "parcels": 428,
+     "type": "Citrus",
+     "water": "rainfed"
+    },
+    {
+     "codes": [
+      "FY"
+     ],
+     "crop": true,
+     "index": 18,
+     "km2_grid": 7.7069,
+     "order": 11,
+     "parcels": 1262,
+     "type": "Fruit trees",
+     "water": "irrigated"
+    },
+    {
+     "codes": [
+      "FY"
+     ],
+     "crop": true,
+     "index": 6,
+     "km2_grid": 14.9207,
+     "order": 12,
+     "parcels": 6928,
+     "type": "Fruit trees",
+     "water": "rainfed"
+    },
+    {
+     "codes": [
+      "FS"
+     ],
+     "crop": true,
+     "index": 17,
+     "km2_grid": 2.3278,
+     "order": 21,
+     "parcels": 642,
+     "type": "Nut trees",
+     "water": "irrigated"
+    },
+    {
+     "codes": [
+      "FS"
+     ],
+     "crop": true,
+     "index": 9,
+     "km2_grid": 22.6792,
+     "order": 22,
+     "parcels": 6495,
+     "type": "Nut trees",
+     "water": "rainfed"
+    },
+    {
+     "codes": [
+      "OV"
+     ],
+     "crop": true,
+     "index": 22,
+     "km2_grid": 0.8058,
+     "order": 31,
+     "parcels": 526,
+     "type": "Olive groves",
+     "water": "irrigated"
+    },
+    {
+     "codes": [
+      "OV"
+     ],
+     "crop": true,
+     "index": 8,
+     "km2_grid": 7.0889,
+     "order": 32,
+     "parcels": 5342,
+     "type": "Olive groves",
+     "water": "rainfed"
+    },
+    {
+     "codes": [
+      "VI"
+     ],
+     "crop": true,
+     "index": 16,
+     "km2_grid": 9.4599,
+     "order": 41,
+     "parcels": 1775,
+     "type": "Vineyard",
+     "water": "irrigated"
+    },
+    {
+     "codes": [
+      "VI"
+     ],
+     "crop": true,
+     "index": 13,
+     "km2_grid": 12.3983,
+     "order": 42,
+     "parcels": 2627,
+     "type": "Vineyard",
+     "water": "rainfed"
+    },
+    {
+     "codes": [
+      "CF",
+      "CS",
+      "CV",
+      "FF",
+      "FL",
+      "FV",
+      "OC",
+      "OF",
+      "VF",
+      "VO"
+     ],
+     "crop": true,
+     "index": 21,
+     "km2_grid": 0.754,
+     "order": 51,
+     "parcels": 130,
+     "type": "Mixed tree crops",
+     "water": "irrigated"
+    },
+    {
+     "codes": [
+      "CF",
+      "CS",
+      "FF",
+      "FL",
+      "FV",
+      "OC",
+      "OF",
+      "VF",
+      "VO"
+     ],
+     "crop": true,
+     "index": 11,
+     "km2_grid": 1.0405,
+     "order": 52,
+     "parcels": 492,
+     "type": "Mixed tree crops",
+     "water": "rainfed"
+    },
+    {
+     "codes": [
+      "OP"
+     ],
+     "crop": true,
+     "index": 26,
+     "km2_grid": 0.0046,
+     "order": 61,
+     "parcels": 1,
+     "type": "Other permanent crops",
+     "water": "irrigated"
+    },
+    {
+     "codes": [
+      "TA"
+     ],
+     "crop": true,
+     "index": 12,
+     "km2_grid": 35.3489,
+     "order": 71,
+     "parcels": 11288,
+     "type": "Arable land",
+     "water": "irrigated"
+    },
+    {
+     "codes": [
+      "TA"
+     ],
+     "crop": true,
+     "index": 7,
+     "km2_grid": 12.3085,
+     "order": 72,
+     "parcels": 5123,
+     "type": "Arable land",
+     "water": "rainfed"
+    },
+    {
+     "codes": [
+      "TH"
+     ],
+     "crop": true,
+     "index": 24,
+     "km2_grid": 0.4668,
+     "order": 81,
+     "parcels": 123,
+     "type": "Vegetable gardens",
+     "water": "irrigated"
+    },
+    {
+     "codes": [
+      "TH"
+     ],
+     "crop": true,
+     "index": 25,
+     "km2_grid": 0.0259,
+     "order": 82,
+     "parcels": 15,
+     "type": "Vegetable gardens",
+     "water": "rainfed"
+    },
+    {
+     "codes": [
+      "IV"
+     ],
+     "crop": true,
+     "index": 23,
+     "km2_grid": 1.0914,
+     "order": 91,
+     "parcels": 211,
+     "type": "Greenhouses and plastic cover",
+     "water": "irrigated"
+    },
+    {
+     "codes": [
+      "IV"
+     ],
+     "crop": true,
+     "index": 15,
+     "km2_grid": 0.1832,
+     "order": 92,
+     "parcels": 37,
+     "type": "Greenhouses and plastic cover",
+     "water": "rainfed"
+    },
+    {
+     "codes": [
+      "FO"
+     ],
+     "crop": false,
+     "index": 1,
+     "km2_grid": 23.2993,
+     "order": 100,
+     "parcels": 1261,
+     "type": "Forest",
+     "water": ""
+    },
+    {
+     "codes": [
+      "MT",
+      "PA",
+      "PR",
+      "PS"
+     ],
+     "crop": false,
+     "index": 2,
+     "km2_grid": 91.3283,
+     "order": 110,
+     "parcels": 21910,
+     "type": "Pasture and scrub",
+     "water": ""
+    },
+    {
+     "codes": [
+      "ED",
+      "ZU"
+     ],
+     "crop": false,
+     "index": 10,
+     "km2_grid": 47.2171,
+     "order": 120,
+     "parcels": 4865,
+     "type": "Built up",
+     "water": ""
+    },
+    {
+     "codes": [
+      "CA"
+     ],
+     "crop": false,
+     "index": 3,
+     "km2_grid": 19.0129,
+     "order": 130,
+     "parcels": 7184,
+     "type": "Roads and ways",
+     "water": ""
+    },
+    {
+     "codes": [
+      "AG"
+     ],
+     "crop": false,
+     "index": 4,
+     "km2_grid": 10.7669,
+     "order": 140,
+     "parcels": 2695,
+     "type": "Water",
+     "water": ""
+    },
+    {
+     "codes": [
+      "IM"
+     ],
+     "crop": false,
+     "index": 5,
+     "km2_grid": 27.0751,
+     "order": 150,
+     "parcels": 15159,
+     "type": "Unproductive land",
+     "water": ""
+    },
+    {
+     "codes": [
+      "EP"
+     ],
+     "crop": false,
+     "index": 14,
+     "km2_grid": 0.152,
+     "order": 160,
+     "parcels": 415,
+     "type": "Other parcel use",
+     "water": ""
+    }
+   ],
+   "cols": 9516,
+   "covered_percent": 100.0,
+   "crop_km2": 197.67,
+   "feature_count": 107619,
+   "parcels_outside_basin": 72320,
+   "rows": 4256,
+   "rule": "type from uso_sigpac; for crops irrigated or rainfed from grupo_cult (TCR, TCS), else coef_regad of 50 or more is irrigated; cell centre rasterisation on 5 m",
+   "source": "SIGPAC 2026 recintos, WFS ms:SIGPAC2026.Recintos, Institut Cartografic Valencia, Generalitat Valenciana. Data date 15 12 2025. Licence CC BY.",
+   "tiles": 46,
+   "unknown_codes": {},
+   "url": "https://terramapas.icv.gva.es/1403_SIGPAC",
+   "water_counts": {
+    "irrigated": 26643,
+    "not recorded": 0,
+    "rainfed": 27487
+   },
+   "x0": 683287.5,
+   "ytop": 4380112.5
+  },
+  "dem_check": {
+   "built": "2026-11-26 01:00:45",
+   "cell": 5.0,
+   "cells_in_basin": 16660945,
+   "cells_sum": 16660945,
+   "checks": [
+    {
+     "actual": -1.964,
+     "expected": -1.964,
+     "item": "min m",
+     "ok": true,
+     "tolerance": 0.0005
+    },
+    {
+     "actual": 1046.297,
+     "expected": 1046.297,
+     "item": "max m",
+     "ok": true,
+     "tolerance": 0.0005
+    },
+    {
+     "actual": 16660945,
+     "expected": 16660945,
+     "item": "cells (sum of sub-basins)",
+     "ok": true,
+     "tolerance": 0
+    },
+    {
+     "actual": -1.964,
+     "expected": -1.964,
+     "item": "200323 min",
+     "ok": true,
+     "tolerance": 0.0005
+    },
+    {
+     "actual": 134.992,
+     "expected": 134.992,
+     "item": "200323 max",
+     "ok": true,
+     "tolerance": 0.0005
+    },
+    {
+     "actual": 31.902,
+     "expected": 31.902,
+     "item": "200324 min",
+     "ok": true,
+     "tolerance": 0.0005
+    },
+    {
+     "actual": 355.583,
+     "expected": 355.583,
+     "item": "200324 max",
+     "ok": true,
+     "tolerance": 0.0005
+    },
+    {
+     "actual": 31.873,
+     "expected": 31.873,
+     "item": "200326 min",
+     "ok": true,
+     "tolerance": 0.0005
+    },
+    {
+     "actual": 1046.297,
+     "expected": 1046.297,
+     "item": "200326 max",
+     "ok": true,
+     "tolerance": 0.0005
+    }
+   ],
+   "max_m": 1046.297,
+   "min_m": -1.964,
+   "source_crs": "EPSG:25830",
+   "source_file": "MDT_A1.tif",
+   "source_layer": "MDT_A1",
+   "sub_basins": {
+    "200323": {
+     "cells": 2377671,
+     "max_m": 134.992,
+     "min_m": -1.964
+    },
+    "200324": {
+     "cells": 3652040,
+     "max_m": 355.583,
+     "min_m": 31.902
+    },
+    "200326": {
+     "cells": 10631234,
+     "max_m": 1046.297,
+     "min_m": 31.873
+    }
+   }
+  },
+  "flood_2200": {
+   "area_km2": 75.19832372004133,
+   "built": "2026-11-26 00:59:20",
+   "bytes_gz": 34315,
+   "bytes_js": 45785,
+   "bytes_raw": 72528,
+   "checks": [
+    {
+     "actual": 1,
+     "expected": 1,
+     "item": "features",
+     "ok": true,
+     "tolerance": 0
+    },
+    {
+     "actual": 4,
+     "expected": 4,
+     "item": "parts",
+     "ok": true,
+     "tolerance": 0
+    },
+    {
+     "actual": 9028,
+     "expected": 9028,
+     "item": "vertices",
+     "ok": true,
+     "tolerance": 0
+    },
+    {
+     "actual": 75.2,
+     "expected": 75.2,
+     "item": "area km2",
+     "ok": true,
+     "tolerance": 0.005
+    },
+    {
+     "actual": 1,
+     "expected": 1,
+     "item": "urban features",
+     "ok": true,
+     "tolerance": 0
+    },
+    {
+     "actual": 16.8109,
+     "expected": 16.81,
+     "item": "area on urban land km2",
+     "ok": true,
+     "tolerance": 0.005
+    }
+   ],
+   "clip": "as stored in the layer, which was limited to the basin in Stage 0",
+   "feature_count": 1,
+   "features_without_geometry": 0,
+   "parts": 4,
+   "rings_dropped": 0,
+   "source_crs": "EPSG:25830",
+   "source_file": "poyo_typology_stage0_layers.gpkg",
+   "source_layer": "S0_flood2200_in_basin_with_area",
+   "stored_crs": "EPSG:25830",
+   "urban_area_km2": 16.810874327941903,
+   "urban_layer": "S0_flood2200_on_urban_with_area",
+   "vertices": 9028,
+   "vertices_stored": 8996
+  },
+  "flood_depth": {
+   "built": "2026-11-26 12:11:59",
+   "bytes_gz": 146035,
+   "bytes_js": 194746,
+   "bytes_raw": 81000424,
+   "cell": 5.0,
+   "checks": [
+    {
+     "actual": 1478,
+     "expected": 1478,
+     "item": "layer features",
+     "ok": true,
+     "tolerance": 0
+    },
+    {
+     "actual": 75.2,
+     "expected": 75.2,
+     "item": "area 22:00 grid km2",
+     "ok": true,
+     "tolerance": 0.2
+    }
+   ],
+   "classes": [
+    {
+     "index": 1,
+     "km2": 6.6194,
+     "km2_grid": 6.6133,
+     "name": "Below 0.50"
+    },
+    {
+     "index": 2,
+     "km2": 4.7561,
+     "km2_grid": 4.7589,
+     "name": "0.50 - 1.00"
+    },
+    {
+     "index": 3,
+     "km2": 1.8955,
+     "km2_grid": 1.8952,
+     "name": "1.00 - 2.00"
+    },
+    {
+     "index": 4,
+     "km2": 0.0128,
+     "km2_grid": 0.0129,
+     "name": "2.00 - 4.00"
+    },
+    {
+     "index": 5,
+     "km2": 0.0,
+     "km2_grid": 0.0,
+     "name": "4.00 - 6.00"
+    }
+   ],
+   "clip": "polygons cut to the basin",
+   "cols": 9516,
+   "feature_count": 102,
+   "rows": 4256,
+   "source_crs": "EPSG:4326",
+   "source_file": "EMSR773_AOI01_DEL_MONIT02_floodDepthA_v1.shp",
+   "source_layer": "EMSR773_AOI01_DEL_MONIT02_floodDepthA_v1",
+   "unknown_values": {},
+   "x0": 683287.5,
+   "ytop": 4380112.5
+  },
+  "flood_depth_outlines": {
+   "built": "2026-11-26 12:11:59",
+   "bytes_gz": 21451,
+   "bytes_js": 28643,
+   "bytes_raw": 49808,
+   "feature_count": 102,
+   "source_crs": "EPSG:4326",
+   "source_file": "EMSR773_AOI01_DEL_MONIT02_floodDepthA_v1.shp",
+   "source_layer": "EMSR773_AOI01_DEL_MONIT02_floodDepthA_v1"
+  },
+  "flood_satellite": {
+   "area_km2": 18.481894551032962,
+   "built": "2026-11-26 00:58:54",
+   "bytes_gz": 66879,
+   "bytes_js": 89206,
+   "bytes_raw": 170512,
+   "checks": [
+    {
+     "actual": 112,
+     "expected": 112,
+     "item": "features",
+     "ok": true,
+     "tolerance": 0
+    },
+    {
+     "actual": 119,
+     "expected": 119,
+     "item": "parts",
+     "ok": true,
+     "tolerance": 0
+    },
+    {
+     "actual": 21270,
+     "expected": 21270,
+     "item": "vertices",
+     "ok": true,
+     "tolerance": 0
+    },
+    {
+     "actual": 18.48,
+     "expected": 18.48,
+     "item": "area km2",
+     "ok": true,
+     "tolerance": 0.005
+    },
+    {
+     "actual": 21,
+     "expected": 21,
+     "item": "urban features",
+     "ok": true,
+     "tolerance": 0
+    },
+    {
+     "actual": 0.0923,
+     "expected": 0.0923,
+     "item": "area on urban land km2",
+     "ok": true,
+     "tolerance": 5e-05
+    }
+   ],
+   "clip": "as stored in the layer, which was limited to the basin in Stage 0",
+   "feature_count": 112,
+   "features_without_geometry": 0,
+   "parts": 119,
+   "rings_dropped": 0,
+   "source_crs": "EPSG:25830",
+   "source_file": "poyo_typology_stage0_layers.gpkg",
+   "source_layer": "S0_CEMS_flood_in_basin_with_area",
+   "stored_crs": "EPSG:25830",
+   "urban_area_km2": 0.09233320771314546,
+   "urban_layer": "S0_CEMS_flood_on_urban_with_area",
+   "vertices": 21270,
+   "vertices_stored": 21014
+  },
+  "hazard": {
+   "built": "2026-11-26 12:12:01",
+   "bytes_gz": 166517,
+   "bytes_js": 222049,
+   "bytes_raw": 40500240,
+   "cell": 5.0,
+   "checks": [
+    {
+     "actual": 521,
+     "expected": 521,
+     "item": "layer features",
+     "ok": true,
+     "tolerance": 0
+    }
+   ],
+   "classes": [
+    {
+     "index": 1,
+     "km2": 2.0281,
+     "km2_grid": 2.0269,
+     "text": [
+      "Peligrosidad 1. Frecuencia alta (25 a\u00f1os) y calado Alto (>0.8 m)"
+     ]
+    },
+    {
+     "index": 2,
+     "km2": 0.0,
+     "km2_grid": 0.0,
+     "text": []
+    },
+    {
+     "index": 3,
+     "km2": 14.5036,
+     "km2_grid": 14.5057,
+     "text": [
+      "Peligrosidad 3. Frecuencia alta (25 a\u00f1os) y calado bajo (<0.8 m)"
+     ]
+    },
+    {
+     "index": 4,
+     "km2": 0.3047,
+     "km2_grid": 0.3044,
+     "text": [
+      "Peligrosidad 4. Frecuencia media (100 a\u00f1os) y calado bajo (<0.8 m)"
+     ]
+    },
+    {
+     "index": 5,
+     "km2": 0.3766,
+     "km2_grid": 0.3768,
+     "text": [
+      "Peligrosidad 5. Frecuencia baja (500 a\u00f1os) y calado alto (>0.8 m)"
+     ]
+    },
+    {
+     "index": 6,
+     "km2": 27.8233,
+     "km2_grid": 27.8254,
+     "text": [
+      "Peligrosidad 6. Frecuencia baja (500 a\u00f1os) y calado bajo (<0.8 m)"
+     ]
+    },
+    {
+     "index": 7,
+     "km2": 24.5139,
+     "km2_grid": 24.5132,
+     "text": [
+      "Peligrosidad Geomorfol\u00f3gica: Abanico aluvial",
+      "Peligrosidad Geomorfol\u00f3gica: Abanicos torrenciales",
+      "Peligrosidad Geomorfol\u00f3gica: Cauces",
+      "Peligrosidad Geomorfol\u00f3gica: Derrames",
+      "Peligrosidad Geomorfol\u00f3gica: Endorreismos",
+      "Peligrosidad Geomorfol\u00f3gica: Llanura aluvial",
+      "Peligrosidad Geomorfol\u00f3gica: Vaguadas y barrancos de fondo plano"
+     ]
+    }
+   ],
+   "clip": "polygons cut to the basin",
+   "cols": 9516,
+   "feature_count": 138,
+   "rows": 4256,
+   "source_crs": "EPSG:25830",
+   "source_file": "29_PATRICOVA_Peligrosidad_por_Inundacion_A1.gpkg",
+   "source_layer": "29_PATRICOVA_Flood Hazard_A1",
+   "x0": 683287.5,
+   "ytop": 4380112.5
+  },
+  "hazard_outlines": {
+   "built": "2026-11-26 12:12:01",
+   "bytes_gz": 94963,
+   "bytes_js": 126654,
+   "bytes_raw": 128072,
+   "feature_count": 138,
+   "source_crs": "EPSG:25830",
+   "source_file": "29_PATRICOVA_Peligrosidad_por_Inundacion_A1.gpkg",
+   "source_layer": "29_PATRICOVA_Flood Hazard_A1"
+  },
+  "landuse": {
+   "built": "2026-11-26 12:11:28",
+   "bytes_gz": 485151,
+   "bytes_js": 646894,
+   "bytes_raw": 40500240,
+   "cell": 5.0,
+   "checks": [
+    {
+     "actual": 4349,
+     "expected": 4349,
+     "item": "features",
+     "ok": true,
+     "tolerance": 0
+    },
+    {
+     "actual": 37,
+     "expected": 37,
+     "item": "classes",
+     "ok": true,
+     "tolerance": 0
+    },
+    {
+     "actual": 11,
+     "expected": 11,
+     "item": "groups",
+     "ok": true,
+     "tolerance": 0
+    },
+    {
+     "actual": 416.51,
+     "expected": 416.51,
+     "item": "area km2",
+     "ok": true,
+     "tolerance": 0.05
+    },
+    {
+     "actual": 416.5,
+     "expected": 416.5,
+     "item": "grid area km2",
+     "ok": true,
+     "tolerance": 0.5
+    }
+   ],
+   "classes": [
+    {
+     "colour": "#d64541",
+     "group": "Residential",
+     "index": 1,
+     "km2": 26.0049,
+     "km2_grid": 26.0049,
+     "label": "Residential urban",
+     "name": "Residential urban"
+    },
+    {
+     "colour": "#f08a7c",
+     "group": "Residential",
+     "index": 2,
+     "km2": 9.4597,
+     "km2_grid": 9.4577,
+     "label": "Residential new development",
+     "name": "Residential new development"
+    },
+    {
+     "colour": "#922b21",
+     "group": "Residential",
+     "index": 3,
+     "km2": 0.7166,
+     "km2_grid": 0.7161,
+     "label": "Historic core",
+     "name": "Historic core"
+    },
+    {
+     "colour": "#7d3c98",
+     "group": "Industrial",
+     "index": 4,
+     "km2": 6.3923,
+     "km2_grid": 6.392,
+     "label": "Industrial urban",
+     "name": "Industrial urban"
+    },
+    {
+     "colour": "#b99ad0",
+     "group": "Industrial",
+     "index": 5,
+     "km2": 5.6977,
+     "km2_grid": 5.7011,
+     "label": "Industrial new development",
+     "name": "Industrial new development"
+    },
+    {
+     "colour": "#e67e22",
+     "group": "Tertiary",
+     "index": 6,
+     "km2": 0.2303,
+     "km2_grid": 0.2301,
+     "label": "Tertiary urban",
+     "name": "Tertiary urban"
+    },
+    {
+     "colour": "#f5b97a",
+     "group": "Tertiary",
+     "index": 7,
+     "km2": 1.86,
+     "km2_grid": 1.8602,
+     "label": "Tertiary new development",
+     "name": "Tertiary new development"
+    },
+    {
+     "colour": "#f7e463",
+     "group": "Agricultural",
+     "index": 8,
+     "km2": 148.5748,
+     "km2_grid": 148.5769,
+     "label": "Agricultural common",
+     "name": "Agricultural common"
+    },
+    {
+     "colour": "#cdb830",
+     "group": "Agricultural",
+     "index": 9,
+     "km2": 41.4294,
+     "km2_grid": 41.4314,
+     "label": "Agricultural protected",
+     "name": "Agricultural protected"
+    },
+    {
+     "colour": "#2e7d32",
+     "group": "Forest and natural",
+     "index": 10,
+     "km2": 29.1875,
+     "km2_grid": 29.1865,
+     "label": "Forest common",
+     "name": "Forest common"
+    },
+    {
+     "colour": "#7cb342",
+     "group": "Forest and natural",
+     "index": 11,
+     "km2": 97.3772,
+     "km2_grid": 97.3769,
+     "label": "Natural protected municipal",
+     "name": "Natural protected municipal"
+    },
+    {
+     "colour": "#00796b",
+     "group": "Forest and natural",
+     "index": 12,
+     "km2": 11.5132,
+     "km2_grid": 11.5145,
+     "label": "Natural protected by law",
+     "name": "Natural protected by law"
+    },
+    {
+     "colour": "#a5d6a7",
+     "group": "Green space",
+     "index": 13,
+     "km2": 5.1475,
+     "km2_grid": 5.1489,
+     "label": "Green space",
+     "name": "Green space"
+    },
+    {
+     "colour": "#1e88e5",
+     "group": "Facilities",
+     "index": 14,
+     "km2": 1.9332,
+     "km2_grid": 1.9343,
+     "label": "Educational",
+     "name": "Educational"
+    },
+    {
+     "colour": "#d81b60",
+     "group": "Facilities",
+     "index": 15,
+     "km2": 0.0542,
+     "km2_grid": 0.0541,
+     "label": "Health",
+     "name": "Health"
+    },
+    {
+     "colour": "#f48fb1",
+     "group": "Facilities",
+     "index": 16,
+     "km2": 0.0766,
+     "km2_grid": 0.0762,
+     "label": "Social care",
+     "name": "Social care"
+    },
+    {
+     "colour": "#ab47bc",
+     "group": "Facilities",
+     "index": 17,
+     "km2": 0.2139,
+     "km2_grid": 0.2152,
+     "label": "Cultural",
+     "name": "Cultural"
+    },
+    {
+     "colour": "#5c6bc0",
+     "group": "Facilities",
+     "index": 18,
+     "km2": 0.0555,
+     "km2_grid": 0.0554,
+     "label": "Administrative and institutional",
+     "name": "Administrative and institutional"
+    },
+    {
+     "colour": "#26a69a",
+     "group": "Facilities",
+     "index": 19,
+     "km2": 2.7712,
+     "km2_grid": 2.7707,
+     "label": "Sports",
+     "name": "Sports"
+    },
+    {
+     "colour": "#c0ca33",
+     "group": "Facilities",
+     "index": 20,
+     "km2": 1.0949,
+     "km2_grid": 1.0952,
+     "label": "Golf",
+     "name": "Golf"
+    },
+    {
+     "colour": "#8d6e63",
+     "group": "Facilities",
+     "index": 21,
+     "km2": 0.2758,
+     "km2_grid": 0.2764,
+     "label": "Multiple use facility",
+     "name": "Multiple use facility"
+    },
+    {
+     "colour": "#ef9a9a",
+     "group": "Facilities",
+     "index": 22,
+     "km2": 0.0079,
+     "km2_grid": 0.0079,
+     "label": "Residential facility",
+     "name": "Residential facility"
+    },
+    {
+     "colour": "#b0bec5",
+     "group": "Infrastructure",
+     "index": 23,
+     "km2": 0.123,
+     "km2_grid": 0.1231,
+     "label": "Infrastructure generic",
+     "name": "Infrastructure generic"
+    },
+    {
+     "colour": "#4fc3f7",
+     "group": "Infrastructure",
+     "index": 24,
+     "km2": 0.1827,
+     "km2_grid": 0.1832,
+     "label": "Infrastructure water",
+     "name": "Infrastructure water"
+    },
+    {
+     "colour": "#90a4ae",
+     "group": "Infrastructure",
+     "index": 25,
+     "km2": 0.6077,
+     "km2_grid": 0.6077,
+     "label": "Infrastructure urban services",
+     "name": "Infrastructure urban services"
+    },
+    {
+     "colour": "#6d4c41",
+     "group": "Infrastructure",
+     "index": 26,
+     "km2": 0.1687,
+     "km2_grid": 0.1685,
+     "label": "Infrastructure waste",
+     "name": "Infrastructure waste"
+    },
+    {
+     "colour": "#455a64",
+     "group": "Infrastructure",
+     "index": 27,
+     "km2": 0.0129,
+     "km2_grid": 0.0127,
+     "label": "Infrastructure security",
+     "name": "Infrastructure security"
+    },
+    {
+     "colour": "#78909c",
+     "group": "Infrastructure",
+     "index": 28,
+     "km2": 0.0139,
+     "km2_grid": 0.014,
+     "label": "Infrastructure transport",
+     "name": "Infrastructure transport"
+    },
+    {
+     "colour": "#757575",
+     "group": "Corridors and networks",
+     "index": 29,
+     "km2": 9.6479,
+     "km2_grid": 9.6485,
+     "label": "Road corridor",
+     "name": "Road corridor"
+    },
+    {
+     "colour": "#616161",
+     "group": "Corridors and networks",
+     "index": 30,
+     "km2": 4.7564,
+     "km2_grid": 4.759,
+     "label": "Road network",
+     "name": "Road network"
+    },
+    {
+     "colour": "#212121",
+     "group": "Corridors and networks",
+     "index": 31,
+     "km2": 0.3536,
+     "km2_grid": 0.3532,
+     "label": "Railway",
+     "name": "Railway"
+    },
+    {
+     "colour": "#37474f",
+     "group": "Corridors and networks",
+     "index": 32,
+     "km2": 0.2945,
+     "km2_grid": 0.2944,
+     "label": "Railway corridor",
+     "name": "Railway corridor"
+    },
+    {
+     "colour": "#bdbdbd",
+     "group": "Corridors and networks",
+     "index": 33,
+     "km2": 1.0394,
+     "km2_grid": 1.039,
+     "label": "Utility corridor",
+     "name": "Utility corridor"
+    },
+    {
+     "colour": "#a1887f",
+     "group": "Corridors and networks",
+     "index": 34,
+     "km2": 2.736,
+     "km2_grid": 2.7346,
+     "label": "Livestock route",
+     "name": "Livestock route"
+    },
+    {
+     "colour": "#9e9e9e",
+     "group": "Corridors and networks",
+     "index": 35,
+     "km2": 0.1206,
+     "km2_grid": 0.12,
+     "label": "Parking",
+     "name": "Parking"
+    },
+    {
+     "colour": "#2980b9",
+     "group": "Watercourse",
+     "index": 36,
+     "km2": 6.1809,
+     "km2_grid": 6.1817,
+     "label": "Watercourse corridor",
+     "name": "Watercourse corridor"
+    },
+    {
+     "colour": "#e91e63",
+     "group": "Protected for risk",
+     "index": 37,
+     "km2": 0.2011,
+     "km2_grid": 0.2015,
+     "label": "Protected for risk",
+     "name": "Protected for risk"
+    }
+   ],
+   "cols": 9516,
+   "feature_count": 4349,
+   "rows": 4256,
+   "source_crs": "EPSG:25830",
+   "source_file": "poyo_typology_stage0_landuse_detail.gpkg",
+   "source_layer": "S0_landuse_detail_in_basin",
+   "status": "planned use from urban planning zoning, not observed cover",
+   "unmatched": {},
+   "vertices": 285860,
+   "x0": 683287.5,
+   "ytop": 4380112.5
+  },
+  "landuse_style": {
+   "built": "2026-11-26 13:36:40",
+   "bytes_gz": 68594,
+   "bytes_js": 91492,
+   "bytes_raw": 95464,
+   "checks": [
+    {
+     "actual": 37,
+     "expected": 37,
+     "item": "classes with a style",
+     "ok": true,
+     "tolerance": 0
+    }
+   ],
+   "classes": {
+    "Administrative and institutional": {
+     "on": false,
+     "ops": [
+      {
+       "colour": "#5C6BC0",
+       "type": "fill"
+      }
+     ],
+     "outline": null
+    },
+    "Agricultural common": {
+     "on": true,
+     "ops": [
+      {
+       "colour": "#F4F5EF",
+       "type": "fill"
+      },
+      {
+       "angle": 45.0,
+       "dx": 3.0,
+       "dy": 3.0,
+       "fill": null,
+       "marker": "circle",
+       "marker_angle": 0.0,
+       "shift": 0.0,
+       "size": 0.5,
+       "stroke": "#232323",
+       "stroke_mm": 0.0,
+       "type": "point"
+      }
+     ],
+     "outline": null
+    },
+    "Agricultural protected": {
+     "on": true,
+     "ops": [
+      {
+       "colour": "#EBEFD6",
+       "type": "fill"
+      },
+      {
+       "angle": 45.0,
+       "dx": 3.0,
+       "dy": 3.0,
+       "fill": null,
+       "marker": "circle",
+       "marker_angle": 0.0,
+       "shift": 0.0,
+       "size": 0.5,
+       "stroke": "#232323",
+       "stroke_mm": 0.0,
+       "type": "point"
+      }
+     ],
+     "outline": null
+    },
+    "Cultural": {
+     "on": false,
+     "ops": [
+      {
+       "colour": "#AB47BC",
+       "type": "fill"
+      }
+     ],
+     "outline": null
+    },
+    "Educational": {
+     "on": false,
+     "ops": [
+      {
+       "colour": "#1E88E5",
+       "type": "fill"
+      }
+     ],
+     "outline": null
+    },
+    "Forest common": {
+     "on": true,
+     "ops": [
+      {
+       "colour": "#E8F2EC",
+       "type": "fill"
+      },
+      {
+       "angle": 45.0,
+       "dx": 4.0,
+       "dy": 4.0,
+       "fill": null,
+       "marker": "triangle",
+       "marker_angle": -45.0,
+       "shift": 0.0,
+       "size": 0.5,
+       "stroke": "#4B7D57",
+       "stroke_mm": 0.0,
+       "type": "point"
+      }
+     ],
+     "outline": {
+      "colour": "#5B745C",
+      "mm": 0.26
+     }
+    },
+    "Golf": {
+     "on": false,
+     "ops": [
+      {
+       "colour": "#C0CA33",
+       "type": "fill"
+      }
+     ],
+     "outline": null
+    },
+    "Green space": {
+     "on": false,
+     "ops": [
+      {
+       "colour": "#A5D6A7",
+       "type": "fill"
+      }
+     ],
+     "outline": null
+    },
+    "Health": {
+     "on": false,
+     "ops": [
+      {
+       "colour": "#D81B60",
+       "type": "fill"
+      }
+     ],
+     "outline": null
+    },
+    "Historic core": {
+     "on": false,
+     "ops": [
+      {
+       "colour": "#922B21",
+       "type": "fill"
+      }
+     ],
+     "outline": null
+    },
+    "Industrial new development": {
+     "on": true,
+     "ops": [
+      {
+       "colour": "#B99AD0",
+       "type": "fill"
+      }
+     ],
+     "outline": null
+    },
+    "Industrial urban": {
+     "on": true,
+     "ops": [
+      {
+       "colour": "#7D3C98",
+       "type": "fill"
+      }
+     ],
+     "outline": null
+    },
+    "Infrastructure generic": {
+     "on": false,
+     "ops": [
+      {
+       "colour": "#B0BEC5",
+       "type": "fill"
+      }
+     ],
+     "outline": null
+    },
+    "Infrastructure security": {
+     "on": true,
+     "ops": [
+      {
+       "colour": "#455A64",
+       "type": "fill"
+      }
+     ],
+     "outline": null
+    },
+    "Infrastructure transport": {
+     "on": true,
+     "ops": [
+      {
+       "colour": "#78909C",
+       "type": "fill"
+      }
+     ],
+     "outline": null
+    },
+    "Infrastructure urban services": {
+     "on": true,
+     "ops": [
+      {
+       "colour": "#90A4AE",
+       "type": "fill"
+      }
+     ],
+     "outline": null
+    },
+    "Infrastructure waste": {
+     "on": true,
+     "ops": [
+      {
+       "colour": "#6D4C41",
+       "type": "fill"
+      }
+     ],
+     "outline": null
+    },
+    "Infrastructure water": {
+     "on": true,
+     "ops": [
+      {
+       "colour": "#4FC3F7",
+       "type": "fill"
+      }
+     ],
+     "outline": null
+    },
+    "Livestock route": {
+     "on": true,
+     "ops": [
+      {
+       "colour": "#A1887F",
+       "type": "fill"
+      }
+     ],
+     "outline": null
+    },
+    "Multiple use facility": {
+     "on": false,
+     "ops": [
+      {
+       "colour": "#8D6E63",
+       "type": "fill"
+      }
+     ],
+     "outline": null
+    },
+    "Natural protected by law": {
+     "on": true,
+     "ops": [
+      {
+       "colour": "#00796B",
+       "type": "fill"
+      }
+     ],
+     "outline": null
+    },
+    "Natural protected municipal": {
+     "on": true,
+     "ops": [
+      {
+       "colour": "#EFF5E9",
+       "type": "fill"
+      },
+      {
+       "angle": 45.0,
+       "cap": "square",
+       "colour": "#64A449",
+       "dash": "dash dot dot",
+       "distance": 3.0,
+       "offset": 0.0,
+       "type": "line",
+       "width": 0.3
+      },
+      {
+       "angle": 90.0,
+       "cap": "square",
+       "colour": "#EBD460",
+       "dash": "solid",
+       "distance": 5.0,
+       "offset": 0.0,
+       "type": "line",
+       "width": 0.26
+      }
+     ],
+     "outline": null
+    },
+    "Parking": {
+     "on": true,
+     "ops": [
+      {
+       "colour": "#9E9E9E",
+       "type": "fill"
+      }
+     ],
+     "outline": null
+    },
+    "Protected for risk": {
+     "on": true,
+     "ops": [
+      {
+       "colour": "#E91E63",
+       "type": "fill"
+      }
+     ],
+     "outline": null
+    },
+    "Railway": {
+     "on": false,
+     "ops": [
+      {
+       "colour": "#212121",
+       "type": "fill"
+      }
+     ],
+     "outline": null
+    },
+    "Railway corridor": {
+     "on": true,
+     "ops": [
+      {
+       "colour": "#37474F",
+       "type": "fill"
+      }
+     ],
+     "outline": null
+    },
+    "Residential facility": {
+     "on": false,
+     "ops": [
+      {
+       "colour": "#EF9A9A",
+       "type": "fill"
+      }
+     ],
+     "outline": null
+    },
+    "Residential new development": {
+     "on": true,
+     "ops": [
+      {
+       "angle": 0.0,
+       "dx": 1.0,
+       "dy": 1.0,
+       "fill": "#B2B2B2",
+       "marker": "circle",
+       "marker_angle": 0.0,
+       "shift": 0.0,
+       "size": 0.7,
+       "stroke": null,
+       "stroke_mm": 0.0,
+       "type": "point"
+      }
+     ],
+     "outline": null
+    },
+    "Residential urban": {
+     "on": false,
+     "ops": [
+      {
+       "angle": 0.0,
+       "dx": 1.0,
+       "dy": 1.0,
+       "fill": "#C32222",
+       "marker": "circle",
+       "marker_angle": 0.0,
+       "shift": 0.0,
+       "size": 0.3,
+       "stroke": null,
+       "stroke_mm": 0.0,
+       "type": "point"
+      }
+     ],
+     "outline": null
+    },
+    "Road corridor": {
+     "on": false,
+     "ops": [
+      {
+       "colour": "#757575",
+       "type": "fill"
+      }
+     ],
+     "outline": null
+    },
+    "Road network": {
+     "on": false,
+     "ops": [
+      {
+       "colour": "#616161",
+       "type": "fill"
+      }
+     ],
+     "outline": null
+    },
+    "Social care": {
+     "on": false,
+     "ops": [
+      {
+       "colour": "#F48FB1",
+       "type": "fill"
+      }
+     ],
+     "outline": null
+    },
+    "Sports": {
+     "on": false,
+     "ops": [
+      {
+       "colour": "#26A69A",
+       "type": "fill"
+      }
+     ],
+     "outline": null
+    },
+    "Tertiary new development": {
+     "on": true,
+     "ops": [
+      {
+       "colour": "#F5B97A",
+       "type": "fill"
+      }
+     ],
+     "outline": null
+    },
+    "Tertiary urban": {
+     "on": false,
+     "ops": [
+      {
+       "colour": "#E67E22",
+       "type": "fill"
+      }
+     ],
+     "outline": null
+    },
+    "Utility corridor": {
+     "on": true,
+     "ops": [
+      {
+       "colour": "#BDBDBD",
+       "type": "fill"
+      }
+     ],
+     "outline": null
+    },
+    "Watercourse corridor": {
+     "on": true,
+     "ops": [
+      {
+       "colour": "#2980B9",
+       "type": "fill"
+      }
+     ],
+     "outline": null
+    }
+   },
+   "field": "use_detail",
+   "notes": [],
+   "outline_polygons": 56,
+   "outlined": [
+    "Forest common"
+   ],
+   "source_crs": "EPSG:25830",
+   "source_file": "poyo_landuse_detail_view.gpkg",
+   "source_layer": "S0_landuse_detail_in_view_extent",
+   "style_layer": "S0_landuse_detail_in_view_extent",
+   "units": "mm"
+  },
+  "municipal_limits": {
+   "built": "2026-11-26 12:11:31",
+   "bytes_gz": 30698,
+   "bytes_js": 40967,
+   "bytes_raw": 38544,
+   "feature_count": 24,
+   "method": "zoning polygons dissolved by municipality code, parts under 2 ha left out",
+   "names": [
+    {
+     "code": "46005",
+     "km2": 1.773,
+     "name": "Alaqu\u00e0s"
+    },
+    {
+     "code": "46007",
+     "km2": 0.067,
+     "name": "Albal"
+    },
+    {
+     "code": "46012",
+     "km2": 0.076,
+     "name": "Alborache"
+    },
+    {
+     "code": "46021",
+     "km2": 5.092,
+     "name": "Aldaia"
+    },
+    {
+     "code": "46022",
+     "km2": 9.645,
+     "name": "Alfafar"
+    },
+    {
+     "code": "46054",
+     "km2": 0.575,
+     "name": "Benet\u00fasser"
+    },
+    {
+     "code": "46077",
+     "km2": 27.655,
+     "name": "Bu\u00f1ol"
+    },
+    {
+     "code": "46094",
+     "km2": 8.739,
+     "name": "Catarroja"
+    },
+    {
+     "code": "46102",
+     "km2": 7.099,
+     "name": "Quart de Poblet"
+    },
+    {
+     "code": "46109",
+     "km2": 43.281,
+     "name": "Cheste"
+    },
+    {
+     "code": "46111",
+     "km2": 148.831,
+     "name": "Chiva"
+    },
+    {
+     "code": "46133",
+     "km2": 0.111,
+     "name": "Gestalgar"
+    },
+    {
+     "code": "46136",
+     "km2": 37.776,
+     "name": "Godelleta"
+    },
+    {
+     "code": "46165",
+     "km2": 5.601,
+     "name": "Massanassa"
+    },
+    {
+     "code": "46172",
+     "km2": 7.464,
+     "name": "Montserrat"
+    },
+    {
+     "code": "46186",
+     "km2": 3.695,
+     "name": "Paiporta"
+    },
+    {
+     "code": "46193",
+     "km2": 6.208,
+     "name": "Picanya"
+    },
+    {
+     "code": "46194",
+     "km2": 1.023,
+     "name": "Picassent"
+    },
+    {
+     "code": "46214",
+     "km2": 4.666,
+     "name": "Riba-roja de T\u00faria"
+    },
+    {
+     "code": "46223",
+     "km2": 1.105,
+     "name": "Sedav\u00ed"
+    },
+    {
+     "code": "46229",
+     "km2": 0.116,
+     "name": "Siete Aguas"
+    },
+    {
+     "code": "46244",
+     "km2": 61.364,
+     "name": "Torrent"
+    },
+    {
+     "code": "46248",
+     "km2": 22.95,
+     "name": "Tur\u00eds"
+    },
+    {
+     "code": "46250",
+     "km2": 11.572,
+     "name": "Val\u00e8ncia"
+    }
+   ],
+   "source_crs": "EPSG:25830",
+   "source_file": "poyo_typology_stage0_landuse_detail.gpkg",
+   "source_layer": "S0_landuse_detail_in_basin"
+  },
+  "parcel_coverage": {
+   "built": "2026-11-26 12:12:03",
+   "bytes_gz": 495,
+   "bytes_js": 694,
+   "bytes_raw": 680,
+   "feature_count": 1,
+   "items": [
+    {
+     "km2": 16.16,
+     "name": "Parcel data coverage"
+    }
+   ],
+   "source_crs": "EPSG:25830",
+   "source_file": "poyo_sigpac_recintos_pilot_windows.gpkg",
+   "source_layer": "SIGPAC download coverage (areas with data)"
+  },
+  "parcels": {
+   "built": "2026-11-26 12:12:03",
+   "bytes_gz": 425539,
+   "bytes_js": 567414,
+   "bytes_raw": 877920,
+   "clip": "parcel outlines cut to the three pilot windows",
+   "feature_count": 2925,
+   "layer_features": 4484,
+   "note": "download has gaps in windows B and C",
+   "source_crs": "EPSG:25830",
+   "source_file": "poyo_sigpac_recintos_pilot_windows.gpkg",
+   "source_layer": "SIGPAC recintos (local copy, pilot windows, FEGA)"
+  },
+  "pilot_windows": {
+   "built": "2026-11-26 12:12:02",
+   "bytes_gz": 275,
+   "bytes_js": 400,
+   "bytes_raw": 480,
+   "feature_count": 3,
+   "items": [
+    {
+     "bounds": [
+      712811.0,
+      4364459.0,
+      715189.0,
+      4366141.0
+     ],
+     "km2": 4.0,
+     "name": "Pilot window A"
+    },
+    {
+     "bounds": [
+      699911.0,
+      4362159.0,
+      702289.0,
+      4363841.0
+     ],
+     "km2": 4.0,
+     "name": "Pilot window B"
+    },
+    {
+     "bounds": [
+      710711.0,
+      4361759.0,
+      713089.0,
+      4363441.0
+     ],
+     "km2": 4.0,
+     "name": "Pilot window C"
+    }
+   ],
+   "source_crs": "EPSG:25830",
+   "source_file": "poyo_pilot_middle.gpkg",
+   "source_layer": "PM_pilot_windows_A0_1to2000"
+  },
+  "places": {
+   "built": "2026-11-26 12:12:01",
+   "bytes_gz": 83558,
+   "bytes_js": 111437,
+   "bytes_raw": 109288,
+   "clip": "areas cut to the basin",
+   "feature_count": 11,
+   "items": [
+    {
+     "kind": "region",
+     "km2": 257.3552,
+     "name": "La Hoya de Bu\u00f1ol"
+    },
+    {
+     "kind": "county",
+     "km2": 0.0357,
+     "name": "Corral dels Franxos"
+    },
+    {
+     "kind": "county",
+     "km2": 0.1753,
+     "name": "Font de la Teula"
+    },
+    {
+     "kind": "county",
+     "km2": 0.0763,
+     "name": "Corral de Cocota"
+    },
+    {
+     "kind": "county",
+     "km2": 0.0594,
+     "name": "Canyada del Corral"
+    },
+    {
+     "kind": "county",
+     "km2": 0.0749,
+     "name": "Morredondo"
+    },
+    {
+     "kind": "county",
+     "km2": 0.1177,
+     "name": "Mas De Barcos"
+    },
+    {
+     "kind": "county",
+     "km2": 0.1458,
+     "name": "el Pant\u00e0"
+    },
+    {
+     "kind": "region",
+     "km2": 30.7935,
+     "name": "la Ribera Alta"
+    },
+    {
+     "kind": "region",
+     "km2": 112.0313,
+     "name": "l'Horta Sud"
+    },
+    {
+     "kind": "region",
+     "km2": 4.6257,
+     "name": "el Camp de T\u00faria"
+    }
+   ],
+   "note": "place areas of mixed kinds, not a complete set of municipal boundaries",
+   "source_crs": "EPSG:4326",
+   "source_file": "gis_osm_places_a_free_1.shx",
+   "source_layer": "gis_osm_places_MUNICIPAL"
+  },
+  "qgis_metadata": {
+   "built": "2026-11-26 12:12:03",
+   "layers": {
+    "MDT_A1": {
+     "abstract": "",
+     "licenses": [],
+     "rights": [],
+     "title": ""
+    },
+    "S0_basin_3_subbasins": {
+     "abstract": "",
+     "licenses": [],
+     "rights": [],
+     "title": ""
+    },
+    "S0_flood2200_in_basin_with_area": {
+     "abstract": "",
+     "licenses": [],
+     "rights": [],
+     "title": ""
+    },
+    "flood_2200": {
+     "abstract": "",
+     "licenses": [],
+     "rights": [],
+     "title": ""
+    },
+    "hi_redsecuencia_l_es080": {
+     "abstract": "",
+     "licenses": [],
+     "rights": [],
+     "title": ""
+    }
+   }
+  },
+  "railways": {
+   "built": "2026-11-26 12:12:01",
+   "bytes_gz": 9791,
+   "bytes_js": 13083,
+   "bytes_raw": 14632,
+   "clip": "lines cut to the basin",
+   "feature_count": 198,
+   "kinds": [
+    "rail",
+    "subway"
+   ],
+   "source_crs": "EPSG:4326",
+   "source_file": "gis_osm_railways_free_1.shx",
+   "source_layer": "gis_osm_railways_free_1",
+   "tunnels": 20
+  },
+  "river_polygons": {
+   "area_km2": 3.098380363336133,
+   "built": "2026-11-26 00:58:24",
+   "bytes_gz": 59866,
+   "bytes_js": 79857,
+   "bytes_raw": 78392,
+   "checks": [
+    {
+     "actual": 30,
+     "expected": 30,
+     "item": "features",
+     "ok": true,
+     "tolerance": 0
+    },
+    {
+     "actual": 9732,
+     "expected": 9732,
+     "item": "vertices",
+     "ok": true,
+     "tolerance": 0
+    }
+   ],
+   "clip": "as stored in the layer, which was limited to the basin in Stage 0",
+   "feature_count": 30,
+   "features_without_geometry": 0,
+   "parts": 30,
+   "rings_dropped": 0,
+   "source_crs": "EPSG:4258",
+   "source_file": "poyo_typology_stage0_layers.gpkg",
+   "source_layer": "S0_MITECO_river_polygons_in_basin",
+   "stored_crs": "EPSG:25830",
+   "vertices": 9732,
+   "vertices_stored": 9702
+  },
+  "roads": {
+   "built": "2026-11-26 12:11:36",
+   "bytes_gz": 3630154,
+   "bytes_js": 4840232,
+   "bytes_raw": 6246720,
+   "checks": [
+    {
+     "actual": 24373,
+     "expected": 24373,
+     "item": "layer features",
+     "ok": true,
+     "tolerance": 0
+    }
+   ],
+   "classes": [
+    {
+     "colour": "#333333",
+     "index": 0,
+     "km2": 1.5878,
+     "name": "Motorway / trunk"
+    },
+    {
+     "colour": "#333333",
+     "index": 1,
+     "km2": 0.3393,
+     "name": "Primary"
+    },
+    {
+     "colour": "#868686",
+     "index": 2,
+     "km2": 0.7181,
+     "name": "Secondary"
+    },
+    {
+     "colour": "#868686",
+     "index": 3,
+     "km2": 1.4241,
+     "name": "Tertiary"
+    },
+    {
+     "colour": "#a5a5a5",
+     "index": 4,
+     "km2": 7.5844,
+     "name": "Local street"
+    },
+    {
+     "colour": "#cfcfcf",
+     "index": 5,
+     "km2": 1.1253,
+     "name": "Service"
+    },
+    {
+     "colour": "#e2e2e2",
+     "index": 6,
+     "km2": 6.1495,
+     "name": "Track / path"
+    }
+   ],
+   "clip": "whole polygons that touch the basin",
+   "feature_count": 24373,
+   "source_crs": "EPSG:25830",
+   "source_file": "poyo_roads_paths_true_width_v2.gpkg",
+   "source_layer": "RDS_roads_paths_true_width (OSM, Sep 2026)",
+   "unmatched": 0,
+   "vertices": 759929
+  },
+  "sector": {
+   "built": "2026-11-26 12:12:02",
+   "bytes_gz": 37380,
+   "bytes_js": 49865,
+   "bytes_raw": 49280,
+   "feature_count": 1,
+   "items": [
+    {
+     "km2": 91.3,
+     "name": "Middle sector 200324"
+    }
+   ],
+   "source_crs": "EPSG:25830",
+   "source_file": "poyo_pilot_middle.gpkg",
+   "source_layer": "PM_middle_sector_200324"
+  },
+  "siose": {
+   "agriculture_110": 2159,
+   "attributes": {
+    "ab": "abancalado",
+    "ct": "cortas",
+    "ea": "aislada",
+    "em": "entre medianeras",
+    "fc": "funci\u00f3n de cortafuegos",
+    "fr": "formaci\u00f3n de ribera",
+    "fz": "forzado",
+    "nv": "nave",
+    "pc": "procedencia de cultivos",
+    "pl": "plantaci\u00f3n",
+    "ra": "roturado no agr\u00edcola",
+    "rn": "regad\u00edo no regado",
+    "rr": "regad\u00edo regado",
+    "sc": "secano",
+    "va": "vivienda unifamiliar aislada",
+    "vd": "vivienda unifamiliar adosada",
+    "ze": "erosionado"
+   },
+   "attributes_not_used_for_classes": {
+    "ab": 108,
+    "ct": 3,
+    "ea": 157,
+    "em": 93,
+    "fc": 3,
+    "fr": 121,
+    "fz": 49,
+    "nv": 271,
+    "pc": 1690,
+    "pl": 9,
+    "ra": 6,
+    "rn": 25,
+    "va": 669,
+    "vd": 30,
+    "ze": 163
+   },
+   "built": "2026-11-26 12:11:56",
+   "bytes_gz": 853821,
+   "bytes_js": 1138452,
+   "bytes_raw": 40500240,
+   "cell": 5.0,
+   "checks": [
+    {
+     "actual": 4463,
+     "expected": 4245,
+     "item": "polygons clipped to basin",
+     "ok": false,
+     "tolerance": 0
+    },
+    {
+     "actual": 2159,
+     "expected": 2085,
+     "item": "agriculture HILUCS 110",
+     "ok": false,
+     "tolerance": 0
+    },
+    {
+     "actual": 4.2,
+     "expected": 4.3,
+     "item": "median size ha",
+     "ok": false,
+     "tolerance": 0.05
+    },
+    {
+     "actual": 416.5,
+     "expected": 416.5,
+     "item": "area km2",
+     "ok": true,
+     "tolerance": 0.5
+    }
+   ],
+   "classes": [
+    {
+     "cover": "mixed",
+     "desc": "mixed",
+     "index": 1,
+     "km2": 56.2608,
+     "km2_grid": 56.2604,
+     "mosaic": 1,
+     "polygons": 989,
+     "water": "",
+     "water_desc": ""
+    },
+    {
+     "cover": "PST",
+     "desc": "Pastizal",
+     "index": 2,
+     "km2": 69.0747,
+     "km2_grid": 69.08,
+     "mosaic": 1,
+     "polygons": 714,
+     "water": "",
+     "water_desc": ""
+    },
+    {
+     "cover": "PST",
+     "desc": "Pastizal",
+     "index": 3,
+     "km2": 28.3152,
+     "km2_grid": 28.3163,
+     "mosaic": 0,
+     "polygons": 315,
+     "water": "",
+     "water_desc": ""
+    },
+    {
+     "cover": "LFN",
+     "desc": "Frutales No C\u00edtricos",
+     "index": 4,
+     "km2": 13.188,
+     "km2_grid": 13.1912,
+     "mosaic": 1,
+     "polygons": 222,
+     "water": "sc",
+     "water_desc": "secano"
+    },
+    {
+     "cover": "VAP",
+     "desc": "Vial, Aparcamiento o Zona Peatonal sin Vegetaci\u00f3n",
+     "index": 5,
+     "km2": 6.0072,
+     "km2_grid": 6.0064,
+     "mosaic": 1,
+     "polygons": 132,
+     "water": "",
+     "water_desc": ""
+    },
+    {
+     "cover": "LFN",
+     "desc": "Frutales No C\u00edtricos",
+     "index": 6,
+     "km2": 18.5656,
+     "km2_grid": 18.5635,
+     "mosaic": 0,
+     "polygons": 128,
+     "water": "sc",
+     "water_desc": "secano"
+    },
+    {
+     "cover": "LVI",
+     "desc": "Vi\u00f1edo",
+     "index": 7,
+     "km2": 12.5706,
+     "km2_grid": 12.5704,
+     "mosaic": 0,
+     "polygons": 186,
+     "water": "sc",
+     "water_desc": "secano"
+    },
+    {
+     "cover": "ZAU",
+     "desc": "Zona Verde Artificial y Arbolado Urbano",
+     "index": 8,
+     "km2": 4.6064,
+     "km2_grid": 4.6057,
+     "mosaic": 1,
+     "polygons": 91,
+     "water": "",
+     "water_desc": ""
+    },
+    {
+     "cover": "MTR",
+     "desc": "Matorral",
+     "index": 9,
+     "km2": 13.7847,
+     "km2_grid": 13.783,
+     "mosaic": 1,
+     "polygons": 65,
+     "water": "",
+     "water_desc": ""
+    },
+    {
+     "cover": "CHL",
+     "desc": "Cultivos Herb\u00e1ceos distintos de Arroz",
+     "index": 10,
+     "km2": 0.2105,
+     "km2_grid": 0.2106,
+     "mosaic": 1,
+     "polygons": 5,
+     "water": "",
+     "water_desc": ""
+    },
+    {
+     "cover": "CHL",
+     "desc": "Cultivos Herb\u00e1ceos distintos de Arroz",
+     "index": 11,
+     "km2": 7.5323,
+     "km2_grid": 7.5342,
+     "mosaic": 1,
+     "polygons": 161,
+     "water": "rr",
+     "water_desc": "regad\u00edo regado"
+    },
+    {
+     "cover": "CHL",
+     "desc": "Cultivos Herb\u00e1ceos distintos de Arroz",
+     "index": 12,
+     "km2": 5.4907,
+     "km2_grid": 5.4894,
+     "mosaic": 0,
+     "polygons": 58,
+     "water": "rr",
+     "water_desc": "regad\u00edo regado"
+    },
+    {
+     "cover": "LFC",
+     "desc": "Frutales C\u00edtricos",
+     "index": 13,
+     "km2": 57.2804,
+     "km2_grid": 57.2847,
+     "mosaic": 0,
+     "polygons": 292,
+     "water": "rr",
+     "water_desc": "regad\u00edo regado"
+    },
+    {
+     "cover": "LVI",
+     "desc": "Vi\u00f1edo",
+     "index": 14,
+     "km2": 5.6795,
+     "km2_grid": 5.6799,
+     "mosaic": 1,
+     "polygons": 130,
+     "water": "sc",
+     "water_desc": "secano"
+    },
+    {
+     "cover": "LFC",
+     "desc": "Frutales C\u00edtricos",
+     "index": 15,
+     "km2": 14.2919,
+     "km2_grid": 14.2927,
+     "mosaic": 1,
+     "polygons": 257,
+     "water": "rr",
+     "water_desc": "regad\u00edo regado"
+    },
+    {
+     "cover": "LVI",
+     "desc": "Vi\u00f1edo",
+     "index": 16,
+     "km2": 0.4273,
+     "km2_grid": 0.4281,
+     "mosaic": 1,
+     "polygons": 12,
+     "water": "rr",
+     "water_desc": "regad\u00edo regado"
+    },
+    {
+     "cover": "SNE",
+     "desc": "Suelo No Edificado",
+     "index": 17,
+     "km2": 8.44,
+     "km2_grid": 8.4408,
+     "mosaic": 1,
+     "polygons": 126,
+     "water": "",
+     "water_desc": ""
+    },
+    {
+     "cover": "CNF",
+     "desc": "Coniferas",
+     "index": 18,
+     "km2": 2.8884,
+     "km2_grid": 2.887,
+     "mosaic": 1,
+     "polygons": 32,
+     "water": "",
+     "water_desc": ""
+    },
+    {
+     "cover": "LOL",
+     "desc": "Olivar",
+     "index": 19,
+     "km2": 2.1669,
+     "km2_grid": 2.1658,
+     "mosaic": 1,
+     "polygons": 48,
+     "water": "sc",
+     "water_desc": "secano"
+    },
+    {
+     "cover": "LFN",
+     "desc": "Frutales No C\u00edtricos",
+     "index": 20,
+     "km2": 1.6632,
+     "km2_grid": 1.6619,
+     "mosaic": 1,
+     "polygons": 37,
+     "water": "rr",
+     "water_desc": "regad\u00edo regado"
+    },
+    {
+     "cover": "LFN",
+     "desc": "Frutales No C\u00edtricos",
+     "index": 21,
+     "km2": 0.7328,
+     "km2_grid": 0.7325,
+     "mosaic": 0,
+     "polygons": 21,
+     "water": "rr",
+     "water_desc": "regad\u00edo regado"
+    },
+    {
+     "cover": "FDP",
+     "desc": "Frondosas Perennifolias",
+     "index": 22,
+     "km2": 0.0826,
+     "km2_grid": 0.0825,
+     "mosaic": 1,
+     "polygons": 2,
+     "water": "",
+     "water_desc": ""
+    },
+    {
+     "cover": "CHL",
+     "desc": "Cultivos Herb\u00e1ceos distintos de Arroz",
+     "index": 23,
+     "km2": 0.0719,
+     "km2_grid": 0.0721,
+     "mosaic": 0,
+     "polygons": 3,
+     "water": "",
+     "water_desc": ""
+    },
+    {
+     "cover": "CHA",
+     "desc": "Arroz",
+     "index": 24,
+     "km2": 17.2557,
+     "km2_grid": 17.2576,
+     "mosaic": 0,
+     "polygons": 9,
+     "water": "rr",
+     "water_desc": "regad\u00edo regado"
+    },
+    {
+     "cover": "HMA",
+     "desc": "Marismas",
+     "index": 25,
+     "km2": 0.8084,
+     "km2_grid": 0.8082,
+     "mosaic": 0,
+     "polygons": 4,
+     "water": "",
+     "water_desc": ""
+    },
+    {
+     "cover": "ALC",
+     "desc": "Lagunas Costeras",
+     "index": 26,
+     "km2": 0.9494,
+     "km2_grid": 0.9496,
+     "mosaic": 0,
+     "polygons": 1,
+     "water": "",
+     "water_desc": ""
+    },
+    {
+     "cover": "ACU",
+     "desc": "Cursos de Agua",
+     "index": 27,
+     "km2": 0.1713,
+     "km2_grid": 0.1715,
+     "mosaic": 0,
+     "polygons": 1,
+     "water": "",
+     "water_desc": ""
+    },
+    {
+     "cover": "MTR",
+     "desc": "Matorral",
+     "index": 28,
+     "km2": 26.0129,
+     "km2_grid": 26.0127,
+     "mosaic": 0,
+     "polygons": 54,
+     "water": "",
+     "water_desc": ""
+    },
+    {
+     "cover": "EDF",
+     "desc": "Edificaci\u00f3n",
+     "index": 29,
+     "km2": 23.807,
+     "km2_grid": 23.8106,
+     "mosaic": 1,
+     "polygons": 159,
+     "water": "",
+     "water_desc": ""
+    },
+    {
+     "cover": "OCT",
+     "desc": "Otras Construcciones",
+     "index": 30,
+     "km2": 1.7758,
+     "km2_grid": 1.776,
+     "mosaic": 1,
+     "polygons": 34,
+     "water": "",
+     "water_desc": ""
+    },
+    {
+     "cover": "ZEV",
+     "desc": "Zonas de Extracci\u00f3n o Vertido",
+     "index": 31,
+     "km2": 2.2102,
+     "km2_grid": 2.2102,
+     "mosaic": 1,
+     "polygons": 20,
+     "water": "",
+     "water_desc": ""
+    },
+    {
+     "cover": "ZEV",
+     "desc": "Zonas de Extracci\u00f3n o Vertido",
+     "index": 32,
+     "km2": 0.283,
+     "km2_grid": 0.2831,
+     "mosaic": 0,
+     "polygons": 6,
+     "water": "",
+     "water_desc": ""
+    },
+    {
+     "cover": "SNE",
+     "desc": "Suelo No Edificado",
+     "index": 33,
+     "km2": 0.0776,
+     "km2_grid": 0.0775,
+     "mosaic": 0,
+     "polygons": 3,
+     "water": "",
+     "water_desc": ""
+    },
+    {
+     "cover": "RMB",
+     "desc": "Ramblas",
+     "index": 34,
+     "km2": 1.282,
+     "km2_grid": 1.2819,
+     "mosaic": 1,
+     "polygons": 10,
+     "water": "",
+     "water_desc": ""
+    },
+    {
+     "cover": "CNF",
+     "desc": "Coniferas",
+     "index": 35,
+     "km2": 2.5529,
+     "km2_grid": 2.5532,
+     "mosaic": 0,
+     "polygons": 26,
+     "water": "",
+     "water_desc": ""
+    },
+    {
+     "cover": "ZQM",
+     "desc": "Zonas Quemadas",
+     "index": 36,
+     "km2": 3.8135,
+     "km2_grid": 3.8124,
+     "mosaic": 0,
+     "polygons": 3,
+     "water": "",
+     "water_desc": ""
+    },
+    {
+     "cover": "RMB",
+     "desc": "Ramblas",
+     "index": 37,
+     "km2": 0.9289,
+     "km2_grid": 0.9276,
+     "mosaic": 0,
+     "polygons": 4,
+     "water": "",
+     "water_desc": ""
+    },
+    {
+     "cover": "OCT",
+     "desc": "Otras Construcciones",
+     "index": 38,
+     "km2": 0.011,
+     "km2_grid": 0.0111,
+     "mosaic": 0,
+     "polygons": 1,
+     "water": "",
+     "water_desc": ""
+    },
+    {
+     "cover": "VAP",
+     "desc": "Vial, Aparcamiento o Zona Peatonal sin Vegetaci\u00f3n",
+     "index": 39,
+     "km2": 0.0096,
+     "km2_grid": 0.0096,
+     "mosaic": 0,
+     "polygons": 1,
+     "water": "",
+     "water_desc": ""
+    },
+    {
+     "cover": "SDN",
+     "desc": "Suelo Desnudo",
+     "index": 40,
+     "km2": 0.2225,
+     "km2_grid": 0.2221,
+     "mosaic": 0,
+     "polygons": 7,
+     "water": "",
+     "water_desc": ""
+    },
+    {
+     "cover": "LVI",
+     "desc": "Vi\u00f1edo",
+     "index": 41,
+     "km2": 0.6427,
+     "km2_grid": 0.6425,
+     "mosaic": 0,
+     "polygons": 12,
+     "water": "rr",
+     "water_desc": "regad\u00edo regado"
+    },
+    {
+     "cover": "SDN",
+     "desc": "Suelo Desnudo",
+     "index": 42,
+     "km2": 0.8403,
+     "km2_grid": 0.84,
+     "mosaic": 1,
+     "polygons": 16,
+     "water": "",
+     "water_desc": ""
+    },
+    {
+     "cover": "LOL",
+     "desc": "Olivar",
+     "index": 43,
+     "km2": 0.9937,
+     "km2_grid": 0.9938,
+     "mosaic": 0,
+     "polygons": 7,
+     "water": "sc",
+     "water_desc": "secano"
+    },
+    {
+     "cover": "CHL",
+     "desc": "Cultivos Herb\u00e1ceos distintos de Arroz",
+     "index": 44,
+     "km2": 1.0313,
+     "km2_grid": 1.0309,
+     "mosaic": 1,
+     "polygons": 24,
+     "water": "sc",
+     "water_desc": "secano"
+    },
+    {
+     "cover": "LAA",
+     "desc": "L\u00e1mina de Agua Artificial",
+     "index": 45,
+     "km2": 0.0879,
+     "km2_grid": 0.0879,
+     "mosaic": 1,
+     "polygons": 5,
+     "water": "",
+     "water_desc": ""
+    },
+    {
+     "cover": "LFC",
+     "desc": "Frutales C\u00edtricos",
+     "index": 46,
+     "km2": 0.707,
+     "km2_grid": 0.7067,
+     "mosaic": 1,
+     "polygons": 12,
+     "water": "sc",
+     "water_desc": "secano"
+    },
+    {
+     "cover": "CHL",
+     "desc": "Cultivos Herb\u00e1ceos distintos de Arroz",
+     "index": 47,
+     "km2": 0.3874,
+     "km2_grid": 0.3878,
+     "mosaic": 0,
+     "polygons": 10,
+     "water": "sc",
+     "water_desc": "secano"
+    },
+    {
+     "cover": "LFC",
+     "desc": "Frutales C\u00edtricos",
+     "index": 48,
+     "km2": 0.1359,
+     "km2_grid": 0.1364,
+     "mosaic": 0,
+     "polygons": 3,
+     "water": "sc",
+     "water_desc": "secano"
+    },
+    {
+     "cover": "LVI",
+     "desc": "Vi\u00f1edo",
+     "index": 49,
+     "km2": 0.0202,
+     "km2_grid": 0.0203,
+     "mosaic": 0,
+     "polygons": 1,
+     "water": "",
+     "water_desc": ""
+    },
+    {
+     "cover": "LAA",
+     "desc": "L\u00e1mina de Agua Artificial",
+     "index": 50,
+     "km2": 0.0274,
+     "km2_grid": 0.0273,
+     "mosaic": 0,
+     "polygons": 2,
+     "water": "",
+     "water_desc": ""
+    },
+    {
+     "cover": "LOC",
+     "desc": "Otros Le\u00f1osos",
+     "index": 51,
+     "km2": 0.0301,
+     "km2_grid": 0.0301,
+     "mosaic": 1,
+     "polygons": 1,
+     "water": "rr",
+     "water_desc": "regad\u00edo regado"
+    },
+    {
+     "cover": "LFC",
+     "desc": "Frutales C\u00edtricos",
+     "index": 52,
+     "km2": 0.1062,
+     "km2_grid": 0.1062,
+     "mosaic": 1,
+     "polygons": 1,
+     "water": "",
+     "water_desc": ""
+    }
+   ],
+   "cols": 9516,
+   "covers": {
+    "ACU": "Cursos de Agua",
+    "ALC": "Lagunas Costeras",
+    "ALG": "Lagos y Lagunas",
+    "ARR": "Afloramientos Rocosos y Roquedos",
+    "CHA": "Arroz",
+    "CHL": "Cultivos Herb\u00e1ceos distintos de Arroz",
+    "CNF": "Coniferas",
+    "EDF": "Edificaci\u00f3n",
+    "FDP": "Frondosas Perennifolias",
+    "HMA": "Marismas",
+    "LAA": "L\u00e1mina de Agua Artificial",
+    "LFC": "Frutales C\u00edtricos",
+    "LFN": "Frutales No C\u00edtricos",
+    "LOC": "Otros Le\u00f1osos",
+    "LOL": "Olivar",
+    "LVI": "Vi\u00f1edo",
+    "MTR": "Matorral",
+    "OCT": "Otras Construcciones",
+    "PDA": "Playas, dunas y arenales",
+    "PST": "Pastizal",
+    "RMB": "Ramblas",
+    "SDN": "Suelo Desnudo",
+    "SNE": "Suelo No Edificado",
+    "VAP": "Vial, Aparcamiento o Zona Peatonal sin Vegetaci\u00f3n",
+    "ZAU": "Zona Verde Artificial y Arbolado Urbano",
+    "ZEV": "Zonas de Extracci\u00f3n o Vertido",
+    "ZQM": "Zonas Quemadas"
+   },
+   "feature_count": 4463,
+   "median_ha": 4.16,
+   "mixed_polygons": 989,
+   "mosaic_polygons": 3305,
+   "rows": 4256,
+   "rule": "single cover: its class with irrigated or rainfed; compound: leaf cover with the largest share if at least 50 percent, otherwise mixed",
+   "source_crs": "EPSG:25830",
+   "source_file": "10_SIOSE_Comunitat_Valenciana_2014_\u2014_T_POLIGONOS_A1.gpkg",
+   "source_layer": "SIOSE 2014 polygons (read from file, not added to the project)",
+   "without_xml": 0,
+   "x0": 683287.5,
+   "ytop": 4380112.5
+  },
+  "streams": {
+   "built": "2026-11-26 00:58:38",
+   "bytes_gz": 242776,
+   "bytes_js": 323730,
+   "bytes_raw": 350680,
+   "candidates_in_rectangle": 428,
+   "checks": [
+    {
+     "actual": 168,
+     "expected": 168,
+     "item": "features",
+     "ok": true,
+     "tolerance": 0
+    },
+    {
+     "actual": 322,
+     "expected": 322,
+     "item": "parts",
+     "ok": true,
+     "tolerance": 0
+    },
+    {
+     "actual": 43473,
+     "expected": 43473,
+     "item": "vertices",
+     "ok": true,
+     "tolerance": 0
+    }
+   ],
+   "clip": "clipped to the dissolved three sub-basins in the layer CRS",
+   "feature_count": 168,
+   "length_km": 412.03,
+   "parts": 322,
+   "source_crs": "EPSG:4258",
+   "source_file": "Hidrografia_MITECO.gpkg",
+   "source_layer": "hi_redsecuencia_l_es080",
+   "stored_crs": "EPSG:25830",
+   "vertices": 43473
+  },
+  "terrain_10m": {
+   "area_km2": 416.511,
+   "built": "2026-11-26 01:01:39",
+   "bytes_gz": 9362380,
+   "bytes_js": 12483206,
+   "bytes_raw": 30375464,
+   "cell": 10.0,
+   "cells_in_basin": 4165106,
+   "checks": [
+    {
+     "actual": 416.511,
+     "expected": 416.52,
+     "item": "area km2",
+     "ok": true,
+     "tolerance": 0.2
+    },
+    {
+     "actual": 0,
+     "expected": 0,
+     "item": "values out of range",
+     "ok": true,
+     "tolerance": 0
+    }
+   ],
+   "clip": "grid window around the basin; mask marks cells whose centre is inside",
+   "clipped_values": 0,
+   "cols": 4758,
+   "encoding": "row delta int16",
+   "height_at": "cell centre, mean of 2 x 2 source cells",
+   "max_m": 1046.242,
+   "min_m": -1.597,
+   "offset": 500.0,
+   "rows": 2128,
+   "scale": 0.05,
+   "source_crs": "EPSG:25830",
+   "source_file": "MDT_A1.tif",
+   "source_layer": "MDT_A1",
+   "x0": 683287.5,
+   "ytop": 4380112.5
+  },
+  "terrain_20m": {
+   "area_km2": 416.547,
+   "built": "2026-11-26 01:02:28",
+   "bytes_gz": 2752623,
+   "bytes_js": 3670194,
+   "bytes_raw": 7594160,
+   "cell": 20.0,
+   "cells_in_basin": 1041367,
+   "checks": [
+    {
+     "actual": 416.547,
+     "expected": 416.52,
+     "item": "area km2",
+     "ok": true,
+     "tolerance": 0.2
+    },
+    {
+     "actual": 0,
+     "expected": 0,
+     "item": "values out of range",
+     "ok": true,
+     "tolerance": 0
+    }
+   ],
+   "clip": "grid window around the basin; mask marks cells whose centre is inside",
+   "clipped_values": 0,
+   "cols": 2379,
+   "encoding": "row delta int16",
+   "height_at": "cell centre, mean of 4 x 4 source cells",
+   "max_m": 1044.131,
+   "min_m": -1.311,
+   "offset": 500.0,
+   "rows": 1064,
+   "scale": 0.05,
+   "source_crs": "EPSG:25830",
+   "source_file": "MDT_A1.tif",
+   "source_layer": "MDT_A1",
+   "x0": 683287.5,
+   "ytop": 4380112.5
+  }
+ },
+ "extra_build_date": "2026-11-26 14:05:13",
+ "format": "poyo-data-1",
+ "geometry_unit": "centimetre offsets from origin",
+ "origin": [
+  680000.0,
+  4350000.0
+ ]
+}
