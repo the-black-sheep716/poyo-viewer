@@ -1,0 +1,1525 @@
+{
+  "format": "poyo-views-1",
+  "views": [
+    {
+      "name": "Section along the channel",
+      "sidecar": {
+        "format": "poyo-sidecar-2",
+        "schema_version": 2,
+        "viewer_version": "stage2.0",
+        "data_build_date": "2026-11-26 01:02:28",
+        "camera": {
+          "projection": "orthographic",
+          "crs": "EPSG:25830",
+          "view_name": "Elevation from the south",
+          "azimuth_deg": 0,
+          "elevation_deg": 0,
+          "vertical_exaggeration": 5,
+          "scale_denominator": 2000,
+          "target_m": [
+            721380,
+            4368331,
+            30
+          ],
+          "local_origin_m": [
+            707073,
+            4369473
+          ]
+        },
+        "page": {
+          "paper": "A3",
+          "orientation": "landscape",
+          "width_mm": 420,
+          "height_mm": 297,
+          "ppi": 150,
+          "width_px": 2480,
+          "height_px": 1754,
+          "background": "paper"
+        },
+        "section_box": {
+          "crs": "EPSG:25830",
+          "clip": "outside",
+          "min_m": [
+            721080,
+            4368242,
+            12
+          ],
+          "max_m": [
+            721680,
+            4368420,
+            60
+          ]
+        },
+        "theme": "Poyo Riverscape paper",
+        "settings": {
+          "view": {
+            "azimuth": 0,
+            "elevation": 0,
+            "ve": 5,
+            "target": [
+              14307,
+              -1142,
+              30
+            ],
+            "scale": 2000
+          },
+          "sheet": {
+            "paper": "A3",
+            "orientation": "landscape",
+            "width_mm": 1189,
+            "height_mm": 841,
+            "ppi": 150,
+            "background": "paper",
+            "paper_colour": "#F7F7F5",
+            "panel_id": "ID_1",
+            "credits": "",
+            "annotations": "full",
+            "text_size": 1,
+            "layout": "stage2",
+            "title_block": true,
+            "legend": true,
+            "id_mark": true,
+            "auto_sources": true,
+            "sources": {
+              "satellite": "Satellite flood extent: Copernicus Emergency Management Service.",
+              "at2200": "",
+              "buildings": "Buildings: © OpenStreetMap contributors.",
+              "rivers": "River channels: MITECO.",
+              "streams": "",
+              "terrain": "",
+              "basin": ""
+            },
+            "ink": "#0B0B0B",
+            "body_ink": "#2D2D2D",
+            "muted_ink": "#686863"
+          },
+          "layers": {
+            "terrain": {
+              "visible": true,
+              "opacity": 1
+            },
+            "rivers": {
+              "visible": true,
+              "colour": "#0091B9",
+              "opacity": 1,
+              "outline": false,
+              "outline_colour": "#004671",
+              "outline_mm": 0.15
+            },
+            "flood": {
+              "source": "none",
+              "satellite_colour": "#00A4A8",
+              "at2200_colour": "#5DD0C3",
+              "opacity": 0.85,
+              "outline": false,
+              "outline_colour": "#007496",
+              "outline_mm": 0.2
+            },
+            "streams": {
+              "visible": true,
+              "colour": "#0091B9",
+              "opacity": 1,
+              "width_mm": 0.25
+            },
+            "basin": {
+              "visible": true,
+              "colour": "#0B0B0B",
+              "opacity": 1,
+              "width_mm": 0.6
+            },
+            "buildings": {
+              "visible": true,
+              "opacity": 1,
+              "flat": false,
+              "floors_colour": "#2D2D2D",
+              "explicit_colour": "#686863",
+              "none_colour": "#F7F7F5",
+              "default_height_m": 3,
+              "industrial_height_m": 3
+            }
+          },
+          "fill_order": [
+            "rivers",
+            "flood"
+          ],
+          "line_order": [
+            "streams",
+            "basin"
+          ],
+          "terrain": {
+            "low_colour": "#B4B4AF",
+            "mid_colour": "#D9D9D4",
+            "high_colour": "#F7F7F5",
+            "mid_m": 350,
+            "low_m": 0,
+            "high_m": 1050,
+            "hillshade": 0.6,
+            "light_azimuth": 315,
+            "light_altitude": 45,
+            "shading_relief": 2,
+            "base_colour": "#686863",
+            "datum_m": -50
+          },
+          "look": {
+            "ground": "shaded",
+            "buildings": "white",
+            "water": "flat",
+            "flood": "flat",
+            "flat_ground": "#D9D9D4",
+            "white_ground": "#FFFFFF",
+            "white_building": "#FFFFFF",
+            "white_assumed": "#B4B4AF",
+            "white_water": "#B4B4AF",
+            "white_flood": "#D9D9D4",
+            "white_line": "#686863",
+            "contour_interval_m": 10,
+            "contour_index": 5,
+            "contour_mm": 0.1,
+            "contour_index_mm": 0.25,
+            "contour_colour": "#2D2D2D",
+            "contour_base": "paper",
+            "building_contour_m": 3,
+            "wire_spacing_m": 200,
+            "wire_mm": 0.1,
+            "wire_colour": "#686863",
+            "outline_mm": 0.18,
+            "outline_colour": "#0B0B0B",
+            "outline_depth_m": 2.5,
+            "outline_angle_deg": 30,
+            "xray_alpha": 0.3
+          },
+          "box": {
+            "enabled": true,
+            "mode": "outside",
+            "min": [
+              721080,
+              4368242,
+              12
+            ],
+            "max": [
+              721680,
+              4368420,
+              60
+            ],
+            "cut": {
+              "ground_fill": "solid",
+              "ground_colour": "#B4B4AF",
+              "buildings_fill": "solid",
+              "building_colour": "#0B0B0B",
+              "hatch_back": "#F7F7F5",
+              "hatch_angle": 45,
+              "hatch_spacing_mm": 1.5,
+              "hatch_line_mm": 0.25,
+              "line_mm": 0.35,
+              "line_colour": "#0B0B0B",
+              "horizontal": true
+            }
+          },
+          "theme_name": "Poyo Riverscape paper"
+        },
+        "export": null
+      }
+    },
+    {
+      "name": "Section across the channel",
+      "sidecar": {
+        "format": "poyo-sidecar-2",
+        "schema_version": 2,
+        "viewer_version": "stage2.0",
+        "data_build_date": "2026-11-26 01:02:28",
+        "camera": {
+          "projection": "orthographic",
+          "crs": "EPSG:25830",
+          "view_name": "Elevation from the east",
+          "azimuth_deg": 270,
+          "elevation_deg": 0,
+          "vertical_exaggeration": 5,
+          "scale_denominator": 1500,
+          "target_m": [
+            721385,
+            4368250,
+            27
+          ],
+          "local_origin_m": [
+            707073,
+            4369473
+          ]
+        },
+        "page": {
+          "paper": "A3",
+          "orientation": "landscape",
+          "width_mm": 420,
+          "height_mm": 297,
+          "ppi": 150,
+          "width_px": 2480,
+          "height_px": 1754,
+          "background": "paper"
+        },
+        "section_box": {
+          "crs": "EPSG:25830",
+          "clip": "outside",
+          "min_m": [
+            721370,
+            4368050,
+            12
+          ],
+          "max_m": [
+            721400,
+            4368450,
+            45
+          ]
+        },
+        "theme": "Poyo Riverscape paper",
+        "settings": {
+          "view": {
+            "azimuth": 270,
+            "elevation": 0,
+            "ve": 5,
+            "target": [
+              14312,
+              -1223,
+              27
+            ],
+            "scale": 1500
+          },
+          "sheet": {
+            "paper": "A3",
+            "orientation": "landscape",
+            "width_mm": 1189,
+            "height_mm": 841,
+            "ppi": 150,
+            "background": "paper",
+            "paper_colour": "#F7F7F5",
+            "panel_id": "ID_1",
+            "credits": "",
+            "annotations": "full",
+            "text_size": 1,
+            "layout": "stage2",
+            "title_block": true,
+            "legend": true,
+            "id_mark": true,
+            "auto_sources": true,
+            "sources": {
+              "satellite": "Satellite flood extent: Copernicus Emergency Management Service.",
+              "at2200": "",
+              "buildings": "Buildings: © OpenStreetMap contributors.",
+              "rivers": "River channels: MITECO.",
+              "streams": "",
+              "terrain": "",
+              "basin": ""
+            },
+            "ink": "#0B0B0B",
+            "body_ink": "#2D2D2D",
+            "muted_ink": "#686863"
+          },
+          "layers": {
+            "terrain": {
+              "visible": true,
+              "opacity": 1
+            },
+            "rivers": {
+              "visible": true,
+              "colour": "#0091B9",
+              "opacity": 1,
+              "outline": false,
+              "outline_colour": "#004671",
+              "outline_mm": 0.15
+            },
+            "flood": {
+              "source": "satellite",
+              "satellite_colour": "#00A4A8",
+              "at2200_colour": "#5DD0C3",
+              "opacity": 0.85,
+              "outline": false,
+              "outline_colour": "#007496",
+              "outline_mm": 0.2
+            },
+            "streams": {
+              "visible": true,
+              "colour": "#0091B9",
+              "opacity": 1,
+              "width_mm": 0.25
+            },
+            "basin": {
+              "visible": true,
+              "colour": "#0B0B0B",
+              "opacity": 1,
+              "width_mm": 0.6
+            },
+            "buildings": {
+              "visible": true,
+              "opacity": 1,
+              "flat": false,
+              "floors_colour": "#2D2D2D",
+              "explicit_colour": "#686863",
+              "none_colour": "#F7F7F5",
+              "default_height_m": 3,
+              "industrial_height_m": 3
+            }
+          },
+          "fill_order": [
+            "rivers",
+            "flood"
+          ],
+          "line_order": [
+            "streams",
+            "basin"
+          ],
+          "terrain": {
+            "low_colour": "#B4B4AF",
+            "mid_colour": "#D9D9D4",
+            "high_colour": "#F7F7F5",
+            "mid_m": 350,
+            "low_m": 0,
+            "high_m": 1050,
+            "hillshade": 0.6,
+            "light_azimuth": 315,
+            "light_altitude": 45,
+            "shading_relief": 2,
+            "base_colour": "#686863",
+            "datum_m": -50
+          },
+          "look": {
+            "ground": "shaded",
+            "buildings": "white",
+            "water": "flat",
+            "flood": "flat",
+            "flat_ground": "#D9D9D4",
+            "white_ground": "#FFFFFF",
+            "white_building": "#FFFFFF",
+            "white_assumed": "#B4B4AF",
+            "white_water": "#B4B4AF",
+            "white_flood": "#D9D9D4",
+            "white_line": "#686863",
+            "contour_interval_m": 10,
+            "contour_index": 5,
+            "contour_mm": 0.1,
+            "contour_index_mm": 0.25,
+            "contour_colour": "#2D2D2D",
+            "contour_base": "paper",
+            "building_contour_m": 3,
+            "wire_spacing_m": 200,
+            "wire_mm": 0.1,
+            "wire_colour": "#686863",
+            "outline_mm": 0.18,
+            "outline_colour": "#0B0B0B",
+            "outline_depth_m": 2.5,
+            "outline_angle_deg": 30,
+            "xray_alpha": 0.3
+          },
+          "box": {
+            "enabled": true,
+            "mode": "outside",
+            "min": [
+              721370,
+              4368050,
+              12
+            ],
+            "max": [
+              721400,
+              4368450,
+              45
+            ],
+            "cut": {
+              "ground_fill": "solid",
+              "ground_colour": "#B4B4AF",
+              "buildings_fill": "solid",
+              "building_colour": "#0B0B0B",
+              "hatch_back": "#F7F7F5",
+              "hatch_angle": 45,
+              "hatch_spacing_mm": 1.5,
+              "hatch_line_mm": 0.25,
+              "line_mm": 0.35,
+              "line_colour": "#0B0B0B",
+              "horizontal": true
+            }
+          },
+          "theme_name": "Poyo Riverscape paper"
+        },
+        "export": null
+      }
+    },
+    {
+      "name": "Cut plan",
+      "sidecar": {
+        "format": "poyo-sidecar-2",
+        "schema_version": 2,
+        "viewer_version": "stage2.0",
+        "data_build_date": "2026-11-26 01:02:28",
+        "camera": {
+          "projection": "orthographic",
+          "crs": "EPSG:25830",
+          "view_name": "Plan",
+          "azimuth_deg": 0,
+          "elevation_deg": 90,
+          "vertical_exaggeration": 1,
+          "scale_denominator": 2000,
+          "target_m": [
+            718100,
+            4368875,
+            40
+          ],
+          "local_origin_m": [
+            707073,
+            4369473
+          ]
+        },
+        "page": {
+          "paper": "A3",
+          "orientation": "landscape",
+          "width_mm": 420,
+          "height_mm": 297,
+          "ppi": 150,
+          "width_px": 2480,
+          "height_px": 1754,
+          "background": "paper"
+        },
+        "section_box": {
+          "crs": "EPSG:25830",
+          "clip": "outside",
+          "min_m": [
+            717800,
+            4368650,
+            20
+          ],
+          "max_m": [
+            718400,
+            4369100,
+            45.5
+          ]
+        },
+        "theme": "Poyo Riverscape paper",
+        "settings": {
+          "view": {
+            "azimuth": 0,
+            "elevation": 90,
+            "ve": 1,
+            "target": [
+              11027,
+              -598,
+              40
+            ],
+            "scale": 2000
+          },
+          "sheet": {
+            "paper": "A3",
+            "orientation": "landscape",
+            "width_mm": 1189,
+            "height_mm": 841,
+            "ppi": 150,
+            "background": "paper",
+            "paper_colour": "#F7F7F5",
+            "panel_id": "ID_1",
+            "credits": "",
+            "annotations": "full",
+            "text_size": 1,
+            "layout": "stage2",
+            "title_block": true,
+            "legend": true,
+            "id_mark": true,
+            "auto_sources": true,
+            "sources": {
+              "satellite": "Satellite flood extent: Copernicus Emergency Management Service.",
+              "at2200": "",
+              "buildings": "Buildings: © OpenStreetMap contributors.",
+              "rivers": "River channels: MITECO.",
+              "streams": "",
+              "terrain": "",
+              "basin": ""
+            },
+            "ink": "#0B0B0B",
+            "body_ink": "#2D2D2D",
+            "muted_ink": "#686863"
+          },
+          "layers": {
+            "terrain": {
+              "visible": true,
+              "opacity": 1
+            },
+            "rivers": {
+              "visible": true,
+              "colour": "#0091B9",
+              "opacity": 1,
+              "outline": false,
+              "outline_colour": "#004671",
+              "outline_mm": 0.15
+            },
+            "flood": {
+              "source": "at2200",
+              "satellite_colour": "#00A4A8",
+              "at2200_colour": "#5DD0C3",
+              "opacity": 0.85,
+              "outline": false,
+              "outline_colour": "#007496",
+              "outline_mm": 0.2
+            },
+            "streams": {
+              "visible": true,
+              "colour": "#0091B9",
+              "opacity": 1,
+              "width_mm": 0.25
+            },
+            "basin": {
+              "visible": true,
+              "colour": "#0B0B0B",
+              "opacity": 1,
+              "width_mm": 0.6
+            },
+            "buildings": {
+              "visible": true,
+              "opacity": 1,
+              "flat": false,
+              "floors_colour": "#2D2D2D",
+              "explicit_colour": "#686863",
+              "none_colour": "#F7F7F5",
+              "default_height_m": 3,
+              "industrial_height_m": 3
+            }
+          },
+          "fill_order": [
+            "rivers",
+            "flood"
+          ],
+          "line_order": [
+            "streams",
+            "basin"
+          ],
+          "terrain": {
+            "low_colour": "#B4B4AF",
+            "mid_colour": "#D9D9D4",
+            "high_colour": "#F7F7F5",
+            "mid_m": 350,
+            "low_m": 0,
+            "high_m": 1050,
+            "hillshade": 0.6,
+            "light_azimuth": 315,
+            "light_altitude": 45,
+            "shading_relief": 2,
+            "base_colour": "#686863",
+            "datum_m": -50
+          },
+          "look": {
+            "ground": "shaded",
+            "buildings": "white",
+            "water": "flat",
+            "flood": "flat",
+            "flat_ground": "#D9D9D4",
+            "white_ground": "#FFFFFF",
+            "white_building": "#FFFFFF",
+            "white_assumed": "#B4B4AF",
+            "white_water": "#B4B4AF",
+            "white_flood": "#D9D9D4",
+            "white_line": "#686863",
+            "contour_interval_m": 10,
+            "contour_index": 5,
+            "contour_mm": 0.1,
+            "contour_index_mm": 0.25,
+            "contour_colour": "#2D2D2D",
+            "contour_base": "paper",
+            "building_contour_m": 3,
+            "wire_spacing_m": 200,
+            "wire_mm": 0.1,
+            "wire_colour": "#686863",
+            "outline_mm": 0.18,
+            "outline_colour": "#0B0B0B",
+            "outline_depth_m": 2.5,
+            "outline_angle_deg": 30,
+            "xray_alpha": 0.3
+          },
+          "box": {
+            "enabled": true,
+            "mode": "outside",
+            "min": [
+              717800,
+              4368650,
+              20
+            ],
+            "max": [
+              718400,
+              4369100,
+              45.5
+            ],
+            "cut": {
+              "ground_fill": "solid",
+              "ground_colour": "#B4B4AF",
+              "buildings_fill": "solid",
+              "building_colour": "#0B0B0B",
+              "hatch_back": "#F7F7F5",
+              "hatch_angle": 45,
+              "hatch_spacing_mm": 1.5,
+              "hatch_line_mm": 0.25,
+              "line_mm": 0.35,
+              "line_colour": "#0B0B0B",
+              "horizontal": true
+            }
+          },
+          "theme_name": "Poyo Riverscape paper"
+        },
+        "export": null
+      }
+    },
+    {
+      "name": "Cut isometric",
+      "sidecar": {
+        "format": "poyo-sidecar-2",
+        "schema_version": 2,
+        "viewer_version": "stage2.0",
+        "data_build_date": "2026-11-26 01:02:28",
+        "camera": {
+          "projection": "orthographic",
+          "crs": "EPSG:25830",
+          "view_name": "Isometric from the south west",
+          "azimuth_deg": 45,
+          "elevation_deg": 35.264,
+          "vertical_exaggeration": 2,
+          "scale_denominator": 2500,
+          "target_m": [
+            718100,
+            4368875,
+            38
+          ],
+          "local_origin_m": [
+            707073,
+            4369473
+          ]
+        },
+        "page": {
+          "paper": "A3",
+          "orientation": "landscape",
+          "width_mm": 420,
+          "height_mm": 297,
+          "ppi": 150,
+          "width_px": 2480,
+          "height_px": 1754,
+          "background": "paper"
+        },
+        "section_box": {
+          "crs": "EPSG:25830",
+          "clip": "outside",
+          "min_m": [
+            717800,
+            4368650,
+            20
+          ],
+          "max_m": [
+            718400,
+            4369100,
+            80
+          ]
+        },
+        "theme": "Poyo Riverscape paper",
+        "settings": {
+          "view": {
+            "azimuth": 45,
+            "elevation": 35.264,
+            "ve": 2,
+            "target": [
+              11027,
+              -598,
+              38
+            ],
+            "scale": 2500
+          },
+          "sheet": {
+            "paper": "A3",
+            "orientation": "landscape",
+            "width_mm": 1189,
+            "height_mm": 841,
+            "ppi": 150,
+            "background": "paper",
+            "paper_colour": "#F7F7F5",
+            "panel_id": "ID_1",
+            "credits": "",
+            "annotations": "full",
+            "text_size": 1,
+            "layout": "stage2",
+            "title_block": true,
+            "legend": true,
+            "id_mark": true,
+            "auto_sources": true,
+            "sources": {
+              "satellite": "Satellite flood extent: Copernicus Emergency Management Service.",
+              "at2200": "",
+              "buildings": "Buildings: © OpenStreetMap contributors.",
+              "rivers": "River channels: MITECO.",
+              "streams": "",
+              "terrain": "",
+              "basin": ""
+            },
+            "ink": "#0B0B0B",
+            "body_ink": "#2D2D2D",
+            "muted_ink": "#686863"
+          },
+          "layers": {
+            "terrain": {
+              "visible": true,
+              "opacity": 1
+            },
+            "rivers": {
+              "visible": true,
+              "colour": "#0091B9",
+              "opacity": 1,
+              "outline": false,
+              "outline_colour": "#004671",
+              "outline_mm": 0.15
+            },
+            "flood": {
+              "source": "at2200",
+              "satellite_colour": "#00A4A8",
+              "at2200_colour": "#5DD0C3",
+              "opacity": 0.85,
+              "outline": false,
+              "outline_colour": "#007496",
+              "outline_mm": 0.2
+            },
+            "streams": {
+              "visible": true,
+              "colour": "#0091B9",
+              "opacity": 1,
+              "width_mm": 0.25
+            },
+            "basin": {
+              "visible": true,
+              "colour": "#0B0B0B",
+              "opacity": 1,
+              "width_mm": 0.6
+            },
+            "buildings": {
+              "visible": true,
+              "opacity": 1,
+              "flat": false,
+              "floors_colour": "#2D2D2D",
+              "explicit_colour": "#686863",
+              "none_colour": "#F7F7F5",
+              "default_height_m": 3,
+              "industrial_height_m": 3
+            }
+          },
+          "fill_order": [
+            "rivers",
+            "flood"
+          ],
+          "line_order": [
+            "streams",
+            "basin"
+          ],
+          "terrain": {
+            "low_colour": "#B4B4AF",
+            "mid_colour": "#D9D9D4",
+            "high_colour": "#F7F7F5",
+            "mid_m": 350,
+            "low_m": 0,
+            "high_m": 1050,
+            "hillshade": 0.6,
+            "light_azimuth": 315,
+            "light_altitude": 45,
+            "shading_relief": 2,
+            "base_colour": "#686863",
+            "datum_m": -50
+          },
+          "look": {
+            "ground": "shaded",
+            "buildings": "white",
+            "water": "flat",
+            "flood": "flat",
+            "flat_ground": "#D9D9D4",
+            "white_ground": "#FFFFFF",
+            "white_building": "#FFFFFF",
+            "white_assumed": "#B4B4AF",
+            "white_water": "#B4B4AF",
+            "white_flood": "#D9D9D4",
+            "white_line": "#686863",
+            "contour_interval_m": 10,
+            "contour_index": 5,
+            "contour_mm": 0.1,
+            "contour_index_mm": 0.25,
+            "contour_colour": "#2D2D2D",
+            "contour_base": "paper",
+            "building_contour_m": 3,
+            "wire_spacing_m": 200,
+            "wire_mm": 0.1,
+            "wire_colour": "#686863",
+            "outline_mm": 0.18,
+            "outline_colour": "#0B0B0B",
+            "outline_depth_m": 2.5,
+            "outline_angle_deg": 30,
+            "xray_alpha": 0.3
+          },
+          "box": {
+            "enabled": true,
+            "mode": "outside",
+            "min": [
+              717800,
+              4368650,
+              20
+            ],
+            "max": [
+              718400,
+              4369100,
+              80
+            ],
+            "cut": {
+              "ground_fill": "solid",
+              "ground_colour": "#B4B4AF",
+              "buildings_fill": "solid",
+              "building_colour": "#0B0B0B",
+              "hatch_back": "#F7F7F5",
+              "hatch_angle": 45,
+              "hatch_spacing_mm": 1.5,
+              "hatch_line_mm": 0.25,
+              "line_mm": 0.35,
+              "line_colour": "#0B0B0B",
+              "horizontal": true
+            }
+          },
+          "theme_name": "Poyo Riverscape paper"
+        },
+        "export": null
+      }
+    },
+    {
+      "name": "Box removed from the model",
+      "sidecar": {
+        "format": "poyo-sidecar-2",
+        "schema_version": 2,
+        "viewer_version": "stage2.0",
+        "data_build_date": "2026-11-26 01:02:28",
+        "camera": {
+          "projection": "orthographic",
+          "crs": "EPSG:25830",
+          "view_name": "Isometric from the south east",
+          "azimuth_deg": 315,
+          "elevation_deg": 35.264,
+          "vertical_exaggeration": 2,
+          "scale_denominator": 4000,
+          "target_m": [
+            718100,
+            4368800,
+            40
+          ],
+          "local_origin_m": [
+            707073,
+            4369473
+          ]
+        },
+        "page": {
+          "paper": "A3",
+          "orientation": "landscape",
+          "width_mm": 420,
+          "height_mm": 297,
+          "ppi": 150,
+          "width_px": 2480,
+          "height_px": 1754,
+          "background": "paper"
+        },
+        "section_box": {
+          "crs": "EPSG:25830",
+          "clip": "inside",
+          "min_m": [
+            718100,
+            4368400,
+            20
+          ],
+          "max_m": [
+            718700,
+            4368850,
+            90
+          ]
+        },
+        "theme": "Poyo Riverscape paper",
+        "settings": {
+          "view": {
+            "azimuth": 315,
+            "elevation": 35.264,
+            "ve": 2,
+            "target": [
+              11027,
+              -673,
+              40
+            ],
+            "scale": 4000
+          },
+          "sheet": {
+            "paper": "A3",
+            "orientation": "landscape",
+            "width_mm": 1189,
+            "height_mm": 841,
+            "ppi": 150,
+            "background": "paper",
+            "paper_colour": "#F7F7F5",
+            "panel_id": "ID_1",
+            "credits": "",
+            "annotations": "full",
+            "text_size": 1,
+            "layout": "stage2",
+            "title_block": true,
+            "legend": true,
+            "id_mark": true,
+            "auto_sources": true,
+            "sources": {
+              "satellite": "Satellite flood extent: Copernicus Emergency Management Service.",
+              "at2200": "",
+              "buildings": "Buildings: © OpenStreetMap contributors.",
+              "rivers": "River channels: MITECO.",
+              "streams": "",
+              "terrain": "",
+              "basin": ""
+            },
+            "ink": "#0B0B0B",
+            "body_ink": "#2D2D2D",
+            "muted_ink": "#686863"
+          },
+          "layers": {
+            "terrain": {
+              "visible": true,
+              "opacity": 1
+            },
+            "rivers": {
+              "visible": true,
+              "colour": "#0091B9",
+              "opacity": 1,
+              "outline": false,
+              "outline_colour": "#004671",
+              "outline_mm": 0.15
+            },
+            "flood": {
+              "source": "satellite",
+              "satellite_colour": "#00A4A8",
+              "at2200_colour": "#5DD0C3",
+              "opacity": 0.85,
+              "outline": false,
+              "outline_colour": "#007496",
+              "outline_mm": 0.2
+            },
+            "streams": {
+              "visible": true,
+              "colour": "#0091B9",
+              "opacity": 1,
+              "width_mm": 0.25
+            },
+            "basin": {
+              "visible": true,
+              "colour": "#0B0B0B",
+              "opacity": 1,
+              "width_mm": 0.6
+            },
+            "buildings": {
+              "visible": true,
+              "opacity": 1,
+              "flat": false,
+              "floors_colour": "#2D2D2D",
+              "explicit_colour": "#686863",
+              "none_colour": "#F7F7F5",
+              "default_height_m": 3,
+              "industrial_height_m": 3
+            }
+          },
+          "fill_order": [
+            "rivers",
+            "flood"
+          ],
+          "line_order": [
+            "streams",
+            "basin"
+          ],
+          "terrain": {
+            "low_colour": "#B4B4AF",
+            "mid_colour": "#D9D9D4",
+            "high_colour": "#F7F7F5",
+            "mid_m": 350,
+            "low_m": 0,
+            "high_m": 1050,
+            "hillshade": 0.6,
+            "light_azimuth": 315,
+            "light_altitude": 45,
+            "shading_relief": 2,
+            "base_colour": "#686863",
+            "datum_m": -50
+          },
+          "look": {
+            "ground": "shaded",
+            "buildings": "white",
+            "water": "flat",
+            "flood": "flat",
+            "flat_ground": "#D9D9D4",
+            "white_ground": "#FFFFFF",
+            "white_building": "#FFFFFF",
+            "white_assumed": "#B4B4AF",
+            "white_water": "#B4B4AF",
+            "white_flood": "#D9D9D4",
+            "white_line": "#686863",
+            "contour_interval_m": 10,
+            "contour_index": 5,
+            "contour_mm": 0.1,
+            "contour_index_mm": 0.25,
+            "contour_colour": "#2D2D2D",
+            "contour_base": "paper",
+            "building_contour_m": 3,
+            "wire_spacing_m": 200,
+            "wire_mm": 0.1,
+            "wire_colour": "#686863",
+            "outline_mm": 0.18,
+            "outline_colour": "#0B0B0B",
+            "outline_depth_m": 2.5,
+            "outline_angle_deg": 30,
+            "xray_alpha": 0.3
+          },
+          "box": {
+            "enabled": true,
+            "mode": "inside",
+            "min": [
+              718100,
+              4368400,
+              20
+            ],
+            "max": [
+              718700,
+              4368850,
+              90
+            ],
+            "cut": {
+              "ground_fill": "solid",
+              "ground_colour": "#B4B4AF",
+              "buildings_fill": "solid",
+              "building_colour": "#0B0B0B",
+              "hatch_back": "#F7F7F5",
+              "hatch_angle": 45,
+              "hatch_spacing_mm": 1.5,
+              "hatch_line_mm": 0.25,
+              "line_mm": 0.35,
+              "line_colour": "#0B0B0B",
+              "horizontal": true
+            }
+          },
+          "theme_name": "Poyo Riverscape paper"
+        },
+        "export": null
+      }
+    },
+    {
+      "name": "Cut with hatch",
+      "sidecar": {
+        "format": "poyo-sidecar-2",
+        "schema_version": 2,
+        "viewer_version": "stage2.0",
+        "data_build_date": "2026-11-26 01:02:28",
+        "camera": {
+          "projection": "orthographic",
+          "crs": "EPSG:25830",
+          "view_name": "Elevation from the east",
+          "azimuth_deg": 270,
+          "elevation_deg": 0,
+          "vertical_exaggeration": 5,
+          "scale_denominator": 1500,
+          "target_m": [
+            721385,
+            4368250,
+            27
+          ],
+          "local_origin_m": [
+            707073,
+            4369473
+          ]
+        },
+        "page": {
+          "paper": "A3",
+          "orientation": "landscape",
+          "width_mm": 420,
+          "height_mm": 297,
+          "ppi": 150,
+          "width_px": 2480,
+          "height_px": 1754,
+          "background": "paper"
+        },
+        "section_box": {
+          "crs": "EPSG:25830",
+          "clip": "outside",
+          "min_m": [
+            721370,
+            4368050,
+            12
+          ],
+          "max_m": [
+            721400,
+            4368450,
+            45
+          ]
+        },
+        "theme": "Poyo Riverscape paper",
+        "settings": {
+          "view": {
+            "azimuth": 270,
+            "elevation": 0,
+            "ve": 5,
+            "target": [
+              14312,
+              -1223,
+              27
+            ],
+            "scale": 1500
+          },
+          "sheet": {
+            "paper": "A3",
+            "orientation": "landscape",
+            "width_mm": 1189,
+            "height_mm": 841,
+            "ppi": 150,
+            "background": "paper",
+            "paper_colour": "#F7F7F5",
+            "panel_id": "ID_1",
+            "credits": "",
+            "annotations": "full",
+            "text_size": 1,
+            "layout": "stage2",
+            "title_block": true,
+            "legend": true,
+            "id_mark": true,
+            "auto_sources": true,
+            "sources": {
+              "satellite": "Satellite flood extent: Copernicus Emergency Management Service.",
+              "at2200": "",
+              "buildings": "Buildings: © OpenStreetMap contributors.",
+              "rivers": "River channels: MITECO.",
+              "streams": "",
+              "terrain": "",
+              "basin": ""
+            },
+            "ink": "#0B0B0B",
+            "body_ink": "#2D2D2D",
+            "muted_ink": "#686863"
+          },
+          "layers": {
+            "terrain": {
+              "visible": true,
+              "opacity": 1
+            },
+            "rivers": {
+              "visible": true,
+              "colour": "#0091B9",
+              "opacity": 1,
+              "outline": false,
+              "outline_colour": "#004671",
+              "outline_mm": 0.15
+            },
+            "flood": {
+              "source": "satellite",
+              "satellite_colour": "#00A4A8",
+              "at2200_colour": "#5DD0C3",
+              "opacity": 0.85,
+              "outline": false,
+              "outline_colour": "#007496",
+              "outline_mm": 0.2
+            },
+            "streams": {
+              "visible": true,
+              "colour": "#0091B9",
+              "opacity": 1,
+              "width_mm": 0.25
+            },
+            "basin": {
+              "visible": true,
+              "colour": "#0B0B0B",
+              "opacity": 1,
+              "width_mm": 0.6
+            },
+            "buildings": {
+              "visible": true,
+              "opacity": 1,
+              "flat": false,
+              "floors_colour": "#2D2D2D",
+              "explicit_colour": "#686863",
+              "none_colour": "#F7F7F5",
+              "default_height_m": 3,
+              "industrial_height_m": 3
+            }
+          },
+          "fill_order": [
+            "rivers",
+            "flood"
+          ],
+          "line_order": [
+            "streams",
+            "basin"
+          ],
+          "terrain": {
+            "low_colour": "#B4B4AF",
+            "mid_colour": "#D9D9D4",
+            "high_colour": "#F7F7F5",
+            "mid_m": 350,
+            "low_m": 0,
+            "high_m": 1050,
+            "hillshade": 0.6,
+            "light_azimuth": 315,
+            "light_altitude": 45,
+            "shading_relief": 2,
+            "base_colour": "#686863",
+            "datum_m": -50
+          },
+          "look": {
+            "ground": "shaded",
+            "buildings": "shaded",
+            "water": "flat",
+            "flood": "flat",
+            "flat_ground": "#D9D9D4",
+            "white_ground": "#FFFFFF",
+            "white_building": "#FFFFFF",
+            "white_assumed": "#B4B4AF",
+            "white_water": "#B4B4AF",
+            "white_flood": "#D9D9D4",
+            "white_line": "#686863",
+            "contour_interval_m": 10,
+            "contour_index": 5,
+            "contour_mm": 0.1,
+            "contour_index_mm": 0.25,
+            "contour_colour": "#2D2D2D",
+            "contour_base": "paper",
+            "building_contour_m": 3,
+            "wire_spacing_m": 200,
+            "wire_mm": 0.1,
+            "wire_colour": "#686863",
+            "outline_mm": 0.18,
+            "outline_colour": "#0B0B0B",
+            "outline_depth_m": 2.5,
+            "outline_angle_deg": 30,
+            "xray_alpha": 0.3
+          },
+          "box": {
+            "enabled": true,
+            "mode": "outside",
+            "min": [
+              721370,
+              4368050,
+              12
+            ],
+            "max": [
+              721400,
+              4368450,
+              45
+            ],
+            "cut": {
+              "ground_fill": "hatch",
+              "ground_colour": "#2D2D2D",
+              "buildings_fill": "solid",
+              "building_colour": "#0B0B0B",
+              "hatch_back": "#F7F7F5",
+              "hatch_angle": 45,
+              "hatch_spacing_mm": 2.2,
+              "hatch_line_mm": 0.25,
+              "line_mm": 0.35,
+              "line_colour": "#0B0B0B",
+              "horizontal": true
+            }
+          },
+          "theme_name": "Poyo Riverscape paper"
+        },
+        "export": null
+      }
+    },
+    {
+      "name": "Basin elevation without a box",
+      "sidecar": {
+        "format": "poyo-sidecar-2",
+        "schema_version": 2,
+        "viewer_version": "stage2.0",
+        "data_build_date": "2026-11-26 01:02:28",
+        "camera": {
+          "projection": "orthographic",
+          "crs": "EPSG:25830",
+          "view_name": "Elevation from the south",
+          "azimuth_deg": 0,
+          "elevation_deg": 0,
+          "vertical_exaggeration": 1,
+          "scale_denominator": 130000,
+          "target_m": [
+            707073.235,
+            4369473,
+            498.44505000002334
+          ],
+          "local_origin_m": [
+            707073,
+            4369473
+          ]
+        },
+        "page": {
+          "paper": "A3",
+          "orientation": "landscape",
+          "width_mm": 420,
+          "height_mm": 297,
+          "ppi": 150,
+          "width_px": 2480,
+          "height_px": 1754,
+          "background": "paper"
+        },
+        "section_box": null,
+        "theme": "Poyo Riverscape paper",
+        "settings": {
+          "view": {
+            "azimuth": 0,
+            "elevation": 0,
+            "ve": 1,
+            "target": [
+              0.23499999998603016,
+              0,
+              498.44505000002334
+            ],
+            "scale": 130000
+          },
+          "sheet": {
+            "paper": "A3",
+            "orientation": "landscape",
+            "width_mm": 1189,
+            "height_mm": 841,
+            "ppi": 150,
+            "background": "paper",
+            "paper_colour": "#F7F7F5",
+            "panel_id": "ID_1",
+            "credits": "",
+            "annotations": "full",
+            "text_size": 1,
+            "layout": "stage2",
+            "title_block": true,
+            "legend": true,
+            "id_mark": true,
+            "auto_sources": true,
+            "sources": {
+              "satellite": "Satellite flood extent: Copernicus Emergency Management Service.",
+              "at2200": "",
+              "buildings": "Buildings: © OpenStreetMap contributors.",
+              "rivers": "River channels: MITECO.",
+              "streams": "",
+              "terrain": "",
+              "basin": ""
+            },
+            "ink": "#0B0B0B",
+            "body_ink": "#2D2D2D",
+            "muted_ink": "#686863"
+          },
+          "layers": {
+            "terrain": {
+              "visible": true,
+              "opacity": 1
+            },
+            "rivers": {
+              "visible": true,
+              "colour": "#0091B9",
+              "opacity": 1,
+              "outline": false,
+              "outline_colour": "#004671",
+              "outline_mm": 0.15
+            },
+            "flood": {
+              "source": "satellite",
+              "satellite_colour": "#00A4A8",
+              "at2200_colour": "#5DD0C3",
+              "opacity": 0.85,
+              "outline": false,
+              "outline_colour": "#007496",
+              "outline_mm": 0.2
+            },
+            "streams": {
+              "visible": true,
+              "colour": "#0091B9",
+              "opacity": 1,
+              "width_mm": 0.25
+            },
+            "basin": {
+              "visible": true,
+              "colour": "#0B0B0B",
+              "opacity": 1,
+              "width_mm": 0.6
+            },
+            "buildings": {
+              "visible": true,
+              "opacity": 1,
+              "flat": false,
+              "floors_colour": "#2D2D2D",
+              "explicit_colour": "#686863",
+              "none_colour": "#F7F7F5",
+              "default_height_m": 3,
+              "industrial_height_m": 3
+            }
+          },
+          "fill_order": [
+            "rivers",
+            "flood"
+          ],
+          "line_order": [
+            "streams",
+            "basin"
+          ],
+          "terrain": {
+            "low_colour": "#B4B4AF",
+            "mid_colour": "#D9D9D4",
+            "high_colour": "#F7F7F5",
+            "mid_m": 350,
+            "low_m": 0,
+            "high_m": 1050,
+            "hillshade": 0.6,
+            "light_azimuth": 315,
+            "light_altitude": 45,
+            "shading_relief": 2,
+            "base_colour": "#686863",
+            "datum_m": -50
+          },
+          "look": {
+            "ground": "shaded",
+            "buildings": "shaded",
+            "water": "flat",
+            "flood": "flat",
+            "flat_ground": "#D9D9D4",
+            "white_ground": "#FFFFFF",
+            "white_building": "#FFFFFF",
+            "white_assumed": "#B4B4AF",
+            "white_water": "#B4B4AF",
+            "white_flood": "#D9D9D4",
+            "white_line": "#686863",
+            "contour_interval_m": 10,
+            "contour_index": 5,
+            "contour_mm": 0.1,
+            "contour_index_mm": 0.25,
+            "contour_colour": "#2D2D2D",
+            "contour_base": "paper",
+            "building_contour_m": 3,
+            "wire_spacing_m": 200,
+            "wire_mm": 0.1,
+            "wire_colour": "#686863",
+            "outline_mm": 0.18,
+            "outline_colour": "#0B0B0B",
+            "outline_depth_m": 2.5,
+            "outline_angle_deg": 30,
+            "xray_alpha": 0.3
+          },
+          "box": {
+            "enabled": false,
+            "mode": "outside",
+            "min": [
+              0,
+              0,
+              0
+            ],
+            "max": [
+              0,
+              0,
+              0
+            ],
+            "cut": {
+              "ground_fill": "solid",
+              "ground_colour": "#B4B4AF",
+              "buildings_fill": "solid",
+              "building_colour": "#0B0B0B",
+              "hatch_back": "#F7F7F5",
+              "hatch_angle": 45,
+              "hatch_spacing_mm": 1.5,
+              "hatch_line_mm": 0.25,
+              "line_mm": 0.35,
+              "line_colour": "#0B0B0B",
+              "horizontal": true
+            }
+          },
+          "theme_name": "Poyo Riverscape paper"
+        },
+        "export": null
+      }
+    }
+  ]
+}
