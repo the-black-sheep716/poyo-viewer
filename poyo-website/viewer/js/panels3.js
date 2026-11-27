@@ -12,7 +12,7 @@
     railways: "Rail and metro lines clipped to the basin. Tunnel sections are not drawn.",
     sector: "Outline of the middle sector, sub basin 200324.",
     windows: "The three pilot windows of the A0 drawings at 1:2,000, shown as frames.",
-    parcels: "Parcel outlines inside the three pilot windows only. The data has gaps in windows B and C, so blank ground there does not mean there are no parcels."
+    parcels: "Boundaries of every agricultural parcel in the basin, from the 2026 parcel register: tree crops, vineyard, arable land, vegetable gardens and greenhouses. Forest, scrub, roads, water and built land are not outlined. Faint at basin scale, clearer when zoomed in."
   };
   var TITLES = { municipal: "Municipal limits", places: "Place areas", railways: "Railways", sector: "Middle sector",
                  windows: "Pilot windows", parcels: "Parcel outlines" };
@@ -235,7 +235,9 @@
     if (E.railways) list.push("Railways: " + n(E.railways.feature_count) + " line features cut to the basin; " + n(E.railways.tunnels) + " tunnel sections are not drawn.");
     if (E.municipal_limits) list.push("Municipal limits: " + n(E.municipal_limits.feature_count) + " units derived by joining planning zoning polygons by municipality code, parts under 2 ha left out. Not an official boundary.");
     if (E.places) list.push("Place areas: " + n(E.places.feature_count) + " OpenStreetMap areas of mixed kinds. Not a complete set of municipalities.");
-    if (E.parcels) list.push("Parcel outlines: " + n(E.parcels.feature_count) + " SIGPAC outlines inside the three pilot windows only, FEGA, CC BY 4.0. Windows B and C have gaps.");
+    if (E.parcels) list.push("Parcel outlines: " + n(E.parcels.feature_count) + " agricultural parcels touching the basin, " + E.parcels.campaign +
+      " campaign of the agricultural parcel register (SIGPAC), Institut Cartogràfic Valencià, Generalitat Valenciana, CC BY. The same parcels as the ten crop types. Lines are cut at the basin edge and simplified within " +
+      E.parcels.simplified_m + " m; a shared boundary is drawn once.");
     if (!list.length) return;
     tab.appendChild(K.heading("Added layers"));
     list.forEach(function (t) { tab.appendChild(K.note(t)); });

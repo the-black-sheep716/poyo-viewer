@@ -26,7 +26,7 @@
     places: "Place areas: © OpenStreetMap contributors.",
     municipal: "Municipal limits: derived from planning zoning, source not documented.",
     sector: "Study sector and pilot windows: drawn for this study.",
-    parcels: "Parcel outlines: SIGPAC, FEGA, CC BY 4.0."
+    parcels: "Parcel outlines: SIGPAC 2026, Institut Cartogràfic Valencià, Generalitat Valenciana, CC BY."
   };
   var LINES3 = ["parcels", "places", "municipal", "railways", "windows", "sector"];
 

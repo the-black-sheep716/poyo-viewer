@@ -56,7 +56,7 @@
             crops: "Use of each parcel in the 2026 agricultural register. A crop group, not the species or this year\u2019s sowing." },
     overlay: { depth: "Flood depth classes, satellite estimate", hazard: "Flood hazard zones" },
     line: { municipal: "Municipal limits", places: "Place areas", railways: "Railways, surface",
-            sector: "Middle sector", windows: "Pilot windows", parcels: "Parcel outlines in pilot windows" }
+            sector: "Middle sector", windows: "Pilot windows", parcels: "Parcel outlines, agricultural land" }
   };
 
   function mix(a, b, t) {
@@ -329,8 +329,11 @@
     if (name === "landuse_style") { outlines(scene, a); return; }
     var layer = Object.keys(LINE_CHUNKS).filter(function (n) { return LINE_CHUNKS[n] === name; })[0];
     if (layer) {
-      var set = lineSet(a, frame, layer, manifest);
-      scene.lines[layer] = scene.makeLine(G.drape(set.xy, set.starts, set.closed, grid10, 10));
+      var set = lineSet(a, frame, layer);
+      // the parcels cover the whole basin: draped every 20 m and drawn tile by tile
+      scene.lines[layer] = layer === "parcels"
+        ? scene.makeTiledLine(G.drape(set.xy, set.starts, set.closed, grid10, 20), 2000)
+        : scene.makeLine(G.drape(set.xy, set.starts, set.closed, grid10, 10));
       s["set_" + layer] = set;
       return;
     }
@@ -371,44 +374,9 @@
     return out;
   }
 
-  // Parcels were cut to the pilot windows, so some pieces of outline run along a window
-  // edge and are not parcel boundaries. Those pieces are left out.
-  function openAtWindows(xy, starts, windows, closed) {
-    function onEdge(i, j) {
-      for (var w = 0; w < windows.length; w++) {
-        var b = windows[w];
-        for (var k = 0; k < 4; k++) {
-          var axis = k & 1, at = b[k];
-          if (Math.abs(xy[2 * i + axis] - at) < 0.15 && Math.abs(xy[2 * j + axis] - at) < 0.15) return true;
-        }
-      }
-      return false;
-    }
-    var out = [], at = [0], p, i;
-    function end() { if (out.length / 2 - at[at.length - 1] > 1) at.push(out.length / 2); else out.length = 2 * at[at.length - 1]; }
-    for (p = 0; p + 1 < starts.length; p++) {
-      var first = starts[p], last = starts[p + 1];
-      for (i = first; i < (closed ? last : last - 1); i++) {
-        var j = i + 1 < last ? i + 1 : first;
-        if (onEdge(i, j)) { end(); continue; }
-        if (out.length / 2 === at[at.length - 1]) out.push(xy[2 * i], xy[2 * i + 1]);
-        out.push(xy[2 * j], xy[2 * j + 1]);
-      }
-      end();
-    }
-    return { xy: new Float32Array(out), starts: new Uint32Array(at), closed: false };
-  }
-
   // Vertices of a line layer. Rail tunnels are left out: they are not on the ground.
-  function lineSet(a, frame, layer, manifest) {
+  function lineSet(a, frame, layer) {
     var xy = G.localXY(a.xy, frame);
-    if (layer === "parcels" && manifest.entries.pilot_windows) {
-      var windows = manifest.entries.pilot_windows.items.map(function (w) {
-        var b = w.bounds;
-        return [b[0] - frame.cx, b[1] - frame.cy, b[2] - frame.cx, b[3] - frame.cy];
-      });
-      return openAtWindows(xy, a.ring_start || a.part_start, windows, !!a.ring_start);
-    }
     if (a.ring_start) return { xy: xy, starts: a.ring_start, closed: true };
     var starts = a.part_start;
     if (layer !== "railways") return { xy: xy, starts: starts, closed: false };

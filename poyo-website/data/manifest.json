@@ -2036,17 +2036,45 @@
    "source_layer": "SIGPAC download coverage (areas with data)"
   },
   "parcels": {
-   "built": "2026-11-26 12:12:03",
-   "bytes_gz": 425539,
-   "bytes_js": 567414,
-   "bytes_raw": 877920,
-   "clip": "parcel outlines cut to the three pilot windows",
-   "feature_count": 2925,
-   "layer_features": 4484,
-   "note": "download has gaps in windows B and C",
+   "built": "2026-11-27 13:28:54",
+   "bytes_gz": 4385968,
+   "bytes_js": 5847986,
+   "bytes_raw": 7024120,
+   "campaign": 2026,
+   "checks": [
+    {
+     "actual": 54130,
+     "expected": 54130,
+     "item": "crop parcels, same as the crop type layer",
+     "ok": true,
+     "tolerance": 0
+    }
+   ],
+   "clip": "lines cut at the basin edge",
+   "crop_types": [
+    "Citrus",
+    "Fruit trees",
+    "Nut trees",
+    "Olive groves",
+    "Vineyard",
+    "Mixed tree crops",
+    "Other permanent crops",
+    "Arable land",
+    "Vegetable gardens",
+    "Greenhouses and plastic cover"
+   ],
+   "data_date": "15 12 2025",
+   "feature_count": 54130,
+   "licence": "CC BY",
+   "line_km": 10476.2,
+   "note": "agricultural parcels only; a shared boundary is stored once",
+   "parcels_cut_or_at_edge": 2336,
+   "parts": 134304,
+   "simplified_m": 0.3,
    "source_crs": "EPSG:25830",
-   "source_file": "poyo_sigpac_recintos_pilot_windows.gpkg",
-   "source_layer": "SIGPAC recintos (local copy, pilot windows, FEGA)"
+   "source_file": "sigpac2026 tiles (46 files)",
+   "source_layer": "SIGPAC 2026 recintos, WFS ms:SIGPAC2026.Recintos, Institut Cartografic Valencia, Generalitat Valenciana",
+   "vertices": 743673
   },
   "pilot_windows": {
    "built": "2026-11-26 12:12:02",
@@ -3136,7 +3164,7 @@
    "ytop": 4380112.5
   }
  },
- "extra_build_date": "2026-11-26 14:05:13",
+ "extra_build_date": "2026-11-27 13:28:54",
  "format": "poyo-data-1",
  "geometry_unit": "centimetre offsets from origin",
  "origin": [

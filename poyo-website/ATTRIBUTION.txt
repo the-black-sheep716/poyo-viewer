@@ -16,4 +16,4 @@ Roads: © OpenStreetMap contributors.
 Railways: © OpenStreetMap contributors.
 Place areas: © OpenStreetMap contributors.
 Municipal limits: derived from planning zoning, source not documented.
-Parcel outlines: SIGPAC, FEGA, CC BY 4.0.
+Parcel outlines: SIGPAC 2026, Institut Cartogràfic Valencià, Generalitat Valenciana, CC BY.

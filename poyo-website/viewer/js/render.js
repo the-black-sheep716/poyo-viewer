@@ -324,6 +324,61 @@
     return { vao: vao, count: segs.length / 6, segs: segs };
   };
 
+  // A very large set of segments, sorted into square tiles so that tiles out of view
+  // are not drawn. The segments stay in one list for the tests that read them.
+  Scene.prototype.makeTiledLine = function (segs, size) {
+    var n = segs.length / 6, which = new Uint32Array(n), found = new Map(), tiles = [], i, j, t, q;
+    for (i = 0; i < n; i++) {
+      var o = 6 * i;
+      var key = Math.floor((segs[o] + segs[o + 3]) / 2 / size) + "," + Math.floor((segs[o + 1] + segs[o + 4]) / 2 / size);
+      t = found.get(key);
+      if (t === undefined) {
+        t = tiles.length; found.set(key, t);
+        tiles.push({ count: 0, box: [Infinity, Infinity, Infinity, -Infinity, -Infinity, -Infinity] });
+      }
+      which[i] = t; q = tiles[t]; q.count++;
+      for (j = 0; j < 6; j++) {
+        var v = segs[o + j], axis = j % 3;
+        if (v < q.box[axis]) q.box[axis] = v;
+        if (v > q.box[axis + 3]) q.box[axis + 3] = v;
+      }
+    }
+    var first = 0;
+    tiles.forEach(function (r) { r.first = r.next = first; first += r.count; });
+    var sorted = new Float32Array(segs.length);
+    for (i = 0; i < n; i++) {
+      var to = 6 * tiles[which[i]].next++;
+      for (j = 0; j < 6; j++) sorted[to + j] = segs[6 * i + j];
+    }
+    var gl = this.gl, data = buffer(gl, gl.ARRAY_BUFFER, sorted);
+    tiles.forEach(function (r) {
+      r.vao = gl.createVertexArray();
+      gl.bindVertexArray(r.vao);
+      gl.bindBuffer(gl.ARRAY_BUFFER, data);
+      for (var a = 0; a < 2; a++) {
+        gl.enableVertexAttribArray(a);
+        gl.vertexAttribPointer(a, 3, gl.FLOAT, false, 24, r.first * 24 + a * 12);
+        gl.vertexAttribDivisor(a, 1);
+      }
+    });
+    gl.bindVertexArray(null);
+    return { tiles: tiles, count: n, segs: sorted };
+  };
+
+  // Draws one line set band by band. A tiled set skips the tiles that are out of view,
+  // and while the view is moving it is drawn in one pass.
+  function strokes(gl, line, m, tile, draft, uMin) {
+    var bands = draft ? (line.tiles ? [0.25] : DRAFT_BANDS) : BANDS, parts = [line];
+    if (line.tiles) parts = line.tiles.filter(function (p) { return visible(m, tile, p.box); });
+    for (var b = 0; b < bands.length; b++) {
+      gl.uniform1f(uMin, bands[b]);
+      for (var i = 0; i < parts.length; i++) {
+        gl.bindVertexArray(parts[i].vao);
+        gl.drawArraysInstanced(gl.TRIANGLES, 0, 6, parts[i].count);
+      }
+    }
+  }
+
   Scene.prototype.addStreams = function (arrays, frame) {
     this.lines.streams = this.makeLine(G.drape(G.localXY(arrays.xy, frame), arrays.part_start, false,
                                                 this.grids.terrain_10m, 10));
@@ -620,12 +675,7 @@
       gl.uniform4f(lp.u.uColour, rgb[0], rgb[1], rgb[2], item.a * Math.min(1, width));
       gl.uniform1f(lp.u.uBias, (1.5 * width * o.mpp + 15) / cam.depthHalf);
       gl.stencilFunc(gl.NOTEQUAL, index + 1, 0xff);
-      gl.bindVertexArray(item.line.vao);
-      var bands = o.cell === 20 ? DRAFT_BANDS : BANDS;
-      for (var q = 0; q < bands.length; q++) {
-        gl.uniform1f(lp.u.uMin, bands[q]);
-        gl.drawArraysInstanced(gl.TRIANGLES, 0, 6, item.line.count);
-      }
+      strokes(gl, item.line, m, tile, o.cell === 20, lp.u.uMin);
     });
     gl.disable(gl.STENCIL_TEST);
     gl.depthMask(true);
@@ -636,5 +686,5 @@
 
   POYO.render = { Scene: Scene, FILL_CELL: FILL_CELL, SDF_RANGE: SDF_RANGE, HEAD: HEAD, TERRAIN_VS: TERRAIN_VS,
                   BANDS: BANDS, DRAFT_BANDS: DRAFT_BANDS, compile: compile, texture: texture, buffer: buffer,
-                  visible: visible };
+                  visible: visible, strokes: strokes };
 })();

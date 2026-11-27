@@ -1194,12 +1194,7 @@
       gl.uniform1f(p.u.uBias, (item.clip ? 1.5 * width * o.mpp + 15 : width * o.mpp + 1.5) / c.cam.depthHalf);
       gl.uniform1i(p.u.uClip, item.clip && c.box ? (c.box.mode === "inside" ? 2 : 1) : 0);
       gl.stencilFunc(gl.NOTEQUAL, index + 1, 0xff);
-      gl.bindVertexArray(item.line.vao);
-      var bands = o.cell === 20 ? R.DRAFT_BANDS : R.BANDS;
-      for (var q = 0; q < bands.length; q++) {
-        gl.uniform1f(p.u.uMin, bands[q]);
-        gl.drawArraysInstanced(gl.TRIANGLES, 0, 6, item.line.count);
-      }
+      R.strokes(gl, item.line, c.cam.m, o.tile, o.cell === 20, p.u.uMin);
     });
     gl.disable(gl.STENCIL_TEST);
     gl.depthMask(true);
