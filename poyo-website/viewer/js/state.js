@@ -21,7 +21,7 @@
     landuse: "Planned land use: source not documented.", siose: "Land cover: SIOSE 2014, Comunitat Valenciana.",
     crops: "Parcel use: SIGPAC 2026, Institut Cartogràfic Valencià, Generalitat Valenciana, CC BY.",
     depth: "Flood depth classes: Copernicus Emergency Management Service.",
-    hazard: "Flood hazard zones: PATRICOVA, from the competition data.",
+    hazard: "Flood hazard zones: PATRICOVA, Generalitat Valenciana.",
     roads: "Roads: © OpenStreetMap contributors.", railways: "Railways: © OpenStreetMap contributors.",
     places: "Place areas: © OpenStreetMap contributors.",
     municipal: "Municipal limits: derived from planning zoning, source not documented.",
@@ -34,7 +34,7 @@
     return {
       view: { azimuth: 0, elevation: 90, ve: 1, target: [0, 0, 0], scale: 60000 },
       sheet: { paper: "A0", orientation: "landscape", width_mm: 1189, height_mm: 841, ppi: 200,
-               background: "paper", paper_colour: ID.paper, panel_id: "ID_1", credits: "",
+               background: "paper", paper_colour: ID.paper, panel_id: "", credits: "",
                annotations: "full", text_size: 1,
                layout: "stage3", title_block: true, legend: true, id_mark: true,
                panel_side: "auto", margin_mm: 10, frame_name: "",
@@ -73,7 +73,7 @@
                pattern_scale: 1,
                // crop types: one colour per type, or irrigated and rainfed apart
                crop_water: false,
-               // "data": QGIS style and data colours. "storm": the After the Storm land colours
+               // "data": QGIS style and data colours. "storm": the Paper and Water land colours
                palette: "data" },
       overlay: { source: "none", only: "", hidden: [], colours: [], boundaries: false, opacity: 0.8 },
       // water level scenario: solid water, off by default

@@ -207,7 +207,7 @@
     return capture(d, "Chronogram " + row[0], night ? "dark" : "paper");
   }
 
-  // ==== After the Storm: the look, token for token.
+  // ==== Paper and Water: the look, token for token.
   // Line weights are the identity's millimetres. Tints between two tokens are derived.
   function storm() {
     var T = POYO.STORM, d = POYO.state.defaults();
@@ -248,7 +248,7 @@
     var C = d.box.cut;
     C.ground_colour = mix(T.rule, T.paper, 0.35); C.building_colour = T.ink; C.hatch_back = T.paper;
     C.line_colour = T.ink; C.line_mm = 0.5;
-    return capture(d, "After the Storm", "paper");
+    return capture(d, "Paper and Water", "paper");
   }
 
   function builtin() {
@@ -256,7 +256,7 @@
     return [storm(), list[0], paper(), dark(), white()].concat(list.slice(1));
   }
 
-  // The state a new session starts with: After the Storm, side panel in its own file.
+  // The state a new session starts with: Paper and Water, side panel in its own file.
   function fresh(state) {
     apply(state, storm());
     state.sheet.panel_export = "separate";

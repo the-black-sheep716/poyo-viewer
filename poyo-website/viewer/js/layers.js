@@ -67,7 +67,7 @@
     }).join("");
   }
 
-  // ==== After the Storm ground colours: the identity's land tokens, muted, with tints
+  // ==== Paper and Water ground colours: the identity's land tokens, muted, with tints
   // derived from them where the data has more classes than the identity.
   var T = POYO.STORM;
   var STORM_GROUP = {

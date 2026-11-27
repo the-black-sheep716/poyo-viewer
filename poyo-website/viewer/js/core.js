@@ -16,7 +16,7 @@ POYO.ID = {
   yellow: "#F5B700", magenta: "#E6007E"
 };
 
-// "After the Storm" identity: land use muted, water in its own blues, one story
+// "Paper and Water" identity: land use muted, water in its own blues, one story
 // colour per map (storm: what happened, action: proposals, system: governance and time).
 POYO.STORM = {
   paper: "#F4F1EA", white: "#FBFAF6", ink: "#2A2925", muted: "#5C5850", rule: "#8A8478", hairline: "#BDB6A6",

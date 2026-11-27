@@ -11,7 +11,7 @@
   var TRACK = 0.09;                                  // letter spacing of headings, in em
   var measureCtx = null;
 
-  // After the Storm sheets are set in Arial with no text under 10 pt (on A2 and larger).
+  // Paper and Water sheets are set in Arial with no text under 10 pt (on A2 and larger).
   var STORM_FACE = "Arial, 'Liberation Sans', Helvetica, sans-serif";
   var typeface = null;                                   // set while such a sheet is laid out or drawn
   function withFace(next, work) {

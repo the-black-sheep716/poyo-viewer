@@ -427,7 +427,7 @@
       note("The export saves the drawing without the panel, and a second picture ending in _panel at the same resolution. Place both at 100 percent to combine them. The panel ID stays on the drawing unless you untick it above.")
     ]));
     tab.appendChild(group(newSheet, [
-      select("Panel look", [["storm", "After the Storm"], ["chronogram", "Chronogram"], ["riverscape", "Riverscape boxes"]],
+      select("Panel look", [["storm", "Paper and Water"], ["chronogram", "Chronogram"], ["riverscape", "Riverscape boxes"]],
              prop(s, "design"))
     ]));
     tab.appendChild(group(function () { return newSheet() && s().design !== "riverscape"; }, [
@@ -442,7 +442,7 @@
       select("Annotations", [["full", "Full"], ["minimal", "Minimal"]], prop(s, "annotations")),
       note("This is the sheet of an export made with the Stage 1 viewer, kept so that it reproduces exactly.")
     ]));
-    tab.appendChild(text("Panel ID", prop(s, "panel_id"), "for example ID_1"));
+    tab.appendChild(text("Panel ID", prop(s, "panel_id"), "optional, top left of the sheet"));
     tab.appendChild(slider("Text size", range(s, "text_size", 0.5, 2, 0.05)));
 
     tab.appendChild(heading("Credits"));

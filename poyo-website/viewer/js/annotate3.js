@@ -433,7 +433,7 @@
     var l = state.sheet.layout;
     return l === "stage3" || (l === "stage2" && hasNew(state));
   }
-  // Every block of an After the Storm sheet draws itself in that sheet's type.
+  // Every block of a Paper and Water sheet draws itself in that sheet's type.
   function dress(blocks, typeface) {
     var all = blocks.slice();
     ((blocks.panel && blocks.panel.blocks) || []).forEach(function (b) { if (all.indexOf(b) < 0) all.push(b); });

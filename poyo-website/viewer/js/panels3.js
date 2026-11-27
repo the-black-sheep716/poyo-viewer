@@ -28,7 +28,7 @@
 
   // One choice for all ground colours, planned use, cover, crops and hazard alike.
   function paletteSelect() {
-    return K.select("Palette", [["storm", "After the Storm"], ["data", "QGIS style and data colours"]], {
+    return K.select("Palette", [["storm", "Paper and Water"], ["data", "QGIS style and data colours"]], {
       get: function () { return S().cover.palette; },
       set: function (v) {
         S().cover.palette = v; S().cover.colours = []; S().overlay.colours = []; S().cover.only = "";
