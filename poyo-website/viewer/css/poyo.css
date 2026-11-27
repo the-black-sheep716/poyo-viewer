@@ -1,19 +1,19 @@
-/* All interface styling (Poyo Riverscape identity). Square corners, hairlines,
-   no shadows or gradients. Magenta marks only the active selection, keyboard focus
-   and the section box handles. */
+/* All interface styling (After the Storm identity). Paper, ink, Arial, square corners,
+   hairlines, no shadows or gradients. The action colour marks only the active
+   selection, keyboard focus and the section box handles. */
 :root {
-  --surface: #F7F7F5; --raised: #FFFFFF; --tint: #EBEBE6; --line: #D9D9D4; --stone: #B4B4AF;
-  --border: #686863; --ink: #0B0B0B; --body: #2D2D2D; --muted: #686863; --on-ink: #FFFFFF;
-  --accent: #E6007E;
-  --text: "Poyo Inter", Arial, sans-serif; --title: "Poyo Inter Display", "Poyo Inter", Arial, sans-serif;
-  --figures: "Poyo Inter Tabular", "Poyo Inter", Arial, sans-serif;
+  --surface: #F4F1EA; --raised: #FBFAF6; --tint: #E8E3D8; --line: #D5CFC1; --stone: #BDB6A6;
+  --border: #8A8478; --ink: #2A2925; --body: #2A2925; --muted: #5C5850; --on-ink: #FBFAF6;
+  --accent: #A84B27;
+  --text: Arial, "Liberation Sans", Helvetica, sans-serif; --title: var(--text);
+  --figures: var(--text);
   --t: 150ms linear;
   --bar: 40px; --rail: 224px; --inspector: 320px;
 }
 body.dark {
-  --surface: #0B0B0B; --raised: #1A1A19; --tint: #2D2D2D; --line: #3A3A38; --stone: #686863;
-  --border: #8F8F8A; --ink: #F7F7F5; --body: #D9D9D4; --muted: #B4B4AF; --on-ink: #0B0B0B;
-  --accent: #FF3D9E;
+  --surface: #22211E; --raised: #2A2925; --tint: #3A3833; --line: #46433C; --stone: #6E695E;
+  --border: #8A8478; --ink: #F4F1EA; --body: #E3DED2; --muted: #BDB6A6; --on-ink: #2A2925;
+  --accent: #EBC3AE;
   color-scheme: dark;
 }
 * { box-sizing: border-box; border-radius: 0; }
@@ -23,8 +23,8 @@ body { display: flex; flex-direction: column; font: 12px/1.45 var(--text); color
 .figures, input[type="number"], input.hex, dd { font-family: var(--figures); font-variant-numeric: tabular-nums; }
 
 /* three levels of type: title, text, small capitals */
-h1 { margin: 0; font: 700 13px/1 var(--title); letter-spacing: .02em; }
-h2, h3 { margin: 0; font: 600 11px/1.4 var(--text); text-transform: uppercase; letter-spacing: .12em; color: var(--muted); }
+h1 { margin: 0; font: 700 12px/1 var(--title); text-transform: uppercase; letter-spacing: .1em; }
+h2, h3 { margin: 0; font: 700 11px/1.4 var(--text); text-transform: uppercase; letter-spacing: .1em; color: var(--muted); }
 h3 { margin: 18px 0 6px; padding-bottom: 4px; border-bottom: 1px solid var(--line); }
 
 button, input, select, textarea { font: inherit; color: inherit; margin: 0; }
@@ -55,10 +55,10 @@ button.mini { padding: 1px 7px; font-size: 11px; }
 #gl { touch-action: none; cursor: grab; }
 #gl:active { cursor: grabbing; }
 #overlay { pointer-events: none; }
-#checker { position: absolute; background-color: #FFFFFF;
-           background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16'%3E%3Cpath fill='%23EBEBE6' d='M0 0h8v8H0zM8 8h8v8H8z'/%3E%3C/svg%3E"); }
-body.dark #checker { background-color: #1A1A19;
-           background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16'%3E%3Cpath fill='%232D2D2D' d='M0 0h8v8H0zM8 8h8v8H8z'/%3E%3C/svg%3E"); }
+#checker { position: absolute; background-color: #FBFAF6;
+           background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16'%3E%3Cpath fill='%23E8E3D8' d='M0 0h8v8H0zM8 8h8v8H8z'/%3E%3C/svg%3E"); }
+body.dark #checker { background-color: #2A2925;
+           background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16'%3E%3Cpath fill='%233A3833' d='M0 0h8v8H0zM8 8h8v8H8z'/%3E%3C/svg%3E"); }
 
 .side { position: absolute; top: 0; bottom: 0; background: var(--surface); display: flex; flex-direction: column;
         transition: transform var(--t), visibility var(--t); z-index: 2; }
