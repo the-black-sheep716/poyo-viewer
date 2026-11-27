@@ -26,6 +26,16 @@
     } };
   });
 
+  // One choice for all ground colours, planned use, cover, crops and hazard alike.
+  function paletteSelect() {
+    return K.select("Palette", [["storm", "After the Storm"], ["data", "QGIS style and data colours"]], {
+      get: function () { return S().cover.palette; },
+      set: function (v) {
+        S().cover.palette = v; S().cover.colours = []; S().overlay.colours = []; S().cover.only = "";
+        setTimeout(ui.rebuild, 0);
+      } });
+  }
+
   // ==== class tables ==========================================================
   function areas(source) {
     var a = app(), name = L.GRID_OF[source];
@@ -140,7 +150,8 @@
     var hasStyle = !!POYO.symbols.style(app().manifest);
     var planned = function () { return hasStyle && set().source === "planned"; };
     var styled = function () { return L.styled(app().manifest, set()); };
-    p.appendChild(K.when(planned,
+    p.appendChild(paletteSelect());
+    p.appendChild(K.when(function () { return planned() && S().cover.palette !== "storm"; },
       K.select("Colours", [["qgis", "My QGIS style"], ["solid", "Solid colours"]],
         { get: function () { return set().style; },
           set: function (v) { set().style = v; set().colours = []; set().only = ""; setTimeout(ui.rebuild, 0); } })));
@@ -164,6 +175,7 @@
   PANELS.overlay = { title: "Hazard and depth classes", make: function (p) {
     var set = function () { return S().overlay; };
     p.appendChild(sourceSelect("Show", "overlay", [["none", "None"], ["depth", "Flood depth classes"], ["hazard", "Flood hazard zones"]]));
+    p.appendChild(paletteSelect());
     p.appendChild(K.live(function () {
       var s = set().source;
       return s === "depth" ? "Depth classes estimated from satellite images. A class is an estimate, not a measurement."

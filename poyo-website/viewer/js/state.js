@@ -72,7 +72,9 @@
                style: "qgis", on: [], under: "paper", under_colour: "#FFFFFF", pattern_space: "ground",
                pattern_scale: 1,
                // crop types: one colour per type, or irrigated and rainfed apart
-               crop_water: false },
+               crop_water: false,
+               // "data": QGIS style and data colours. "storm": the After the Storm land colours
+               palette: "data" },
       overlay: { source: "none", only: "", hidden: [], colours: [], boundaries: false, opacity: 0.8 },
       // water level scenario: solid water, off by default
       water3d: { channel: false, channel_mode: "depth", channel_depth_m: 2, channel_level_m: 100,
@@ -172,14 +174,14 @@
     }
     var sh = s.sheet;
     word(sh, "panel_side", ["auto", "right", "bottom"]); num(sh, "margin_mm", 0, 100, 10);
-    word(sh, "design", ["riverscape", "chronogram"]); word(sh, "panel_export", ["on_sheet", "separate"]);
+    word(sh, "design", ["riverscape", "chronogram", "storm"]); word(sh, "panel_export", ["on_sheet", "separate"]);
     sh.kicker = String(sh.kicker).slice(0, 120); sh.note = String(sh.note).slice(0, 600);
     ["tab_colour", "rule_colour"].forEach(function (key) { if (!/^#[0-9a-fA-F]{6}$/.test(sh[key])) sh[key] = d.sheet[key]; });
     word(s.cover, "source", ["none", "planned", "observed", "crops"]); word(s.cover, "level", ["detail", "group"]);
     s.cover.crop_water = s.cover.crop_water === true;
     strings(s.cover, "hidden"); pairs(s.cover, "colours");
     num(s.cover, "boundary_mm", 0.03, 1, 0.1); num(s.cover, "shading", 0, 1, 0); num(s.cover, "opacity", 0, 1, 1);
-    word(s.cover, "style", ["qgis", "solid"]); strings(s.cover, "on"); word(s.cover, "under", ["paper", "ground"]);
+    word(s.cover, "style", ["qgis", "solid"]); word(s.cover, "palette", ["data", "storm"]); strings(s.cover, "on"); word(s.cover, "under", ["paper", "ground"]);
     word(s.cover, "pattern_space", ["ground", "page"]); num(s.cover, "pattern_scale", 0.25, 4, 1);
     if (!/^#[0-9a-fA-F]{6}$/.test(s.cover.under_colour)) s.cover.under_colour = "#FFFFFF";
     word(s.overlay, "source", ["none", "depth", "hazard"]); strings(s.overlay, "hidden"); pairs(s.overlay, "colours");

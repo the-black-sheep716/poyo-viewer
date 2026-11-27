@@ -120,7 +120,7 @@
     var fx = (q.centreX - q.frameW / 2) * kx, fy = (q.centreY - q.frameH / 2) * ky,
         fw = q.frameW * kx, fh = q.frameH * ky;
     // quieten what lies outside the sheet
-    c.fillStyle = app.dark ? "rgba(0,0,0,0.5)" : "rgba(45,45,45,0.14)";
+    c.fillStyle = app.dark ? "rgba(0,0,0,0.5)" : "rgba(42,41,37,0.14)";
     c.beginPath(); c.rect(0, 0, w, h); c.rect(fx, fy, fw, fh); c.fill("evenodd");
     c.save();
     c.translate(fx, fy);
@@ -128,10 +128,10 @@
     var blocks = POYO.annotate.layout(app.state, app.manifest, page, app.scene);
     blocks.forEach(function (b) { c.save(); b.draw(c, u); c.restore(); });
     c.restore();
-    c.strokeStyle = app.dark ? "#8F8F8A" : "#686863"; c.lineWidth = Math.max(1, d);
+    c.strokeStyle = "#8A8478"; c.lineWidth = Math.max(1, d);
     c.strokeRect(fx, fy, fw, fh);
 
-    var accent = app.dark ? "#FF3D9E" : "#E6007E";
+    var accent = app.dark ? "#EBC3AE" : "#A84B27";
     handlesOnScreen = [];
     c.setTransform(kx, 0, 0, ky, 0, 0);                     // CSS pixels from here on
     if (app.drawing && app.drawing.from) {
@@ -141,7 +141,7 @@
       return blocks;
     }
     if (!app.drawing && app.showHandles && boxShown()) {
-      c.strokeStyle = app.dark ? "#B4B4AF" : "#686863"; c.lineWidth = 1; c.setLineDash([4, 4]);
+      c.strokeStyle = app.dark ? "#BDB6A6" : "#5C5850"; c.lineWidth = 1; c.setLineDash([4, 4]);
       c.beginPath();
       POYO.boxtools.edges(app, q).forEach(function (e) { c.moveTo(e[0][0], e[0][1]); c.lineTo(e[1][0], e[1][1]); });
       c.stroke(); c.setLineDash([]);
@@ -149,7 +149,7 @@
       var active = app.grab ? app.grab.handle.name : app.hover;
       handlesOnScreen.forEach(function (hd) {
         var on = hd.name === active, r = on ? 5.5 : 4.5;
-        c.fillStyle = on ? accent : (app.dark ? "#0B0B0B" : "#FFFFFF");
+        c.fillStyle = on ? accent : (app.dark ? "#2A2925" : "#FBFAF6");
         c.fillRect(hd.x - r, hd.y - r, 2 * r, 2 * r);
         c.strokeStyle = accent; c.lineWidth = 1.5; c.strokeRect(hd.x - r, hd.y - r, 2 * r, 2 * r);
       });
@@ -300,6 +300,8 @@
     app.state.layers = d.layers; app.state.terrain = d.terrain;
     app.state.fill_order = d.fill_order; app.state.line_order = d.line_order;
     app.state.look = d.look; app.state.box.cut = d.box.cut; app.state.theme_name = d.theme_name;
+    ["palette", "hidden_colour", "boundary_colour"].forEach(function (k) { app.state.cover[k] = d.cover[k]; });
+    app.state.water3d.colour = d.water3d.colour;
     ["paper_colour", "ink", "body_ink", "muted_ink", "design", "tab_colour", "rule_colour"]
       .forEach(function (k) { app.state.sheet[k] = d.sheet[k]; });
     var m = app.manifest.entries.buildings.default_height_m;

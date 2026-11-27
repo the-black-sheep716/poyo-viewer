@@ -427,12 +427,16 @@
       note("The export saves the drawing without the panel, and a second picture ending in _panel at the same resolution. Place both at 100 percent to combine them. The panel ID stays on the drawing unless you untick it above.")
     ]));
     tab.appendChild(group(newSheet, [
-      select("Panel look", [["chronogram", "Chronogram"], ["riverscape", "Riverscape boxes"]], prop(s, "design"))
+      select("Panel look", [["storm", "After the Storm"], ["chronogram", "Chronogram"], ["riverscape", "Riverscape boxes"]],
+             prop(s, "design"))
     ]));
-    tab.appendChild(group(function () { return newSheet() && s().design === "chronogram"; }, [
+    tab.appendChild(group(function () { return newSheet() && s().design !== "riverscape"; }, [
       text("Small title", prop(s, "kicker"), "line above the view name"),
       text("Note", prop(s, "note"), "optional note under the title"),
-      colour("Title tab", prop(s, "tab_colour")), colour("Hairlines", prop(s, "rule_colour"))
+      colour("Hairlines", prop(s, "rule_colour"))
+    ]));
+    tab.appendChild(group(function () { return newSheet() && s().design === "chronogram"; }, [
+      colour("Title tab", prop(s, "tab_colour"))
     ]));
     tab.appendChild(group(function () { return !newSheet(); }, [
       select("Annotations", [["full", "Full"], ["minimal", "Minimal"]], prop(s, "annotations")),

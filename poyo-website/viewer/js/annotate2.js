@@ -11,7 +11,16 @@
   var TRACK = 0.09;                                  // letter spacing of headings, in em
   var measureCtx = null;
 
-  function font(weight, size, family) { return weight + " " + size + "px " + family; }
+  // After the Storm sheets are set in Arial with no text under 10 pt (on A2 and larger).
+  var STORM_FACE = "Arial, 'Liberation Sans', Helvetica, sans-serif";
+  var typeface = null;                                   // set while such a sheet is laid out or drawn
+  function withFace(next, work) {
+    var before = typeface;
+    typeface = next;
+    try { return work(); } finally { typeface = before; }
+  }
+  function least(size) { return typeface && typeface.min ? Math.max(size, typeface.min) : size; }
+  function font(weight, size, family) { return weight + " " + size + "px " + (typeface ? STORM_FACE : family); }
 
   function width(text, size, o) {
     if (!measureCtx) measureCtx = document.createElement("canvas").getContext("2d");
@@ -21,7 +30,8 @@
   }
 
   function wrap(text, size, o, max) {
-    var words = String(text).split(/\s+/), lines = [], line = "";
+    var words = typeface ? String(text).replace(/(\d) (%|km²|km|m)(?![A-Za-z²])/g, "$1\u00a0$2").split(/[ \t\r\n]+/)
+                     : String(text).split(/\s+/), lines = [], line = "";
     words.forEach(function (w) {
       var next = line ? line + " " + w : w;
       if (line && width(next, size, o) > max) { lines.push(line); line = w; }
@@ -68,6 +78,7 @@
   Column.prototype.text = function (text, size, o) {
     var self = this;
     o = o || {};
+    size = least(size);
     var style = { weight: o.weight, family: o.family, track: o.track, colour: o.colour || this.ink.ink };
     wrap(text, size, style, this.max).forEach(function (line, i, all) {
       var item = self.add(size * 1.36, width(line, size, style), function (c, x, y, u) {
@@ -76,11 +87,13 @@
       item.keep = i < all.length - 1;            // a column break does not split one statement
     });
   };
-  Column.prototype.label = function (text, size) {
-    this.text(text.toUpperCase(), size, { weight: 600, track: TRACK, colour: this.ink.muted });
+  Column.prototype.label = function (text, size, colour) {
+    this.text(text.toUpperCase(), size, { weight: typeface ? 700 : 600, track: typeface ? 0.1 : TRACK,
+                                          colour: colour || this.ink.muted });
     if (this.items.length) this.items[this.items.length - 1].keep = true;
   };
   Column.prototype.entry = function (text, size, symbol) {
+    size = least(size);
     var indent = size * 2.7, style = { colour: this.ink.ink };
     var lines = wrap(text, size, style, this.max - indent), w = 0, self = this;
     lines.forEach(function (l) { w = Math.max(w, indent + width(l, size, style)); });
@@ -221,8 +234,9 @@
 
   // ==== title block: rows of cells divided by hairlines
   function titleBlock(state, manifest, k, ink, opts) {
-    var W = 196 * k, pad = 3 * k, v = state.view, sheet = state.sheet;
-    var label = 2.7 * k, value = 4.5 * k, small = 3.4 * k, big = 6.4 * k;
+    var storm = state.sheet.design === "storm";
+    var W = (storm ? 220 : 196) * k, pad = 3 * k, v = state.view, sheet = state.sheet;
+    var label = least(2.7 * k), value = least(4.5 * k), small = least(3.4 * k), big = least(6.4 * k);
     var rows = [];
     function cell(share, fill) {
       var col = new Column(W * share - 2 * pad, ink);
@@ -232,8 +246,19 @@
     function row() { rows.push(Array.prototype.slice.call(arguments)); }
 
     // the chronogram look opens with its tab, kicker, title and note
-    var chrono = sheet.design === "chronogram";
-    if (chrono) {
+    var chrono = storm || sheet.design === "chronogram";
+    if (storm) {
+      row(cell(1, function (s) {
+        s.add(2.4 * k, 20 * k, function (c, x, y, u) {
+          c.fillStyle = ink.ink; c.fillRect(x * u, y * u, (W - 2 * pad) * u, Math.max(0.5 * u, 1));
+        });
+        var kicker = String(sheet.kicker || "").trim(), words = String(sheet.note || "").trim();
+        if (kicker) s.text(kicker.toUpperCase(), 3.9 * k, { weight: 700, track: 0.1, colour: ink.muted });
+        s.gap(1.6 * k);
+        s.text(POYO.camera.viewName(v).toUpperCase(), 8.47 * k, { weight: 700, track: 0.1 });
+        if (words) { s.gap(2.8 * k); s.text(words, 4.6 * k, { colour: ink.body }); }
+      }));
+    } else if (chrono) {
       row(cell(1, function (s) {
         s.add(4.4 * k, 20 * k, function (c, x, y, u) {
           c.fillStyle = ink.tab; c.fillRect(x * u, (y + 0.6 * k) * u, 20 * k * u, 1.4 * k * u);
@@ -354,7 +379,11 @@
             if (j && !chrono) { c.fillStyle = ink.muted; c.fillRect(x * u, y * u, Math.max(0.15 * u, 0.5), heights[i] * u); }
             x += W * cl.share;
           });
-          if (i) { c.fillStyle = chrono ? ink.rule : ink.muted; c.fillRect(bx * u, y * u, W * u, Math.max((chrono ? 0.25 : 0.15) * u, 0.5)); }
+          if (i) {
+            var inset = storm ? pad : 0;
+            c.fillStyle = chrono ? ink.rule : ink.muted;
+            c.fillRect((bx + inset) * u, y * u, (W - 2 * inset) * u, Math.max((chrono ? 0.25 : 0.15) * u, 0.5));
+          }
           y += heights[i];
         });
         if (chrono) return;                       // open layout, no box around it
@@ -367,7 +396,7 @@
 
   // ==== legend
   function rampItem(s, state, ink, k) {
-    var T = state.terrain, barW = Math.min(s.max, 70 * k), span = Math.max(1, T.high_m - T.low_m), size = 3.4 * k;
+    var T = state.terrain, barW = Math.min(s.max, 70 * k), span = Math.max(1, T.high_m - T.low_m), size = least(3.4 * k);
     s.add(size * 3, barW, function (c, x, y, u) {
       var g = c.createLinearGradient(x * u, 0, (x + barW) * u, 0);
       g.addColorStop(0, T.low_colour);
@@ -388,7 +417,11 @@
     var s = (o && o.column) || new Column(112 * k, ink), L = state.layers, K = state.look, on = shown(state);
     var size = 3.9 * k, label = 2.7 * k, small = 3.2 * k, paper = ink.paper;
     var lineStyle = function (v) { return v === "outline" || v === "contours" || v === "wireframe"; };
-    function heading(t) { s.gap(2.6 * k); s.label(t, label); s.add(0.8 * k, 0, function () {}).keep = true; }
+    function heading(t) {
+      s.gap((typeface ? 4 : 2.6) * k);
+      if (typeface) s.label(t, 4.94 * k, ink.ink); else s.label(t, label);
+      s.add(0.8 * k, 0, function () {}).keep = true;
+    }
     if (o && o.present) {
       ["terrain", "rivers", "streams", "buildings", "basin", "satellite", "at2200"].forEach(function (n) {
         on[n] = on[n] && o.present(n);
@@ -560,7 +593,7 @@
   POYO.sheetKit = { Column: Column, put: put, wrap: wrap, width: width, inks: inks, swatch: swatch, stroke: stroke,
                     grid: grid, levels: levels, hatched: hatched, titleBlock: titleBlock, legend: legend,
                     shown: shown, credits: credits, floodName: floodName, floodNote: floodNote, boxOn: boxOn,
-                    signed: signed, metres: metres, times: times, niceDown: niceDown };
+                    signed: signed, metres: metres, times: times, niceDown: niceDown, withFace: withFace };
   POYO.annotate1 = first;
   POYO.annotate = { layout: layout, floodName: floodName, floodNote: floodNote, heightLabel: heightLabel,
                     credits: credits, missingSources: missingSources };

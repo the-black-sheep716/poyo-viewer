@@ -16,6 +16,17 @@ POYO.ID = {
   yellow: "#F5B700", magenta: "#E6007E"
 };
 
+// "After the Storm" identity: land use muted, water in its own blues, one story
+// colour per map (storm: what happened, action: proposals, system: governance and time).
+POYO.STORM = {
+  paper: "#F4F1EA", white: "#FBFAF6", ink: "#2A2925", muted: "#5C5850", rule: "#8A8478", hairline: "#BDB6A6",
+  waterDeep: "#2B6680", water: "#5E9BB3", waterLight: "#A9CBD8", sea: "#D3E4E8",
+  storm: "#45525C", stormLight: "#C4CBCF", action: "#A84B27", actionLight: "#EBC3AE",
+  system: "#66466A", systemLight: "#D9C8D8",
+  forest: "#8C9B6A", secano: "#DDCFA3", huerta: "#B9C49A", wetland: "#C3DAD3",
+  urban: "#CFC8BB", building: "#8F887C", industrial: "#B9B2A6"
+};
+
 POYO.PAPERS = { A0: [841, 1189], A1: [594, 841], A2: [420, 594], A3: [297, 420], A4: [210, 297] };
 
 POYO.clamp = function (v, lo, hi) { return v < lo ? lo : v > hi ? hi : v; };

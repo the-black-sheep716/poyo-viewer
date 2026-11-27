@@ -67,6 +67,89 @@
     }).join("");
   }
 
+  // ==== After the Storm ground colours: the identity's land tokens, muted, with tints
+  // derived from them where the data has more classes than the identity.
+  var T = POYO.STORM;
+  var STORM_GROUP = {
+    "Residential": T.urban, "Industrial": T.industrial, "Tertiary": mix(T.urban, T.building, 0.35),
+    "Agricultural": T.secano, "Forest and natural": T.forest, "Green space": mix(T.huerta, T.forest, 0.35),
+    "Facilities": mix(T.building, T.paper, 0.25), "Infrastructure": mix(T.building, T.ink, 0.18),
+    "Corridors and networks": T.rule, "Watercourse": T.waterLight, "Protected for risk": T.stormLight
+  };
+  var STORM_NAME = {
+    "Residential new development": mix(T.urban, T.paper, 0.45), "Historic core": T.building,
+    "Industrial new development": mix(T.industrial, T.paper, 0.45),
+    "Tertiary new development": mix(T.urban, T.building, 0.12),
+    "Agricultural protected": T.huerta,
+    "Natural protected municipal": mix(T.forest, T.paper, 0.35), "Natural protected by law": mix(T.forest, T.ink, 0.2),
+    "Sports": mix(T.huerta, T.paper, 0.3), "Golf": mix(T.huerta, T.paper, 0.15),
+    "Infrastructure water": T.water,
+    "Road network": mix(T.rule, T.ink, 0.25), "Railway": T.muted, "Railway corridor": mix(T.muted, T.paper, 0.3),
+    "Utility corridor": T.hairline, "Livestock route": mix(T.secano, T.building, 0.45),
+    "Parking": mix(T.industrial, T.ink, 0.12)
+  };
+  var STORM_SIOSE = {
+    CHA: mix(T.huerta, T.wetland, 0.5), CHL: T.secano, LFC: T.huerta, LFN: mix(T.huerta, T.secano, 0.5),
+    LOL: mix(T.forest, T.secano, 0.55), LVI: mix(T.secano, T.building, 0.55), LOC: mix(T.secano, T.huerta, 0.35),
+    CNF: mix(T.forest, T.ink, 0.22), FDP: T.forest, MTR: mix(T.forest, T.paper, 0.35), PST: mix(T.huerta, T.paper, 0.4),
+    ACU: T.water, ALC: T.waterLight, ALG: T.waterLight, HMA: T.wetland, LAA: T.waterLight, RMB: T.sea,
+    SDN: mix(T.secano, T.paper, 0.45), PDA: mix(T.secano, T.paper, 0.65), ARR: T.hairline,
+    ZQM: mix(T.storm, T.paper, 0.35), EDF: T.building, VAP: T.rule, OCT: T.industrial,
+    ZEV: mix(T.industrial, T.ink, 0.22), SNE: mix(T.urban, T.paper, 0.35), ZAU: mix(T.huerta, T.forest, 0.5)
+  };
+  var STORM_CROPS = {
+    "Citrus": T.huerta, "Fruit trees": mix(T.secano, T.building, 0.3), "Nut trees": mix(T.building, T.secano, 0.25),
+    "Olive groves": T.forest, "Vineyard": mix(T.building, T.ink, 0.3), "Mixed tree crops": mix(T.forest, T.secano, 0.5),
+    "Other permanent crops": mix(T.secano, T.ink, 0.35), "Arable land": T.secano,
+    "Vegetable gardens": mix(T.huerta, T.wetland, 0.6), "Greenhouses and plastic cover": T.industrial,
+    "Forest": mix(T.forest, T.paper, 0.5), "Pasture and scrub": mix(T.huerta, T.paper, 0.55), "Built up": T.urban,
+    "Roads and ways": T.rule, "Water": T.water, "Unproductive land": mix(T.hairline, T.paper, 0.55),
+    "Other parcel use": mix(T.urban, T.paper, 0.45)
+  };
+
+  // The identity's colour for one class of the table below, or null to keep the data colour.
+  function stormColour(source, c) {
+    if (source === "planned") {
+      var name = c.key.indexOf("planned:detail:") === 0 ? c.key.slice(15) : "";
+      return STORM_NAME[name] || STORM_GROUP[c.group] || mix(T.urban, T.paper, 0.45);
+    }
+    if (source === "observed") {
+      var base = STORM_SIOSE[c.cover] || mix(T.secano, T.forest, 0.35);
+      if (c.water === "sc") base = mix(base, T.hairline, 0.35);
+      if (c.mosaic && STORM_SIOSE[c.cover]) base = mix(base, T.paper, 0.35);
+      return base;
+    }
+    if (source === "crops") {
+      var type = c.key.split(":")[2], detail = c.key.indexOf("crops:detail:") === 0;
+      var tone = STORM_CROPS[type] || mix(T.urban, T.paper, 0.45);
+      if (detail && type === "Arable land" && c.water === "irrigated") return mix(T.huerta, T.secano, 0.5);
+      if (detail && type !== "Arable land" && c.water === "rainfed") return mix(tone, T.paper, 0.35);
+      return tone;
+    }
+    if (source === "hazard") {
+      // hazard is "what happened and what can": storm, darkest for the highest level
+      return c.index > 6 ? T.hairline : mix(mix(T.storm, T.ink, 0.45), T.stormLight, (c.index - 1) / 5);
+    }
+    return null;
+  }
+
+  function stormed(set) { return set.palette === "storm"; }
+
+  // Planned use in the identity: solid fills, industrial land hatched at 45 degrees.
+  function stormSymbols(manifest, set) {
+    if (!stormed(set) || set.source !== "planned" || !manifest.entries.landuse) return null;
+    var out = {};
+    table(manifest, "planned", set.level).forEach(function (c) {
+      if (out[c.key]) return;
+      var s = POYO.symbols.solid(stormColour("planned", c));
+      if (c.group === "Industrial") {
+        s.ops.push({ type: "line", angle: 45, distance: 1.4, width: 0.25, offset: 0, dash: "solid", colour: T.building });
+      }
+      out[c.key] = s;
+    });
+    return out;
+  }
+
   // The class list of one grid: every raster index with the key and colour it belongs to.
   // The same list serves the palette, the legend and the inspector table.
   function table(manifest, source, level) {
@@ -139,7 +222,8 @@
     var depthRamp = state.look.depth_ramp;
     var chosen = {};
     set.colours.forEach(function (p) { chosen[p[0]] = p[1]; });
-    var symbols = slot === "cover" ? styleSymbols(manifest, set) : null;
+    var identity = stormed(state.cover);
+    var symbols = slot === "cover" ? (identity ? stormSymbols(manifest, set) : styleSymbols(manifest, set)) : null;
     var level = source === "crops" ? (set.crop_water ? "detail" : "group") : set.level;
     return table(manifest, source, level).map(function (c) {
       var symbol = symbols ? symbols[c.key] || null : null;
@@ -147,7 +231,7 @@
       var off = !!(symbol && !symbol.on && set.on.indexOf(c.key) < 0 && set.only !== c.key);
       var shown = !off && set.hidden.indexOf(c.key) < 0 && (!set.only || set.only === c.key);
       var colour = chosen[c.key] || (source === "depth" ? depthRamp[c.index - 1] : null) ||
-                   (symbol && POYO.symbols.main(symbol)) || c.colour;
+                   (symbol && POYO.symbols.main(symbol)) || (identity && stormColour(source, c)) || c.colour;
       if (symbol && chosen[c.key]) symbol = POYO.symbols.recolour(symbol, chosen[c.key]);
       return { index: c.index, key: c.key, label: c.label, colour: colour, shown: shown, order: c.order,
                group: c.group, cover: c.cover, mosaic: c.mosaic, water: c.water, depth: c.depth, crop: c.crop,
@@ -158,7 +242,7 @@
 
   // True when the planned use colours follow the symbols read from the QGIS style.
   function styled(manifest, set) {
-    return set.source === "planned" && set.style === "qgis" && !!POYO.symbols.style(manifest);
+    return set.source === "planned" && set.style === "qgis" && !stormed(set) && !!POYO.symbols.style(manifest);
   }
 
   // Symbol of each class key. A use group takes the symbol of its largest class that is on.
@@ -414,7 +498,7 @@
       out.slots[i] = { grid: gridTexture(scene, name), palette: palette(scene, manifest, state, slot),
                        alpha: set.opacity, boundaries: set.boundaries,
                        smooth: set.source === "crops" };       // 3 by 3 cells, softer stepped edges
-      if (slot === "cover" && styled(manifest, set)) {
+      if (slot === "cover" && (styled(manifest, set) || (stormed(set) && set.source === "planned"))) {
         out.symbols = { tex: symbolTexture(scene, manifest, state), under: set.under === "paper" ? set.under_colour : null,
                         page: set.pattern_space === "page", scale: set.pattern_scale };
       }

@@ -298,7 +298,7 @@
     var k = base * sheet.text_size, margin = 14 * base, blocks = [];
     var side = sheet.panel_side === "right" || sheet.panel_side === "bottom" ? sheet.panel_side
              : W >= H || sheet.panel_export === "separate" ? "right" : "bottom";   // a panel of its own is a column
-    var chrono = sheet.design === "chronogram";
+    var chrono = sheet.design === "chronogram" || sheet.design === "storm";
     function place(thing, x, y, role) {
       var b = { x: x, y: y, w: thing.w, h: thing.h, role: role };
       b.draw = function (c, u) { thing.draw(c, b.x, b.y, u); };
@@ -433,9 +433,24 @@
     var l = state.sheet.layout;
     return l === "stage3" || (l === "stage2" && hasNew(state));
   }
+  // Every block of an After the Storm sheet draws itself in that sheet's type.
+  function dress(blocks, typeface) {
+    var all = blocks.slice();
+    ((blocks.panel && blocks.panel.blocks) || []).forEach(function (b) { if (all.indexOf(b) < 0) all.push(b); });
+    all.forEach(function (b) {
+      var draw = b.draw;
+      b.draw = function (c, u) { return kit.withFace(typeface, function () { return draw(c, u); }); };
+    });
+    return blocks;
+  }
   function layout(state, manifest, page, scene) {
-    if (!isStage3(state)) return before.layout(state, manifest, page);
-    return sheet3(state, manifest, page, scene || (POYO.app && POYO.app.scene) || null);
+    var typeface = state.sheet.design !== "storm" ? null
+             : { min: Math.min(page.width_mm, page.height_mm) >= 420 ? 10 * 25.4 / 72 : 0 };
+    var blocks = kit.withFace(typeface, function () {
+      if (!isStage3(state)) return before.layout(state, manifest, page);
+      return sheet3(state, manifest, page, scene || (POYO.app && POYO.app.scene) || null);
+    });
+    return typeface ? dress(blocks, typeface) : blocks;
   }
   // The part of the page the drawing may use, in millimetres, or null for the whole page.
   function drawingWindow(state, manifest, page, scene) {

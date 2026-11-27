@@ -21,7 +21,8 @@
       railways: ["colour", "opacity", "width_mm"], sector: ["colour", "opacity", "width_mm"],
       windows: ["colour", "opacity", "width_mm"], parcels: ["colour", "opacity", "width_mm"]
     },
-    cover: ["hidden_colour", "boundary_colour"],
+    cover: ["hidden_colour", "boundary_colour", "palette"],
+    water3d: ["colour"],
     terrain: ["low_colour", "mid_colour", "high_colour", "mid_m", "low_m", "high_m", "hillshade",
               "light_azimuth", "light_altitude", "shading_relief", "base_colour"],
     look: Object.keys(POYO.state.defaults().look),
@@ -37,11 +38,12 @@
     visit("terrain", state.terrain, settings.terrain, KEYS.terrain);
     visit("look", state.look, settings.look, KEYS.look);
     visit("cover", state.cover, settings.cover, KEYS.cover);
+    visit("water3d", state.water3d, settings.water3d, KEYS.water3d);
     visit("cut", state.box.cut, settings.cut, KEYS.cut);
   }
 
   function capture(state, name, mode) {
-    var settings = { sheet: {}, layers: {}, terrain: {}, look: {}, cut: {}, cover: {} };
+    var settings = { sheet: {}, layers: {}, terrain: {}, look: {}, cut: {}, cover: {}, water3d: {} };
     Object.keys(KEYS.layers).forEach(function (n) { settings.layers[n] = {}; });
     parts(state, settings, function (path, from, to, keys) {
       keys.forEach(function (k) { to[k] = POYO.deepCopy(from[k]); });
@@ -56,7 +58,7 @@
   var FILLS = ["solid", "hatch", "none"];
   var WORDS = { "cut.ground_fill": FILLS, "cut.buildings_fill": FILLS,
                 "look.contour_base": ["paper", "ramp", "shaded", "none"], "look.trees": POYO.state.STYLES,
-                "sheet.design": ["riverscape", "chronogram"] };
+                "sheet.design": ["riverscape", "chronogram", "storm"], "cover.palette": ["data", "storm"] };
   POYO.state.GROUPS.forEach(function (g) { WORDS["look." + g] = POYO.state.STYLES; });
 
   function check(theme) {
@@ -205,14 +207,58 @@
     return capture(d, "Chronogram " + row[0], night ? "dark" : "paper");
   }
 
-  function builtin() {
-    var list = CHRONOGRAM.map(chronogram);
-    return [list[0], paper(), dark(), white()].concat(list.slice(1));
+  // ==== After the Storm: the look, token for token.
+  // Line weights are the identity's millimetres. Tints between two tokens are derived.
+  function storm() {
+    var T = POYO.STORM, d = POYO.state.defaults();
+    var S = d.sheet;
+    S.design = "storm"; S.paper_colour = T.paper; S.ink = T.ink; S.body_ink = T.ink; S.muted_ink = T.muted;
+    S.tab_colour = T.action; S.rule_colour = T.hairline;
+    var G = d.terrain;
+    G.low_colour = mix(T.paper, T.rule, 0.30); G.mid_colour = mix(T.paper, T.rule, 0.14); G.high_colour = T.white;
+    G.base_colour = T.rule; G.hillshade = 0.25;
+    var L = d.layers;
+    L.rivers.colour = T.waterDeep; L.rivers.outline_colour = T.waterDeep;
+    L.streams.colour = T.water; L.streams.width_mm = 0.3;
+    L.flood.satellite_colour = T.waterLight; L.flood.at2200_colour = mix(T.waterLight, T.water, 0.5);
+    L.flood.opacity = 0.7; L.flood.outline_colour = T.water;
+    L.basin.colour = T.ink; L.basin.width_mm = 0.7;
+    L.buildings.floors_colour = T.building; L.buildings.explicit_colour = T.muted; L.buildings.none_colour = T.urban;
+    L.roads.colour = T.rule;
+    L.municipal.colour = T.rule; L.municipal.width_mm = 0.25;
+    L.places.colour = T.hairline; L.places.width_mm = 0.25;
+    L.railways.colour = T.ink; L.railways.width_mm = 0.5;
+    L.sector.colour = T.ink; L.sector.width_mm = 0.5;
+    L.windows.colour = T.action; L.windows.width_mm = 0.8;
+    L.parcels.colour = T.rule;
+    var K = d.look;
+    K.flat_ground = mix(T.paper, T.urban, 0.4);
+    K.white_ground = T.white; K.white_building = T.white; K.white_assumed = T.hairline;
+    K.white_water = T.sea; K.white_flood = T.sea; K.white_line = T.rule;
+    K.contour_colour = T.muted; K.wire_colour = T.rule; K.outline_colour = T.ink;
+    K.tree_crown = T.forest; K.tree_trunk = T.muted;
+    K.depth_ramp = [T.sea, T.waterLight, T.water, T.waterDeep, mix(T.waterDeep, T.ink, 0.5)];
+    K.water_ramp = K.depth_ramp.slice();
+    K.road_colours = [["Motorway / trunk", T.ink], ["Primary", mix(T.ink, T.muted, 0.6)], ["Secondary", T.muted],
+                      ["Tertiary", T.rule], ["Local street", T.rule], ["Service", T.hairline],
+                      ["Track / path", mix(T.hairline, T.paper, 0.3)]];
+    d.cover.hidden_colour = mix(T.paper, T.hairline, 0.5); d.cover.boundary_colour = T.muted;
+    d.cover.palette = "storm";
+    d.water3d.colour = T.water;
+    var C = d.box.cut;
+    C.ground_colour = mix(T.rule, T.paper, 0.35); C.building_colour = T.ink; C.hatch_back = T.paper;
+    C.line_colour = T.ink; C.line_mm = 0.5;
+    return capture(d, "After the Storm", "paper");
   }
 
-  // The state a new session starts with: the Signal look, side panel in its own file.
+  function builtin() {
+    var list = CHRONOGRAM.map(chronogram);
+    return [storm(), list[0], paper(), dark(), white()].concat(list.slice(1));
+  }
+
+  // The state a new session starts with: After the Storm, side panel in its own file.
   function fresh(state) {
-    apply(state, chronogram(CHRONOGRAM[0]));
+    apply(state, storm());
     state.sheet.panel_export = "separate";
     return state;
   }
